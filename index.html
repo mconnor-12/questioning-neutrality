@@ -181,340 +181,134 @@ textarea{resize:vertical;min-height:80px;}
   .tp{display:block!important;}
 }
 
-/* ── HOMEPAGE ── */
+
+/* ── HOMEPAGE v4 ── */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
-
-#panel-home {
-  background: #0a0f1a;
-  min-height: 100vh;
-  font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
-}
-
-/* HERO */
-.hp-hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 80px 60px 60px;
-  background: #0a0f1a;
-  overflow: hidden;
-}
-.hp-hero-bg {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(37,99,235,0.12) 0%, transparent 70%),
-              radial-gradient(ellipse 50% 40% at 20% 80%, rgba(220,38,38,0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-.hp-hero-grid {
-  position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-.hp-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: #60a5fa;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeUp 0.8s 0.2s forwards;
-}
-.hp-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
-  line-height: 1.0;
-  color: #ffffff;
-  margin-bottom: 12px;
-  max-width: 800px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.35s forwards;
-}
-.hp-title em {
-  font-style: italic;
-  color: #60a5fa;
-}
-.hp-subtitle {
-  font-size: clamp(16px, 2.2vw, 22px);
-  font-weight: 300;
-  color: #94a3b8;
-  max-width: 600px;
-  line-height: 1.65;
-  margin-bottom: 48px;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.5s forwards;
-}
-.hp-subtitle strong { color: #e2e8f0; font-weight: 500; }
-.hp-cta-row {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.9s 0.65s forwards;
-}
-.hp-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px; border-radius: 8px;
-  font-size: 15px; font-weight: 600; cursor: pointer;
-  border: none; transition: all 0.2s; text-decoration: none;
-}
-.hp-cta-primary { background: #2563eb; color: #fff; }
-.hp-cta-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
-.hp-cta-ghost { background: transparent; color: #94a3b8; border: 1px solid rgba(148,163,184,0.3); }
-.hp-cta-ghost:hover { color: #e2e8f0; border-color: rgba(148,163,184,0.6); }
-
-.hp-scroll-hint {
-  position: absolute; bottom: 36px; left: 60px;
-  display: flex; align-items: center; gap: 10px;
-  color: #475569; font-size: 13px;
-  animation: pulse 2s 1.5s infinite;
-}
-.hp-scroll-line {
-  width: 40px; height: 1px; background: #475569;
-  animation: growLine 1.5s 1s forwards;
-  transform-origin: left;
-  transform: scaleX(0);
-}
-
-/* STATEMENT BAR */
-.hp-statement {
-  background: #111827;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 40px 60px;
-}
-.hp-statement-inner {
-  max-width: 900px; margin: 0 auto;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(20px, 2.5vw, 30px);
-  font-weight: 700;
-  color: #e2e8f0;
-  line-height: 1.5;
-}
-.hp-statement-inner em { color: #f87171; font-style: italic; }
-.hp-statement-inner strong { color: #60a5fa; font-style: normal; }
-
-/* STAT COUNTER SECTION */
-.hp-stats {
-  background: #0d1321;
-  padding: 80px 60px;
-}
-.hp-section-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: #475569;
-  margin-bottom: 48px;
-}
-.hp-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2px;
-  max-width: 1200px;
-}
-.hp-stat {
-  background: #111827;
-  padding: 40px 32px;
-  transition: background 0.2s;
-}
-.hp-stat:hover { background: #1e293b; }
-.hp-stat-num {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(48px, 5vw, 72px);
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.hp-stat-num.blue { color: #3b82f6; }
-.hp-stat-num.red { color: #f87171; }
-.hp-stat-num.amber { color: #fbbf24; }
-.hp-stat-num.teal { color: #2dd4bf; }
-.hp-stat-num.purple { color: #a78bfa; }
-.hp-stat-label {
-  font-size: 14px; font-weight: 500; color: #94a3b8;
-  line-height: 1.4; max-width: 200px;
-}
-.hp-stat-sub { font-size: 12px; color: #475569; margin-top: 6px; }
-
-/* FINDING CARDS */
-.hp-findings {
-  background: #0a0f1a;
-  padding: 80px 60px;
-}
-.hp-findings-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin-top: 40px;
-}
-.hp-finding {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.hp-finding:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); }
-.hp-finding-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 64px; font-weight: 500;
-  line-height: 1;
-  margin-bottom: 12px;
-  opacity: 0.15;
-  position: absolute; top: 20px; right: 24px;
-}
-.hp-finding-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 4px 10px; border-radius: 4px;
-  display: inline-block; margin-bottom: 16px;
-}
-.tag-red { background: rgba(248,113,113,0.15); color: #f87171; }
-.tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
-.tag-amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
-.tag-teal { background: rgba(45,212,191,0.15); color: #2dd4bf; }
-.tag-purple { background: rgba(167,139,250,0.15); color: #a78bfa; }
-.hp-finding h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 22px; font-weight: 700;
-  color: #f1f5f9; line-height: 1.3;
-  margin-bottom: 12px;
-}
-.hp-finding p {
-  font-size: 14px; color: #64748b;
-  line-height: 1.7;
-}
-.hp-finding strong { color: #94a3b8; }
-
-/* BAR CHART */
-.hp-chart { background: #0d1321; padding: 80px 60px; }
-.hp-bar-chart { max-width: 800px; margin-top: 40px; }
-.hp-bar-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.hp-bar-label { font-size: 13px; color: #64748b; width: 200px; flex-shrink: 0; text-align: right; }
-.hp-bar-track { flex: 1; height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
-.hp-bar-fill { height: 100%; border-radius: 6px; transition: width 1.5s cubic-bezier(0.16,1,0.3,1); width: 0; }
-.hp-bar-val { font-family: 'DM Mono', monospace; font-size: 13px; color: #94a3b8; width: 50px; }
-
-/* PULL QUOTE */
-.hp-pullquote {
-  background: #111827;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 80px 60px;
-}
-.hp-pullquote-inner { max-width: 900px; margin: 0 auto; }
-.hp-pullquote blockquote {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(22px, 3vw, 36px);
-  font-weight: 700; font-style: italic;
-  color: #e2e8f0;
-  line-height: 1.5;
-  border-left: 4px solid #2563eb;
-  padding-left: 32px;
-  margin-bottom: 24px;
-}
-.hp-pullquote cite {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px; letter-spacing: 0.1em;
-  color: #475569; font-style: normal;
-  padding-left: 36px;
-}
-
-/* LIBRARY TEASER */
-.hp-library-teaser {
-  background: #0a0f1a; padding: 80px 60px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.hp-source-sample {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px; margin-top: 40px; margin-bottom: 40px;
-}
-.hp-src {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px; padding: 20px;
-  transition: all 0.2s; cursor: pointer;
-}
-.hp-src:hover { border-color: #2563eb; background: #1e293b; }
-.hp-src-title { font-size: 14px; font-weight: 600; color: #e2e8f0; line-height: 1.4; margin-bottom: 8px; }
-.hp-src-meta { font-size: 12px; color: #475569; margin-bottom: 10px; }
-.hp-src-chip {
-  display: inline-block;
-  font-size: 11px; padding: 2px 8px;
-  border-radius: 20px; font-weight: 600;
-  margin-right: 4px;
-}
-.chip-resistant { background: rgba(52,211,153,0.15); color: #34d399; }
-.chip-dominant { background: rgba(248,113,113,0.15); color: #f87171; }
-.chip-institutional { background: rgba(251,191,36,0.15); color: #fbbf24; }
-
-/* CTA SECTION */
-.hp-cta-section {
-  background: #111827;
-  padding: 100px 60px;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.hp-cta-section h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(32px, 5vw, 60px);
-  font-weight: 900; color: #fff;
-  line-height: 1.15; margin-bottom: 24px;
-}
-.hp-cta-section h2 em { color: #60a5fa; font-style: italic; }
-.hp-cta-section p {
-  font-size: 18px; color: #64748b; max-width: 600px;
-  margin: 0 auto 40px; line-height: 1.7;
-}
-
-/* FOOTER */
-.hp-footer {
-  background: #060a12;
-  padding: 40px 60px;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 16px;
-  border-top: 1px solid rgba(255,255,255,0.04);
-}
-.hp-footer-brand {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 18px; font-weight: 700; color: #e2e8f0;
-}
-.hp-footer-meta { font-size: 12px; color: #374151; }
-.hp-footer-meta strong { color: #475569; }
-
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; } 50% { opacity: 1; }
-}
-@keyframes growLine {
-  to { transform: scaleX(1); }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hp-hero { padding: 60px 24px 48px; }
-  .hp-statement { padding: 40px 24px; }
-  .hp-stats { padding: 60px 24px; }
-  .hp-findings { padding: 60px 24px; }
-  .hp-chart { padding: 60px 24px; }
-  .hp-pullquote { padding: 60px 24px; }
-  .hp-library-teaser { padding: 60px 24px; }
-  .hp-cta-section { padding: 60px 24px; }
-  .hp-footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
-  .hp-bar-label { width: 130px; font-size: 12px; }
-}
+#panel-home{background:#0a0f1a;font-family:'DM Sans',sans-serif;overflow-x:hidden;color:#e2e8f0;}
+#panel-home *{box-sizing:border-box;}
+#panel-home .hpf{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+#panel-home .hpf.vis{opacity:1!important;transform:none!important;}
+#panel-home .hpf:nth-child(2){transition-delay:.09s;}
+#panel-home .hpf:nth-child(3){transition-delay:.18s;}
+#panel-home .hpf:nth-child(4){transition-delay:.27s;}
+#panel-home .hpf:nth-child(5){transition-delay:.36s;}
+#panel-home .hpf:nth-child(6){transition-delay:.45s;}
+.hh{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:80px 60px 100px;background:#0a0f1a;overflow:hidden;}
+.hh-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(37,99,235,.14) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 15% 80%,rgba(220,38,38,.09) 0%,transparent 60%);}
+.hh-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;}
+.hh-ey{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.22em;color:#60a5fa;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:hpUp .7s .2s forwards;}
+.hh-t{font-family:'Playfair Display',Georgia,serif;font-size:clamp(44px,6.5vw,88px);font-weight:900;line-height:1.05;color:#fff;margin-bottom:20px;max-width:720px;opacity:0;animation:hpUp .9s .35s forwards;}
+.hh-t em{font-style:italic;color:#60a5fa;}
+.hh-sub{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:#94a3b8;max-width:520px;line-height:1.72;margin-bottom:40px;opacity:0;animation:hpUp .9s .5s forwards;}
+.hh-sub strong{color:#e2e8f0;font-weight:500;}
+.hh-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:hpUp .9s .65s forwards;}
+.hb{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.hb-bl{background:#2563eb;color:#fff;}
+.hb-bl:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4);}
+.hb-gh{background:transparent;color:#94a3b8;border:1px solid rgba(148,163,184,.3);}
+.hb-gh:hover{color:#e2e8f0;border-color:rgba(148,163,184,.6);}
+.hh-pills{display:flex;margin-top:52px;border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;background:rgba(17,24,39,.65);opacity:0;animation:hpUp .9s .82s forwards;max-width:700px;}
+.hh-pill{display:flex;align-items:center;gap:11px;padding:15px 20px;border-right:1px solid rgba(255,255,255,.06);flex:1;}
+.hh-pill:last-child{border-right:none;}
+.hh-pill-icon{font-size:19px;flex-shrink:0;}
+.hh-pill-txt{font-size:13px;color:#64748b;line-height:1.35;}
+.hh-pill-txt strong{display:block;color:#94a3b8;font-weight:600;margin-bottom:2px;}
+.hh-sc{position:absolute;bottom:26px;left:60px;display:flex;align-items:center;gap:9px;color:#374151;font-size:12px;animation:hpPulse 2.2s 2s infinite;}
+.hh-scl{width:34px;height:1px;background:#374151;transform-origin:left;transform:scaleX(0);animation:hpGL 1.6s 1s forwards;}
+.hstmt{background:#111827;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:52px 60px;}
+.hstmt-in{max-width:860px;margin:0 auto;font-family:'Playfair Display',Georgia,serif;font-size:clamp(17px,2.2vw,26px);font-weight:700;color:#e2e8f0;line-height:1.58;}
+.hstmt-in em{color:#f87171;font-style:italic;}
+.hstmt-in strong{color:#60a5fa;font-style:normal;}
+.hlbl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#475569;margin-bottom:20px;display:block;}
+.hint{font-size:14px;color:#64748b;max-width:660px;line-height:1.8;}
+.hstats{background:#0d1321;padding:80px 60px;}
+.hvc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;max-width:1060px;}
+.hvc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s;}
+.hvc:hover{border-color:rgba(255,255,255,.15);}
+.hring-w{position:relative;width:92px;height:92px;margin:0 auto;}
+.hring{width:92px;height:92px;}
+.hring-arc{stroke-dasharray:251;stroke-dashoffset:251;transition:stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1);}
+.hring-l{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hring-n{font-family:'Playfair Display',Georgia,serif;font-size:25px;font-weight:900;line-height:1;color:#3b82f6;}
+.hring-s{font-size:10px;color:#475569;font-family:'DM Mono',monospace;}
+.hvc-desc{font-size:13px;color:#64748b;line-height:1.65;text-align:center;}
+.hvc-desc strong{color:#94a3b8;}
+.hc-ttl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#374151;margin-bottom:12px;}
+.hcr{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.hcl{font-size:12px;color:#475569;width:58px;flex-shrink:0;}
+.hct{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
+.hcb{height:100%;border-radius:5px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
+.hcv{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;width:36px;text-align:right;}
+.hcv.g{color:#34d399;}.hcv.r{color:#f87171;}
+.hn{font-size:12px;color:#475569;line-height:1.55;margin-top:4px;}
+.hn strong{color:#94a3b8;}
+.hgd{display:flex;align-items:center;gap:10px;margin-top:10px;padding:9px 12px;background:rgba(251,191,36,.08);border-radius:8px;border:1px solid rgba(251,191,36,.18);}
+.hga{font-size:19px;color:#fbbf24;}
+.hgn{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:700;color:#fbbf24;}
+.hmr{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:16px;max-width:1060px;}
+.hm{background:#111827;padding:26px 24px;transition:background .2s;}
+.hm:hover{background:#1a2332;}
+.hm-n{font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4vw,56px);font-weight:900;line-height:1;margin-bottom:7px;}
+.hm-n.pu{color:#a78bfa;}.hm-n.te{color:#2dd4bf;}.hm-n.bl{color:#3b82f6;}
+.hm-l{font-size:13px;font-weight:500;color:#94a3b8;line-height:1.4;max-width:200px;}
+.hm-s{font-size:11px;color:#374151;margin-top:5px;}
+.hcar-sec{background:#0a0f1a;padding:80px 60px;}
+.hcar-w{position:relative;max-width:860px;margin-top:38px;}
+.hcar{position:relative;min-height:240px;overflow:hidden;}
+.hsl{position:absolute;inset:0;background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:14px;opacity:0;transform:translateX(40px);transition:opacity .48s ease,transform .48s ease;pointer-events:none;}
+.hsl.on{opacity:1;transform:translateX(0);pointer-events:auto;position:relative;}
+.hsl.out{opacity:0;transform:translateX(-40px);}
+.hsl-in{display:flex;min-height:240px;}
+.hsl-vis{width:175px;flex-shrink:0;background:rgba(255,255,255,.025);border-right:1px solid rgba(255,255,255,.06);border-radius:14px 0 0 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 12px;gap:6px;}
+.hsl-big{font-family:'Playfair Display',Georgia,serif;font-size:38px;font-weight:900;line-height:1;text-align:center;}
+.hsl-big.r{color:#f87171;}.hsl-big.a{color:#fbbf24;}.hsl-big.t{color:#2dd4bf;}
+.hsl-bsub{font-size:11px;color:#475569;text-align:center;line-height:1.4;}
+.hsl-body{flex:1;padding:26px 28px;display:flex;flex-direction:column;justify-content:center;}
+.hsl-ct{font-family:'DM Mono',monospace;font-size:11px;color:#374151;letter-spacing:.1em;margin-bottom:9px;}
+.hsl h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:#f1f5f9;line-height:1.35;margin-bottom:9px;}
+.hsl p{font-size:13px;color:#64748b;line-height:1.72;}
+.hsl p strong{color:#94a3b8;}
+.htag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:9px;}
+.tr{background:rgba(248,113,113,.15);color:#f87171;}.tb{background:rgba(59,130,246,.15);color:#60a5fa;}.ta{background:rgba(251,191,36,.15);color:#fbbf24;}.tt{background:rgba(45,212,191,.15);color:#2dd4bf;}.tpp{background:rgba(167,139,250,.15);color:#a78bfa;}
+.hdots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
+.hdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;transition:background .22s,transform .22s;padding:0;}
+.hdot.on{background:#3b82f6;transform:scale(1.35);}
+.hdot:hover{background:rgba(255,255,255,.4);}
+.harr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#94a3b8;font-size:18px;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;z-index:10;}
+.harr:hover{background:rgba(255,255,255,.15);color:#fff;}
+.harr-l{left:-54px;}.harr-r{right:-54px;}
+.hbars{background:#0d1321;padding:80px 60px;}
+.hbcols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:38px;max-width:1060px;}
+.hbttl{font-size:11px;color:#475569;font-family:'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;}
+.hbr{display:flex;align-items:center;gap:12px;margin-bottom:13px;}
+.hbl{font-size:13px;color:#475569;width:130px;flex-shrink:0;text-align:right;}
+.hbt{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
+.hbf{height:100%;border-radius:5px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
+.hbv{font-family:'DM Mono',monospace;font-size:12px;color:#64748b;width:32px;}
+.hpq{background:#111827;border-top:1px solid rgba(255,255,255,.06);padding:80px 60px;}
+.hpq-in{max-width:860px;margin:0 auto;}
+.hpq blockquote{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,2.6vw,32px);font-weight:700;font-style:italic;color:#e2e8f0;line-height:1.5;border-left:4px solid #2563eb;padding-left:28px;margin-bottom:20px;}
+.hpq cite{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;color:#374151;font-style:normal;padding-left:32px;}
+.hlib{background:#0a0f1a;padding:80px 60px;border-top:1px solid rgba(255,255,255,.06);}
+.hsg{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:14px;margin-top:34px;margin-bottom:34px;}
+.hsc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:17px;cursor:pointer;transition:all .2s;}
+.hsc:hover{border-color:#2563eb;background:#1e293b;transform:translateY(-3px);}
+.hsc-t{font-size:14px;font-weight:600;color:#e2e8f0;line-height:1.4;margin-bottom:6px;}
+.hsc-m{font-size:12px;color:#374151;margin-bottom:8px;}
+.hchip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;margin-right:3px;margin-top:2px;}
+.cr{background:rgba(52,211,153,.15);color:#34d399;}.cd{background:rgba(248,113,113,.15);color:#f87171;}.ci{background:rgba(251,191,36,.15);color:#fbbf24;}.cte{background:rgba(45,212,191,.15);color:#2dd4bf;}.cpu{background:rgba(167,139,250,.15);color:#a78bfa;}.crd{background:rgba(248,113,113,.15);color:#f87171;}
+.hcta{background:#111827;padding:90px 60px;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.hcta h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px;}
+.hcta h2 em{color:#60a5fa;font-style:italic;}
+.hcta p{font-size:16px;color:#64748b;max-width:560px;margin:0 auto 34px;line-height:1.78;}
+.hfoot{background:#060a12;padding:30px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.04);}
+.hfoot-b{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;color:#e2e8f0;}
+.hfoot-m{font-size:12px;color:#374151;}
+@keyframes hpUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes hpPulse{0%,100%{opacity:.4;}50%{opacity:1;}}
+@keyframes hpGL{to{transform:scaleX(1);}}
+@media(max-width:960px){.hvc-row,.hmr{grid-template-columns:1fr;}.hbcols{grid-template-columns:1fr;gap:28px;}.harr-l{left:-42px;}.harr-r{right:-42px;}.hh-pills{flex-direction:column;}.hh-pill{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);}.hh-pill:last-child{border-bottom:none;}}
+@media(max-width:720px){.hh,.hstmt,.hstats,.hcar-sec,.hbars,.hpq,.hlib,.hcta,.hfoot{padding:44px 20px;}.harr-l,.harr-r{display:none;}.hsl-vis{display:none;}.hbl{width:90px;font-size:12px;}}
 
 </style>
 </head>
@@ -536,358 +330,125 @@ textarea{resize:vertical;min-height:80px;}
 
 <!-- ══ AUDIT TAB ══ -->
 <div class="tp active" id="panel-home">
-<!-- ══════════════════════════════════════════════
-     RE:SOURCE HOMEPAGE
-     Questioning Neutrality — Marie Connor
-     ══════════════════════════════════════════════ -->
-
-<!-- HERO -->
-<section class="hp-hero">
-  <div class="hp-hero-bg"></div>
-  <div class="hp-hero-grid"></div>
-  <p class="hp-eyebrow">Re:Source &nbsp;·&nbsp; Questioning Neutrality &nbsp;·&nbsp; 781 Primary Sources</p>
-  <h1 class="hp-title">The test<br>doesn't see<br><em>your students.</em></h1>
-  <p class="hp-subtitle">
-    The New York State Regents promises <strong>the same rigor, the same fairness,</strong> every cycle.
-    This project asks what that promise actually delivers — and builds the tool to interrupt it.
-  </p>
-  <div class="hp-cta-row">
-    <button class="hp-cta hp-cta-primary" onclick="showTab('library')">Explore the source library ↗</button>
-    <button class="hp-cta hp-cta-ghost" onclick="showTab('audit')">Run an audit →</button>
+<section class="hh">
+  <div class="hh-bg"></div><div class="hh-grid"></div>
+  <p class="hh-ey">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality &nbsp;&middot;&nbsp; 781 Sources</p>
+  <h1 class="hh-t">What you teach<br>shapes what<br>they <em>can show.</em></h1>
+  <p class="hh-sub">Re:Source helps you audit the sources, framings, and assumptions behind your assessments &mdash; so you can design curriculum that <strong>actually reaches every student.</strong></p>
+  <div class="hh-btns">
+    <button class="hb hb-bl" data-hp-nav="library">Find sources for your unit &#8599;</button>
+    <button class="hb hb-gh" data-hp-nav="audit">Audit your assessment &rarr;</button>
   </div>
-  <div class="hp-scroll-hint">
-    <div class="hp-scroll-line"></div>
-    scroll to explore the findings
+  <div class="hh-pills">
+    <div class="hh-pill"><div class="hh-pill-icon">&#128196;</div><div class="hh-pill-txt"><strong>Build a source set</strong>781 coded primary sources across every era &amp; perspective</div></div>
+    <div class="hh-pill"><div class="hh-pill-icon">&#128269;</div><div class="hh-pill-txt"><strong>Audit your next unit</strong>8-minute equity report across 8 dimensions</div></div>
+    <div class="hh-pill"><div class="hh-pill-icon">&#9998;</div><div class="hh-pill-txt"><strong>Design an assessment</strong>Build DBQs &amp; quizzes with equity built in</div></div>
+  </div>
+  <div class="hh-sc"><div class="hh-scl"></div>scroll</div>
+</section>
+<section class="hstmt">
+  <div class="hstmt-in hpf">&ldquo;Standardization promises consistency. It delivers comparability. Those are <em>not the same achievement.</em> Comparability means outcomes can be placed on the same scale. Consistency means the instrument makes <strong>the same cognitive and cultural demands</strong> on everyone who takes it. The Regents achieves the former.&rdquo;</div>
+</section>
+<section class="hstats">
+  <span class="hlbl">&mdash; what the data shows</span>
+  <div class="hvc-row">
+    <div class="hvc hpf">
+      <div class="hring-w">
+        <svg class="hring" viewBox="0 0 92 92"><circle cx="46" cy="46" r="40" fill="none" stroke="rgba(59,130,246,.15)" stroke-width="7"/><circle cx="46" cy="46" r="40" fill="none" stroke="#3b82f6" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251" stroke-linecap="round" transform="rotate(-90 46 46)" class="hring-arc"/></svg>
+        <div class="hring-l"><span class="hring-n" data-count="781" data-sfx="">0</span><span class="hring-s">sources</span></div>
+      </div>
+      <div class="hvc-desc">Primary sources coded across <strong>10 equity dimensions</strong> and 32 analytical fields &mdash; every era, every perspective.</div>
+    </div>
+    <div class="hvc hpf">
+      <div class="hc-ttl">Students scoring below 55</div>
+      <div class="hcr"><div class="hcl">June 2025</div><div class="hct"><div class="hcb" style="background:#34d399" data-pct="6.8"></div></div><div class="hcv g">6.8%</div></div>
+      <div class="hcr"><div class="hcl">Aug 2025</div><div class="hct"><div class="hcb" style="background:#f87171" data-pct="63"></div></div><div class="hcv r">63%</div></div>
+      <div class="hn">Same exam. Same graduation stakes.<br><strong>Very different cognitive demands.</strong></div>
+    </div>
+    <div class="hvc hpf">
+      <div class="hc-ttl">Skill gap &mdash; USH average</div>
+      <div class="hcr"><div class="hcl">Extraction</div><div class="hct"><div class="hcb" style="background:#60a5fa" data-pct="74"></div></div><div class="hcv" style="color:#60a5fa">74%</div></div>
+      <div class="hcr"><div class="hcl">Context</div><div class="hct"><div class="hcb" style="background:#f87171" data-pct="49"></div></div><div class="hcv r">49%</div></div>
+      <div class="hgd"><span class="hga">&#8597;</span><span class="hgn" data-count="24.9" data-sfx=" pt gap">0 pt gap</span></div>
+      <div class="hn" style="margin-top:8px">Consistent across <strong>all 5 USH cycles</strong></div>
+    </div>
+  </div>
+  <div class="hmr">
+    <div class="hm hpf"><div class="hm-n pu" data-count="61" data-sfx="%">0%</div><div class="hm-l">of Re:Source sources are resistant or community-centered voices</div><div class="hm-s">By design &mdash; not by accident</div></div>
+    <div class="hm hpf"><div class="hm-n te" data-count="702" data-sfx="">0</div><div class="hm-l">student records across 12 Regents sittings</div><div class="hm-s">Bronx &amp; Harlem, 2022&ndash;2026</div></div>
+    <div class="hm hpf"><div class="hm-n bl" data-count="4.04" data-sfx="/5">0/5</div><div class="hm-l">mean neutrality challenge across all 781 sources</div><div class="hm-s">No source is neutral. Now that&rsquo;s measurable.</div></div>
   </div>
 </section>
-
-<!-- STATEMENT BAR -->
-<section class="hp-statement">
-  <div class="hp-statement-inner">
-    "Standardization promises consistency. It delivers comparability.
-    Those are <em>not the same achievement.</em> Comparability means outcomes can be placed on the same scale.
-    Consistency means the instrument makes <strong>the same cognitive and cultural demands</strong> on everyone who takes it.
-    The Regents achieves the former."
-  </div>
-</section>
-
-<!-- LIVE STATS -->
-<section class="hp-stats">
-  <p class="hp-section-label">— what the data shows</p>
-  <div class="hp-stats-grid">
-    <div class="hp-stat">
-      <div class="hp-stat-num blue" data-count="781" data-suffix="">0</div>
-      <div class="hp-stat-label">primary sources coded across 10 equity dimensions</div>
-      <div class="hp-stat-sub">781 sources · 32 fields each</div>
+<section class="hcar-sec">
+  <span class="hlbl">&mdash; six key findings</span>
+  <p class="hint">Across 12 exam sittings, 702 student records, and 781 coded primary sources, the data surfaces the same argument from every angle.</p>
+  <div class="hcar-w">
+    <button class="harr harr-l" id="hprev">&#8592;</button>
+    <button class="harr harr-r" id="hnext">&#8594;</button>
+    <div class="hcar" id="hcar">
+      <div class="hsl on"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big r">45.4</div><div class="hsl-bsub">Aug schema<br>burden</div><div style="font-size:10px;color:#374151;margin-top:5px">vs 37.6 June</div></div><div class="hsl-body"><span class="htag tr">August Problem</span><div class="hsl-ct">01 / 06</div><h3>Students returning in August receive a measurably harder exam</h3><p>Students scoring below 55 average <strong>35.1% in August</strong> against 10.7% in June &mdash; completing a graduation requirement on an instrument with greater contextual demand.</p></div></div></div>
+      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big a">24.9</div><div class="hsl-bsub">point gap</div><div style="font-size:10px;color:#374151;margin-top:5px">extraction vs.<br>context</div></div><div class="hsl-body"><span class="htag ta">Skill Gap</span><div class="hsl-ct">02 / 06</div><h3>The exam rewards source extraction far more than historical context</h3><p>Across 5 USH sittings this gap averages <strong>24.9 points</strong> &mdash; consistent every cycle. Reading a document is not the same skill as understanding why it exists.</p></div></div></div>
+      <div class="hsl"><div class="hsl-in"><div class="hsl-vis" style="gap:10px;padding:16px 10px"><div style="width:100%"><div style="font-size:9px;color:#60a5fa;font-family:'DM Mono',monospace;margin-bottom:4px">USH</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#f87171;width:72%;border-radius:4px"></div></div><div style="font-size:9px;color:#f87171;margin-top:2px">dominant-centered</div></div><div style="width:100%"><div style="font-size:9px;color:#2dd4bf;font-family:'DM Mono',monospace;margin-bottom:4px">Global II</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#34d399;width:48%;border-radius:4px"></div></div><div style="font-size:9px;color:#34d399;margin-top:2px">distributed</div></div></div><div class="hsl-body"><span class="htag tb">Centering</span><div class="hsl-ct">03 / 06</div><h3>US History centers dominant racial and national frames more than Global II</h3><p>Global II distributes attention across class, labor, coloniality, gender, religion, and race. The two exams in the sequence are not measuring the same historical thinking.</p></div></div></div>
+      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big t">&plusmn;8.3</div><div class="hsl-bsub">pts std dev</div><div style="font-size:10px;color:#374151;margin-top:5px">93 students</div></div><div class="hsl-body"><span class="htag tt">Transition</span><div class="hsl-ct">04 / 06</div><h3>The GHG to USH transition has an 8.3-point SD &mdash; the exams measure different things</h3><p>Mean scores rose +1.8 pts but with 8.3-pt SD. Seven students dropped 10+ points. Nine who failed Global II passed US History. The same preparation does not reliably transfer.</p></div></div></div>
+      <div class="hsl"><div class="hsl-in"><div class="hsl-vis" style="gap:10px"><div style="text-align:center"><div style="font-size:26px;font-family:'Playfair Display',serif;font-weight:900;color:#f87171">2.6</div><div style="font-size:9px;color:#475569">Dominant voices</div></div><div style="font-size:10px;color:#374151;font-style:italic">neutrality score</div><div style="text-align:center"><div style="font-size:26px;font-family:'Playfair Display',serif;font-weight:900;color:#34d399">4.3</div><div style="font-size:9px;color:#475569">Resistant voices</div></div></div><div class="hsl-body"><span class="htag tpp">Hidden Pattern</span><div class="hsl-ct">05 / 06</div><h3>Resistant voices score as less neutral &mdash; dominant voices as more objective</h3><p>Sources that name power score <strong>4.34 on neutrality challenge</strong>. Sources that exercise it score 2.6. The framing of neutrality is itself a political act.</p></div></div></div>
+      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div style="font-size:38px">&#127919;</div><div style="font-size:11px;color:#64748b;line-height:1.55;text-align:center;max-width:130px">Formation in the dominant frame <span style="color:#f87171;font-weight:600">produces wrong answers</span></div></div><div class="hsl-body"><span class="htag tr">Root Cause</span><div class="hsl-ct">06 / 06</div><h3>Thorough formation in the dominant gaze leads reliably to wrong answers</h3><p>What the curriculum trained students to do &mdash; <strong>read through the dominant frame</strong> &mdash; produces wrong answers on the most demanding items. This is not a design flaw. It is structural.</p></div></div></div>
     </div>
-    <div class="hp-stat">
-      <div class="hp-stat-num red" data-count="702" data-suffix="">0</div>
-      <div class="hp-stat-label">student records across 12 Regents sittings</div>
-      <div class="hp-stat-sub">Bronx &amp; Harlem, 2022–2026</div>
-    </div>
-    <div class="hp-stat">
-      <div class="hp-stat-num amber" data-count="63" data-suffix="%">0%</div>
-      <div class="hp-stat-label">of students scored below 55 on GHG August 2025</div>
-      <div class="hp-stat-sub">vs. 6.8% in June 2025 — same exam, same stakes</div>
-    </div>
-    <div class="hp-stat">
-      <div class="hp-stat-num teal" data-count="24.9" data-suffix=" pts">0 pts</div>
-      <div class="hp-stat-label">average gap: source extraction vs. historical context</div>
-      <div class="hp-stat-sub">USH sittings · consistent across all 5 cycles</div>
-    </div>
-    <div class="hp-stat">
-      <div class="hp-stat-num purple" data-count="61" data-suffix="%">0%</div>
-      <div class="hp-stat-label">of Re:Source library are resistant or community-centered voices</div>
-      <div class="hp-stat-sub">By design — not by accident</div>
-    </div>
-    <div class="hp-stat">
-      <div class="hp-stat-num blue" data-count="4.04" data-suffix="/5">0/5</div>
-      <div class="hp-stat-label">mean neutrality challenge score across the library</div>
-      <div class="hp-stat-sub">No source is neutral. Now that's measurable.</div>
+    <div class="hdots" id="hdots">
+      <button class="hdot on" data-i="0"></button><button class="hdot" data-i="1"></button><button class="hdot" data-i="2"></button><button class="hdot" data-i="3"></button><button class="hdot" data-i="4"></button><button class="hdot" data-i="5"></button>
     </div>
   </div>
 </section>
-
-<!-- KEY FINDINGS -->
-<section class="hp-findings">
-  <p class="hp-section-label">— five findings from the research</p>
-  <div class="hp-findings-grid">
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">01</div>
-      <span class="hp-finding-tag tag-red">August Problem</span>
-      <h3>Students returning in August receive a harder exam than they sat in June</h3>
-      <p>Schema burden averages <strong>45.4 in August</strong> vs. 37.6 in June sittings.
-      Students below 55 average <strong>35.1% in August</strong> vs. 10.7% in June.
-      These are students completing a graduation requirement — and the instrument meets them with greater demand.</p>
+<section class="hbars">
+  <span class="hlbl">&mdash; what 781 sources actually look like</span>
+  <p class="hint">Every source is coded for whose perspective it centers, who is speaking, and what systems of power it addresses.</p>
+  <div class="hbcols">
+    <div class="hbar-blk hpf"><div class="hbttl">Perspective distribution</div>
+      <div class="hbr"><div class="hbl">Resistant voices</div><div class="hbt"><div class="hbf" style="background:#34d399" data-pct="63.8"></div></div><div class="hbv">498</div></div>
+      <div class="hbr"><div class="hbl">Dominant voices</div><div class="hbt"><div class="hbf" style="background:#f87171" data-pct="22.8"></div></div><div class="hbv">178</div></div>
+      <div class="hbr"><div class="hbl">Institutional</div><div class="hbt"><div class="hbf" style="background:#fbbf24" data-pct="14.6"></div></div><div class="hbv">114</div></div>
+      <div class="hbr"><div class="hbl">Ambiguous</div><div class="hbt"><div class="hbf" style="background:#94a3b8" data-pct="3.3"></div></div><div class="hbv">26</div></div>
     </div>
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">02</div>
-      <span class="hp-finding-tag tag-amber">Skill Gap</span>
-      <h3>The exam rewards source extraction far more reliably than historical context and causation</h3>
-      <p>Across 5 USH sittings, the gap between binary CR item success and extended CRQ performance
-      averages <strong>24.9 percentage points.</strong>
-      Reading what a document says is not the same skill as knowing why it was written — and the exam scores them differently.</p>
+    <div class="hbar-blk hpf"><div class="hbttl">Top systems addressed</div>
+      <div class="hbr"><div class="hbl">White supremacy</div><div class="hbt"><div class="hbf" style="background:#f87171" data-pct="51.2"></div></div><div class="hbv">400</div></div>
+      <div class="hbr"><div class="hbl">Capitalism</div><div class="hbt"><div class="hbf" style="background:#fb923c" data-pct="50.7"></div></div><div class="hbv">396</div></div>
+      <div class="hbr"><div class="hbl">Nationalism</div><div class="hbt"><div class="hbf" style="background:#fbbf24" data-pct="46.0"></div></div><div class="hbv">359</div></div>
+      <div class="hbr"><div class="hbl">Anti-Blackness</div><div class="hbt"><div class="hbf" style="background:#a78bfa" data-pct="39.9"></div></div><div class="hbv">312</div></div>
+      <div class="hbr"><div class="hbl">Imperialism</div><div class="hbt"><div class="hbf" style="background:#60a5fa" data-pct="32.4"></div></div><div class="hbv">253</div></div>
+      <div class="hbr"><div class="hbl">Democracy</div><div class="hbt"><div class="hbf" style="background:#2dd4bf" data-pct="31.5"></div></div><div class="hbv">246</div></div>
     </div>
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">03</div>
-      <span class="hp-finding-tag tag-blue">Centering</span>
-      <h3>US History centers dominant racial and national frames more often than Global II</h3>
-      <p>USH items more often center <strong>white, national, elite, and state-sanctioned</strong> institutional perspectives.
-      Global II distributes attention more broadly across class, labor, coloniality, gender, religion, and race.
-      The two exams students take are not measuring the same version of "historical thinking."</p>
-    </div>
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">04</div>
-      <span class="hp-finding-tag tag-teal">Transition</span>
-      <h3>The GHG→USH transition has an 8.3-point standard deviation — the exams measure different things</h3>
-      <p>Among 93 students in the primary cohort transition, mean scores rose <strong>+1.8 points</strong> — but with
-      8.3-point SD. Seven students dropped more than 10 points. <strong>The same preparation</strong>
-      that succeeds in Global II does not reliably transfer to US History's demands.</p>
-    </div>
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">05</div>
-      <span class="hp-finding-tag tag-purple">Hidden Pattern</span>
-      <h3>Resistant voices score higher on neutrality challenge — and are perceived as less neutral</h3>
-      <p>In the Re:Source library, <strong>dominant and institutional sources score 2.43–2.75</strong>
-      on the neutrality challenge scale. Resistant and community voices score <strong>4.34.</strong>
-      The sources that name power are read as biased. The sources that exercise it are read as neutral.</p>
-    </div>
-
-    <div class="hp-finding">
-      <div class="hp-finding-num">06</div>
-      <span class="hp-finding-tag tag-red">Root Cause</span>
-      <h3>The exam doesn't just disadvantage students by being hard — it rewards the wrong answer</h3>
-      <p>Distractor analysis suggests that thorough formation in the <strong>dominant cultural gaze</strong> —
-      what the curriculum trains students to do — leads reliably to wrong answers on the most demanding items.
-      This is not a design flaw. It is a structural feature.</p>
-    </div>
-
   </div>
 </section>
-
-<!-- PERSPECTIVE BAR CHART -->
-<section class="hp-chart">
-  <p class="hp-section-label">— what 781 sources actually look like</p>
-  <p style="color:#64748b;font-size:15px;max-width:600px;margin-bottom:0;line-height:1.7;">
-    The Re:Source library was built deliberately to address what the Regents omits.
-    Every source is coded for whose perspective it centers, who is speaking, and what systems of power it addresses.
-    Here's what an equitable source library looks like by design.
-  </p>
-  <div class="hp-bar-chart" id="hp-bar-chart">
-
-    <div style="margin: 40px 0 24px; font-size:12px; color:#374151; font-family:'DM Mono',monospace; letter-spacing:0.1em; text-transform:uppercase;">PERSPECTIVE DISTRIBUTION</div>
-
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Resistant voices</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#34d399;" data-pct="63.8"></div></div>
-      <div class="hp-bar-val">498</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Dominant voices</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#f87171;" data-pct="22.8"></div></div>
-      <div class="hp-bar-val">178</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Institutional voices</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#fbbf24;" data-pct="14.6"></div></div>
-      <div class="hp-bar-val">114</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Ambiguous / exposes</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#94a3b8;" data-pct="3.3"></div></div>
-      <div class="hp-bar-val">26</div>
-    </div>
-
-    <div style="margin: 40px 0 24px; font-size:12px; color:#374151; font-family:'DM Mono',monospace; letter-spacing:0.1em; text-transform:uppercase;">TOP SYSTEMS ADDRESSED</div>
-
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">White supremacy</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#f87171;" data-pct="51.2"></div></div>
-      <div class="hp-bar-val">400</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Capitalism</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#fb923c;" data-pct="50.7"></div></div>
-      <div class="hp-bar-val">396</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Nationalism</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#fbbf24;" data-pct="46.0"></div></div>
-      <div class="hp-bar-val">359</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Anti-Blackness</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#a78bfa;" data-pct="39.9"></div></div>
-      <div class="hp-bar-val">312</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Imperialism</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#60a5fa;" data-pct="32.4"></div></div>
-      <div class="hp-bar-val">253</div>
-    </div>
-    <div class="hp-bar-row">
-      <div class="hp-bar-label">Democracy</div>
-      <div class="hp-bar-track"><div class="hp-bar-fill" style="background:#2dd4bf;" data-pct="31.5"></div></div>
-      <div class="hp-bar-val">246</div>
-    </div>
-
+<section class="hpq"><div class="hpq-in">
+  <blockquote>&ldquo;In the Bronx and Harlem classrooms where this project began, the implied reader and the actual reader are rarely the same person.&rdquo;</blockquote>
+  <cite>&mdash; Questioning Neutrality: Re:Source &nbsp;&middot;&nbsp; 2026</cite>
+</div></section>
+<section class="hlib">
+  <span class="hlbl">&mdash; six sources from the library</span>
+  <p class="hint">Every source is analyzed across 32 fields &mdash; not just what it says, but <strong style="color:#e2e8f0">who speaks, to whom, from where, about what power.</strong></p>
+  <div class="hsg">
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Darnella Frazier &mdash; Statement on Filming George Floyd&rsquo;s Murder</div><div class="hsc-m">2021 &middot; Oral History &middot; Contemporary</div><span class="hchip cr">resistant</span><span class="hchip cte">gaze: outward</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Dred Scott v. Sandford &mdash; Chief Justice Taney Opinion</div><div class="hsc-m">1857 &middot; Legal Document &middot; 1800&ndash;1865</div><span class="hchip cd">dominant</span><span class="hchip crd">gaze: down</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Fannie Lou Hamer &mdash; &ldquo;Is This America?&rdquo; DNC Speech</div><div class="hsc-m">1964 &middot; Testimony &middot; Cold War &amp; Civil Rights</div><span class="hchip cr">resistant</span><span class="hchip cpu">voice: direct</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Social Security Act &mdash; Racial Exclusion of Domestic Workers</div><div class="hsc-m">1935 &middot; Legal Document &middot; World War I &amp; Interwar</div><span class="hchip ci">institutional</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Ho Chi Minh &mdash; Declaration of Independence of Vietnam</div><div class="hsc-m">1945 &middot; Political Document &middot; World War II</div><span class="hchip cr">resistant</span><span class="hchip cte">gaze: outward</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Calvin Coolidge &mdash; &ldquo;The Business of America Is Business&rdquo;</div><div class="hsc-m">1925 &middot; Speech &middot; World War I &amp; Interwar</div><span class="hchip cd">dominant</span><span class="hchip crd">maintains</span></div>
   </div>
+  <div style="text-align:center"><button class="hb hb-bl" data-hp-nav="library">Browse all 781 sources &#8599;</button></div>
 </section>
-
-<!-- PULL QUOTE -->
-<section class="hp-pullquote">
-  <div class="hp-pullquote-inner">
-    <blockquote>
-      "In the Bronx and Harlem classrooms where this project began,
-      the implied reader and the actual reader are rarely the same person."
-    </blockquote>
-    <cite>— Questioning Neutrality: Re:Source, A Project in History Assessment Equity · 2026</cite>
-  </div>
-</section>
-
-<!-- SOURCE LIBRARY TEASER -->
-<section class="hp-library-teaser">
-  <p class="hp-section-label">— from the source library</p>
-  <p style="color:#64748b;font-size:15px;max-width:700px;line-height:1.7;margin-bottom:0;">
-    Every source in Re:Source is analyzed across 32 fields — not just what it says,
-    but <strong style="color:#94a3b8;">who speaks, to whom, from where, about what power.</strong>
-    Here are six of the 781:
-  </p>
-  <div class="hp-source-sample">
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Darnella Frazier — Statement on Filming George Floyd's Murder (2021)</div>
-      <div class="hp-src-meta">2021 · Oral History · Contemporary</div>
-      <span class="hp-src-chip chip-resistant">resistant</span>
-      <span class="hp-src-chip" style="background:rgba(45,212,191,0.15);color:#2dd4bf;">gaze: outward</span>
-    </div>
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Dred Scott v. Sandford — Chief Justice Taney Majority Opinion (1857)</div>
-      <div class="hp-src-meta">1857 · Legal Document · 1800–1865</div>
-      <span class="hp-src-chip chip-dominant">dominant</span>
-      <span class="hp-src-chip" style="background:rgba(248,113,113,0.15);color:#f87171;">gaze: down</span>
-    </div>
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Fannie Lou Hamer — "Is This America?" DNC Speech (1964)</div>
-      <div class="hp-src-meta">1964 · Testimony · Cold War &amp; Civil Rights</div>
-      <span class="hp-src-chip chip-resistant">resistant</span>
-      <span class="hp-src-chip" style="background:rgba(167,139,250,0.15);color:#a78bfa;">voice: direct</span>
-    </div>
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Social Security Act — Racial Exclusion of Domestic Workers (1935)</div>
-      <div class="hp-src-meta">1935 · Legal Document · World War I &amp; Interwar</div>
-      <span class="hp-src-chip chip-institutional">institutional</span>
-      <span class="hp-src-chip" style="background:rgba(251,191,36,0.15);color:#fbbf24;">constructs</span>
-    </div>
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Ho Chi Minh — Declaration of Independence of Vietnam (1945)</div>
-      <div class="hp-src-meta">1945 · Political Document · World War II</div>
-      <span class="hp-src-chip chip-resistant">resistant</span>
-      <span class="hp-src-chip" style="background:rgba(45,212,191,0.15);color:#2dd4bf;">gaze: outward</span>
-    </div>
-    <div class="hp-src" onclick="showTab('library')">
-      <div class="hp-src-title">Calvin Coolidge — "The Business of America Is Business" (1925)</div>
-      <div class="hp-src-meta">1925 · Speech · World War I &amp; Interwar</div>
-      <span class="hp-src-chip chip-dominant">dominant</span>
-      <span class="hp-src-chip" style="background:rgba(248,113,113,0.15);color:#f87171;">maintains</span>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:16px;">
-    <button class="hp-cta hp-cta-primary" onclick="showTab('library')" style="margin:0 auto;">
-      Browse all 781 sources ↗
-    </button>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="hp-cta-section">
+<section class="hcta">
   <h2>Whose voices<br><em>anchor your unit?</em></h2>
-  <p>Re:Source takes 8–12 minutes. It returns an exportable report across eight equity dimensions —
-     access burden, centering, voice authenticity, schema demand, and more.
-     Start with your next unit. Start today.</p>
-  <div class="hp-cta-row" style="justify-content:center;">
-    <button class="hp-cta hp-cta-primary" onclick="showTab('audit')">Run your first audit →</button>
-    <button class="hp-cta hp-cta-ghost" onclick="showTab('library')">Explore sources first</button>
+  <p>Re:Source takes 8&ndash;12 minutes and returns an exportable report across eight equity dimensions &mdash; access burden, centering, voice authenticity, schema demand, and more.</p>
+  <div class="hh-btns" style="justify-content:center;margin-top:0;">
+    <button class="hb hb-bl" data-hp-nav="audit">Run your first audit &rarr;</button>
+    <button class="hb hb-gh" data-hp-nav="library">Explore sources first</button>
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer class="hp-footer">
-  <div>
-    <div class="hp-footer-brand">Re:Source &nbsp;·&nbsp; Questioning Neutrality</div>
-    <div class="hp-footer-meta" style="margin-top:6px;">
-      A project in history assessment equity, value, and teacher-facing intervention
-    </div>
-  </div>
-  <div class="hp-footer-meta" style="text-align:right;">
-    <strong>781 sources</strong> &nbsp;·&nbsp; 702 student records &nbsp;·&nbsp; 12 Regents sittings<br>
-    Bronx &amp; Harlem classrooms, 2022–2026 &nbsp;·&nbsp; Marie Connor
-  </div>
+<footer class="hfoot">
+  <div><div class="hfoot-b">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality</div><div class="hfoot-m" style="margin-top:4px">A project in history assessment equity, value, and teacher-facing intervention</div></div>
+  <div class="hfoot-m" style="text-align:right"><strong style="color:#475569">781 sources</strong> &nbsp;&middot;&nbsp; 702 student records &nbsp;&middot;&nbsp; 12 Regents sittings<br>Bronx &amp; Harlem, 2022&ndash;2026 &nbsp;&middot;&nbsp; Marie Connor</div>
 </footer>
-
-<!-- HOMEPAGE JS: counter animation + bar charts -->
-<script>
-(function() {
-  // Animate counters when homepage is visible
-  function animateCounters() {
-    document.querySelectorAll('#panel-home .hp-stat-num[data-count]').forEach(el => {
-      const target = parseFloat(el.getAttribute('data-count'));
-      const suffix = el.getAttribute('data-suffix') || '';
-      const isFloat = target !== Math.floor(target);
-      let start = null;
-      const duration = 1800;
-      function step(ts) {
-        if (!start) start = ts;
-        const progress = Math.min((ts - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 4);
-        const current = isFloat ? (target * ease).toFixed(1) : Math.round(target * ease);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = (isFloat ? target.toFixed(1) : target) + suffix;
-      }
-      requestAnimationFrame(step);
-    });
-  }
-
-  // Animate bars
-  function animateBars() {
-    document.querySelectorAll('#panel-home .hp-bar-fill').forEach(bar => {
-      const pct = parseFloat(bar.getAttribute('data-pct'));
-      setTimeout(() => { bar.style.width = pct + '%'; }, 200);
-    });
-  }
-
-  // Watch for when home tab becomes active
-  let animated = false;
-  const observer = new MutationObserver(() => {
-    const panel = document.getElementById('panel-home');
-    if (panel && panel.classList.contains('active') && !animated) {
-      animated = true;
-      setTimeout(animateCounters, 300);
-      setTimeout(animateBars, 500);
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const panel = document.getElementById('panel-home');
-    if (panel) {
-      observer.observe(panel, { attributes: true, attributeFilter: ['class'] });
-      // Run immediately if home is already active on load
-      if (panel.classList.contains('active')) {
-        animated = true;
-        setTimeout(animateCounters, 600);
-        setTimeout(animateBars, 800);
-      }
-    }
-  });
-})();
-</script>
-
 </div>
+
 
 <div class="tp" id="panel-audit">
 <div class="page">
@@ -6254,6 +5815,117 @@ function switchTab(t) {
   if (t === 'myset') renderMySet();
   if (t === 'maker') updateLive();
 }
+
+// ══════════════════════════════════════════════════
+// HOMEPAGE — nav + animations
+// Injected directly after switchTab definition so
+// switchTab is guaranteed to exist. No DOMContentLoaded
+// needed for the nav binding.
+// ══════════════════════════════════════════════════
+(function() {
+
+  // 1. NAVIGATION via data-hp-nav — event delegation on panel
+  var panel = document.getElementById('panel-home');
+  if (panel) {
+    panel.addEventListener('click', function(ev) {
+      var el = ev.target;
+      while (el && el !== panel) {
+        if (el.getAttribute('data-hp-nav')) {
+          switchTab(el.getAttribute('data-hp-nav'));
+          return;
+        }
+        el = el.parentElement;
+      }
+    });
+  }
+
+  // 2. ANIMATIONS — run when panel becomes active
+  var inited = false;
+
+  function runAnimations() {
+    // counters
+    [].forEach.call(document.querySelectorAll('#panel-home [data-count]'), function(el) {
+      var tgt = parseFloat(el.getAttribute('data-count'));
+      var sfx = el.getAttribute('data-sfx') || '';
+      var fl  = tgt !== Math.floor(tgt);
+      var s0  = null;
+      (function tick(ts) {
+        if (!s0) s0 = ts;
+        var p = Math.min((ts - s0) / 1800, 1);
+        var e = 1 - Math.pow(1 - p, 4);
+        el.textContent = (fl ? (tgt*e).toFixed(1) : Math.round(tgt*e)) + sfx;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = (fl ? tgt.toFixed(1) : tgt) + sfx;
+      })(performance.now());
+    });
+    // bars
+    setTimeout(function() {
+      [].forEach.call(document.querySelectorAll('#panel-home .hcb, #panel-home .hbf'), function(b) {
+        var p = parseFloat(b.getAttribute('data-pct'));
+        if (!isNaN(p)) b.style.width = p + '%';
+      });
+    }, 400);
+    // ring
+    setTimeout(function() {
+      var arc = document.querySelector('#panel-home .hring-arc');
+      if (arc) { arc.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)'; arc.style.strokeDashoffset = '0'; }
+    }, 500);
+    // scroll fade
+    setTimeout(function() {
+      if (!('IntersectionObserver' in window)) {
+        [].forEach.call(document.querySelectorAll('#panel-home .hpf'), function(el) { el.classList.add('vis'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+      }, { threshold: 0.08 });
+      [].forEach.call(document.querySelectorAll('#panel-home .hpf'), function(el) { io.observe(el); });
+    }, 200);
+    // carousel
+    var cur = 0;
+    var slides = document.querySelectorAll('#hcar .hsl');
+    var dots   = document.querySelectorAll('#hdots .hdot');
+    var timer  = null;
+    function goTo(n) {
+      if (!slides.length) return;
+      slides[cur].classList.remove('on'); slides[cur].classList.add('out');
+      dots[cur].classList.remove('on');
+      var prev = cur;
+      cur = ((n % slides.length) + slides.length) % slides.length;
+      setTimeout(function() { slides[prev].classList.remove('out'); }, 460);
+      slides[cur].classList.add('on'); dots[cur].classList.add('on');
+      clearInterval(timer);
+      timer = setInterval(function() { goTo(cur + 1); }, 6000);
+    }
+    var bp = document.getElementById('hprev');
+    var bn = document.getElementById('hnext');
+    if (bp) bp.addEventListener('click', function() { goTo(cur - 1); });
+    if (bn) bn.addEventListener('click', function() { goTo(cur + 1); });
+    [].forEach.call(dots, function(d) {
+      d.addEventListener('click', function() { goTo(parseInt(d.getAttribute('data-i'), 10)); });
+    });
+    if (slides.length) timer = setInterval(function() { goTo(cur + 1); }, 6000);
+  }
+
+  function checkAndInit() {
+    var p = document.getElementById('panel-home');
+    if (p && p.classList.contains('active') && !inited) {
+      inited = true;
+      runAnimations();
+    }
+  }
+
+  // Watch for panel activation
+  var mo = new MutationObserver(checkAndInit);
+  var target = document.getElementById('panel-home');
+  if (target) mo.observe(target, { attributes: true, attributeFilter: ['class'] });
+
+  // Also run now in case panel is already active (page load)
+  // Use a short delay to ensure DOM is ready
+  setTimeout(checkAndInit, 50);
+
+})();
+
 
 function setCourse(v) { S.purpose.course = v; }
 
