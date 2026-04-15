@@ -182,82 +182,60 @@ textarea{resize:vertical;min-height:80px;}
 }
 
 
-/* ── HOMEPAGE v4 ── */
+/* ── HOMEPAGE v5 ── */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 #panel-home{background:#0a0f1a;font-family:'DM Sans',sans-serif;overflow-x:hidden;color:#e2e8f0;}
 #panel-home *{box-sizing:border-box;}
 #panel-home .hpf{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
 #panel-home .hpf.vis{opacity:1!important;transform:none!important;}
-#panel-home .hpf:nth-child(2){transition-delay:.09s;}
-#panel-home .hpf:nth-child(3){transition-delay:.18s;}
-#panel-home .hpf:nth-child(4){transition-delay:.27s;}
-#panel-home .hpf:nth-child(5){transition-delay:.36s;}
-#panel-home .hpf:nth-child(6){transition-delay:.45s;}
+#panel-home .hpf:nth-child(2){transition-delay:.09s;}#panel-home .hpf:nth-child(3){transition-delay:.18s;}#panel-home .hpf:nth-child(4){transition-delay:.27s;}#panel-home .hpf:nth-child(5){transition-delay:.36s;}#panel-home .hpf:nth-child(6){transition-delay:.45s;}
 .hh{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:80px 60px 100px;background:#0a0f1a;overflow:hidden;}
 .hh-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(37,99,235,.14) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 15% 80%,rgba(220,38,38,.09) 0%,transparent 60%);}
 .hh-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;}
 .hh-ey{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.22em;color:#60a5fa;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:hpUp .7s .2s forwards;}
 .hh-t{font-family:'Playfair Display',Georgia,serif;font-size:clamp(44px,6.5vw,88px);font-weight:900;line-height:1.05;color:#fff;margin-bottom:20px;max-width:720px;opacity:0;animation:hpUp .9s .35s forwards;}
 .hh-t em{font-style:italic;color:#60a5fa;}
-.hh-sub{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:#94a3b8;max-width:520px;line-height:1.72;margin-bottom:40px;opacity:0;animation:hpUp .9s .5s forwards;}
+.hh-sub{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:#94a3b8;max-width:560px;line-height:1.72;margin-bottom:40px;opacity:0;animation:hpUp .9s .5s forwards;}
 .hh-sub strong{color:#e2e8f0;font-weight:500;}
 .hh-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:hpUp .9s .65s forwards;}
 .hb{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
-.hb-bl{background:#2563eb;color:#fff;}
-.hb-bl:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4);}
-.hb-gh{background:transparent;color:#94a3b8;border:1px solid rgba(148,163,184,.3);}
-.hb-gh:hover{color:#e2e8f0;border-color:rgba(148,163,184,.6);}
+.hb-bl{background:#2563eb;color:#fff;}.hb-bl:hover{background:#1d4ed8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.4);}
+.hb-gh{background:transparent;color:#94a3b8;border:1px solid rgba(148,163,184,.3);}.hb-gh:hover{color:#e2e8f0;border-color:rgba(148,163,184,.6);}
 .hh-pills{display:flex;margin-top:52px;border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;background:rgba(17,24,39,.65);opacity:0;animation:hpUp .9s .82s forwards;max-width:700px;}
-.hh-pill{display:flex;align-items:center;gap:11px;padding:15px 20px;border-right:1px solid rgba(255,255,255,.06);flex:1;}
-.hh-pill:last-child{border-right:none;}
-.hh-pill-icon{font-size:19px;flex-shrink:0;}
-.hh-pill-txt{font-size:13px;color:#64748b;line-height:1.35;}
-.hh-pill-txt strong{display:block;color:#94a3b8;font-weight:600;margin-bottom:2px;}
+.hh-pill{display:flex;align-items:center;gap:11px;padding:15px 20px;border-right:1px solid rgba(255,255,255,.06);flex:1;}.hh-pill:last-child{border-right:none;}
+.hh-pill-icon{font-size:19px;flex-shrink:0;}.hh-pill-txt{font-size:13px;color:#64748b;line-height:1.35;}.hh-pill-txt strong{display:block;color:#94a3b8;font-weight:600;margin-bottom:2px;}
 .hh-sc{position:absolute;bottom:26px;left:60px;display:flex;align-items:center;gap:9px;color:#374151;font-size:12px;animation:hpPulse 2.2s 2s infinite;}
 .hh-scl{width:34px;height:1px;background:#374151;transform-origin:left;transform:scaleX(0);animation:hpGL 1.6s 1s forwards;}
 .hstmt{background:#111827;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:52px 60px;}
 .hstmt-in{max-width:860px;margin:0 auto;font-family:'Playfair Display',Georgia,serif;font-size:clamp(17px,2.2vw,26px);font-weight:700;color:#e2e8f0;line-height:1.58;}
-.hstmt-in em{color:#f87171;font-style:italic;}
-.hstmt-in strong{color:#60a5fa;font-style:normal;}
+.hstmt-in em{color:#60a5fa;font-style:italic;}.hstmt-in strong{color:#f87171;font-style:normal;}
 .hlbl{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#475569;margin-bottom:20px;display:block;}
 .hint{font-size:14px;color:#64748b;max-width:660px;line-height:1.8;}
 .hstats{background:#0d1321;padding:80px 60px;}
 .hvc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;max-width:1060px;}
-.hvc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s;}
-.hvc:hover{border-color:rgba(255,255,255,.15);}
-.hring-w{position:relative;width:92px;height:92px;margin:0 auto;}
-.hring{width:92px;height:92px;}
+.hvc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s;}.hvc:hover{border-color:rgba(255,255,255,.15);}
+.hring-w{position:relative;width:92px;height:92px;margin:0 auto;}.hring{width:92px;height:92px;}
 .hring-arc{stroke-dasharray:251;stroke-dashoffset:251;transition:stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1);}
 .hring-l{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.hring-n{font-family:'Playfair Display',Georgia,serif;font-size:25px;font-weight:900;line-height:1;color:#3b82f6;}
-.hring-s{font-size:10px;color:#475569;font-family:'DM Mono',monospace;}
-.hvc-desc{font-size:13px;color:#64748b;line-height:1.65;text-align:center;}
-.hvc-desc strong{color:#94a3b8;}
+.hring-n{font-family:'Playfair Display',Georgia,serif;font-size:25px;font-weight:900;line-height:1;color:#3b82f6;}.hring-s{font-size:10px;color:#475569;font-family:'DM Mono',monospace;}
+.hvc-desc{font-size:13px;color:#64748b;line-height:1.65;text-align:center;}.hvc-desc strong{color:#94a3b8;}
 .hc-ttl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#374151;margin-bottom:12px;}
 .hcr{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.hcl{font-size:12px;color:#475569;width:58px;flex-shrink:0;}
-.hct{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
+.hcl{font-size:12px;color:#475569;width:58px;flex-shrink:0;}.hct{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
 .hcb{height:100%;border-radius:5px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
-.hcv{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;width:36px;text-align:right;}
-.hcv.g{color:#34d399;}.hcv.r{color:#f87171;}
-.hn{font-size:12px;color:#475569;line-height:1.55;margin-top:4px;}
-.hn strong{color:#94a3b8;}
+.hcv{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;width:36px;text-align:right;}.hcv.g{color:#34d399;}.hcv.r{color:#f87171;}
+.hn{font-size:12px;color:#475569;line-height:1.55;margin-top:4px;}.hn strong{color:#94a3b8;}
 .hgd{display:flex;align-items:center;gap:10px;margin-top:10px;padding:9px 12px;background:rgba(251,191,36,.08);border-radius:8px;border:1px solid rgba(251,191,36,.18);}
-.hga{font-size:19px;color:#fbbf24;}
-.hgn{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:700;color:#fbbf24;}
+.hga{font-size:19px;color:#fbbf24;}.hgn{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:700;color:#fbbf24;}
 .hmr{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:16px;max-width:1060px;}
-.hm{background:#111827;padding:26px 24px;transition:background .2s;}
-.hm:hover{background:#1a2332;}
+.hm{background:#111827;padding:26px 24px;transition:background .2s;}.hm:hover{background:#1a2332;}
 .hm-n{font-family:'Playfair Display',Georgia,serif;font-size:clamp(36px,4vw,56px);font-weight:900;line-height:1;margin-bottom:7px;}
 .hm-n.pu{color:#a78bfa;}.hm-n.te{color:#2dd4bf;}.hm-n.bl{color:#3b82f6;}
-.hm-l{font-size:13px;font-weight:500;color:#94a3b8;line-height:1.4;max-width:200px;}
-.hm-s{font-size:11px;color:#374151;margin-top:5px;}
-.hcar-sec{background:#0a0f1a;padding:80px 60px;}
-.hcar-w{position:relative;max-width:860px;margin-top:38px;}
+.hm-l{font-size:13px;font-weight:500;color:#94a3b8;line-height:1.4;max-width:200px;}.hm-s{font-size:11px;color:#374151;margin-top:5px;}
+.hcar-sec{background:#0a0f1a;padding:80px 60px;}.hcar-w{position:relative;max-width:860px;margin-top:38px;}
 .hcar{position:relative;min-height:240px;overflow:hidden;}
 .hsl{position:absolute;inset:0;background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:14px;opacity:0;transform:translateX(40px);transition:opacity .48s ease,transform .48s ease;pointer-events:none;}
-.hsl.on{opacity:1;transform:translateX(0);pointer-events:auto;position:relative;}
-.hsl.out{opacity:0;transform:translateX(-40px);}
+.hsl.on{opacity:1;transform:translateX(0);pointer-events:auto;position:relative;}.hsl.out{opacity:0;transform:translateX(-40px);}
 .hsl-in{display:flex;min-height:240px;}
 .hsl-vis{width:175px;flex-shrink:0;background:rgba(255,255,255,.025);border-right:1px solid rgba(255,255,255,.06);border-radius:14px 0 0 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 12px;gap:6px;}
 .hsl-big{font-family:'Playfair Display',Georgia,serif;font-size:38px;font-weight:900;line-height:1;text-align:center;}
@@ -266,44 +244,33 @@ textarea{resize:vertical;min-height:80px;}
 .hsl-body{flex:1;padding:26px 28px;display:flex;flex-direction:column;justify-content:center;}
 .hsl-ct{font-family:'DM Mono',monospace;font-size:11px;color:#374151;letter-spacing:.1em;margin-bottom:9px;}
 .hsl h3{font-family:'Playfair Display',Georgia,serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:#f1f5f9;line-height:1.35;margin-bottom:9px;}
-.hsl p{font-size:13px;color:#64748b;line-height:1.72;}
-.hsl p strong{color:#94a3b8;}
+.hsl p{font-size:13px;color:#64748b;line-height:1.72;}.hsl p strong{color:#94a3b8;}
 .htag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:9px;}
 .tr{background:rgba(248,113,113,.15);color:#f87171;}.tb{background:rgba(59,130,246,.15);color:#60a5fa;}.ta{background:rgba(251,191,36,.15);color:#fbbf24;}.tt{background:rgba(45,212,191,.15);color:#2dd4bf;}.tpp{background:rgba(167,139,250,.15);color:#a78bfa;}
 .hdots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
-.hdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;transition:background .22s,transform .22s;padding:0;}
-.hdot.on{background:#3b82f6;transform:scale(1.35);}
-.hdot:hover{background:rgba(255,255,255,.4);}
-.harr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#94a3b8;font-size:18px;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;z-index:10;}
-.harr:hover{background:rgba(255,255,255,.15);color:#fff;}
+.hdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;transition:background .22s,transform .22s;padding:0;}.hdot.on{background:#3b82f6;transform:scale(1.35);}.hdot:hover{background:rgba(255,255,255,.4);}
+.harr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#94a3b8;font-size:18px;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;z-index:10;}.harr:hover{background:rgba(255,255,255,.15);color:#fff;}
 .harr-l{left:-54px;}.harr-r{right:-54px;}
 .hbars{background:#0d1321;padding:80px 60px;}
 .hbcols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:38px;max-width:1060px;}
 .hbttl{font-size:11px;color:#475569;font-family:'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;}
 .hbr{display:flex;align-items:center;gap:12px;margin-bottom:13px;}
-.hbl{font-size:13px;color:#475569;width:130px;flex-shrink:0;text-align:right;}
-.hbt{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
-.hbf{height:100%;border-radius:5px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
-.hbv{font-family:'DM Mono',monospace;font-size:12px;color:#64748b;width:32px;}
-.hpq{background:#111827;border-top:1px solid rgba(255,255,255,.06);padding:80px 60px;}
-.hpq-in{max-width:860px;margin:0 auto;}
+.hbl{font-size:13px;color:#475569;width:130px;flex-shrink:0;text-align:right;}.hbt{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;}
+.hbf{height:100%;border-radius:5px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}.hbv{font-family:'DM Mono',monospace;font-size:12px;color:#64748b;width:32px;}
+.hpq{background:#111827;border-top:1px solid rgba(255,255,255,.06);padding:80px 60px;}.hpq-in{max-width:860px;margin:0 auto;}
 .hpq blockquote{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,2.6vw,32px);font-weight:700;font-style:italic;color:#e2e8f0;line-height:1.5;border-left:4px solid #2563eb;padding-left:28px;margin-bottom:20px;}
 .hpq cite{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;color:#374151;font-style:normal;padding-left:32px;}
 .hlib{background:#0a0f1a;padding:80px 60px;border-top:1px solid rgba(255,255,255,.06);}
 .hsg{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:14px;margin-top:34px;margin-bottom:34px;}
-.hsc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:17px;cursor:pointer;transition:all .2s;}
-.hsc:hover{border-color:#2563eb;background:#1e293b;transform:translateY(-3px);}
-.hsc-t{font-size:14px;font-weight:600;color:#e2e8f0;line-height:1.4;margin-bottom:6px;}
-.hsc-m{font-size:12px;color:#374151;margin-bottom:8px;}
+.hsc{background:#111827;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:17px;cursor:pointer;transition:all .2s;}.hsc:hover{border-color:#2563eb;background:#1e293b;transform:translateY(-3px);}
+.hsc-t{font-size:14px;font-weight:600;color:#e2e8f0;line-height:1.4;margin-bottom:6px;}.hsc-m{font-size:12px;color:#374151;margin-bottom:8px;}
 .hchip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;margin-right:3px;margin-top:2px;}
 .cr{background:rgba(52,211,153,.15);color:#34d399;}.cd{background:rgba(248,113,113,.15);color:#f87171;}.ci{background:rgba(251,191,36,.15);color:#fbbf24;}.cte{background:rgba(45,212,191,.15);color:#2dd4bf;}.cpu{background:rgba(167,139,250,.15);color:#a78bfa;}.crd{background:rgba(248,113,113,.15);color:#f87171;}
 .hcta{background:#111827;padding:90px 60px;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
-.hcta h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px;}
-.hcta h2 em{color:#60a5fa;font-style:italic;}
+.hcta h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,4.5vw,54px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px;}.hcta h2 em{color:#60a5fa;font-style:italic;}
 .hcta p{font-size:16px;color:#64748b;max-width:560px;margin:0 auto 34px;line-height:1.78;}
 .hfoot{background:#060a12;padding:30px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.04);}
-.hfoot-b{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;color:#e2e8f0;}
-.hfoot-m{font-size:12px;color:#374151;}
+.hfoot-b{font-family:'Playfair Display',Georgia,serif;font-size:17px;font-weight:700;color:#e2e8f0;}.hfoot-m{font-size:12px;color:#374151;}
 @keyframes hpUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 @keyframes hpPulse{0%,100%{opacity:.4;}50%{opacity:1;}}
 @keyframes hpGL{to{transform:scaleX(1);}}
@@ -330,85 +297,173 @@ textarea{resize:vertical;min-height:80px;}
 
 <!-- ══ AUDIT TAB ══ -->
 <div class="tp active" id="panel-home">
+
+<!-- HERO -->
 <section class="hh">
   <div class="hh-bg"></div><div class="hh-grid"></div>
-  <p class="hh-ey">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality &nbsp;&middot;&nbsp; 781 Sources</p>
-  <h1 class="hh-t">What you teach<br>shapes what<br>they <em>can show.</em></h1>
-  <p class="hh-sub">Re:Source helps you audit the sources, framings, and assumptions behind your assessments &mdash; so you can design curriculum that <strong>actually reaches every student.</strong></p>
+  <p class="hh-ey">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality &nbsp;&middot;&nbsp; 781 Primary Sources</p>
+  <h1 class="hh-t">Your students<br>are already<br><em>historians.</em></h1>
+  <p class="hh-sub">
+    The question isn&rsquo;t whether they can think historically.
+    It&rsquo;s whether the sources, prompts, and assessments you&rsquo;re working with
+    <strong>give them room to show it.</strong>
+  </p>
   <div class="hh-btns">
-    <button class="hb hb-bl" data-hp-nav="library">Find sources for your unit &#8599;</button>
-    <button class="hb hb-gh" data-hp-nav="audit">Audit your assessment &rarr;</button>
+    <button class="hb hb-bl" data-hp-nav="library">Build a source set &rarr;</button>
+    <button class="hb hb-gh" data-hp-nav="audit">Audit your next unit</button>
   </div>
   <div class="hh-pills">
-    <div class="hh-pill"><div class="hh-pill-icon">&#128196;</div><div class="hh-pill-txt"><strong>Build a source set</strong>781 coded primary sources across every era &amp; perspective</div></div>
-    <div class="hh-pill"><div class="hh-pill-icon">&#128269;</div><div class="hh-pill-txt"><strong>Audit your next unit</strong>8-minute equity report across 8 dimensions</div></div>
-    <div class="hh-pill"><div class="hh-pill-icon">&#9998;</div><div class="hh-pill-txt"><strong>Design an assessment</strong>Build DBQs &amp; quizzes with equity built in</div></div>
+    <div class="hh-pill"><div class="hh-pill-icon">&#128196;</div><div class="hh-pill-txt"><strong>Find sources that center your students</strong>781 coded primary sources &mdash; resistant, community, and institutional voices</div></div>
+    <div class="hh-pill"><div class="hh-pill-icon">&#128269;</div><div class="hh-pill-txt"><strong>See what your assessment assumes</strong>8-minute equity audit across 8 dimensions of access and centering</div></div>
+    <div class="hh-pill"><div class="hh-pill-icon">&#9998;</div><div class="hh-pill-txt"><strong>Design for the students in front of you</strong>Build DBQs and quizzes with student knowledge as the starting point</div></div>
   </div>
-  <div class="hh-sc"><div class="hh-scl"></div>scroll</div>
+  <div class="hh-sc"><div class="hh-scl"></div>scroll to see the data</div>
 </section>
+
+<!-- STATEMENT -->
 <section class="hstmt">
-  <div class="hstmt-in hpf">&ldquo;Standardization promises consistency. It delivers comparability. Those are <em>not the same achievement.</em> Comparability means outcomes can be placed on the same scale. Consistency means the instrument makes <strong>the same cognitive and cultural demands</strong> on everyone who takes it. The Regents achieves the former.&rdquo;</div>
+  <div class="hstmt-in hpf">
+    Every student who walks into your classroom carries historical knowledge
+    that is <em>real, rigorous, and worth building from.</em>
+    The source you choose either opens the door to that knowledge &mdash;
+    or quietly tells them their starting point <strong>doesn&rsquo;t count.</strong>
+  </div>
 </section>
+
+<!-- STATS -->
 <section class="hstats">
-  <span class="hlbl">&mdash; what the data shows</span>
+  <span class="hlbl">&mdash; what the data reveals about whose knowledge gets counted</span>
   <div class="hvc-row">
+
     <div class="hvc hpf">
       <div class="hring-w">
         <svg class="hring" viewBox="0 0 92 92"><circle cx="46" cy="46" r="40" fill="none" stroke="rgba(59,130,246,.15)" stroke-width="7"/><circle cx="46" cy="46" r="40" fill="none" stroke="#3b82f6" stroke-width="7" stroke-dasharray="251" stroke-dashoffset="251" stroke-linecap="round" transform="rotate(-90 46 46)" class="hring-arc"/></svg>
         <div class="hring-l"><span class="hring-n" data-count="781" data-sfx="">0</span><span class="hring-s">sources</span></div>
       </div>
-      <div class="hvc-desc">Primary sources coded across <strong>10 equity dimensions</strong> and 32 analytical fields &mdash; every era, every perspective.</div>
+      <div class="hvc-desc">Primary sources coded for <strong>whose voice speaks, whose gaze is centered, and what power structures are named</strong> &mdash; so you can build from your students&rsquo; world outward.</div>
     </div>
+
     <div class="hvc hpf">
-      <div class="hc-ttl">Students scoring below 55</div>
+      <div class="hc-ttl">Students scoring below 55 &mdash; same exam, same stakes</div>
       <div class="hcr"><div class="hcl">June 2025</div><div class="hct"><div class="hcb" style="background:#34d399" data-pct="6.8"></div></div><div class="hcv g">6.8%</div></div>
       <div class="hcr"><div class="hcl">Aug 2025</div><div class="hct"><div class="hcb" style="background:#f87171" data-pct="63"></div></div><div class="hcv r">63%</div></div>
-      <div class="hn">Same exam. Same graduation stakes.<br><strong>Very different cognitive demands.</strong></div>
+      <div class="hn">Students who returned in August weren&rsquo;t less prepared. They received <strong>a harder instrument.</strong> That&rsquo;s a design problem, not a student problem.</div>
     </div>
+
     <div class="hvc hpf">
-      <div class="hc-ttl">Skill gap &mdash; USH average</div>
-      <div class="hcr"><div class="hcl">Extraction</div><div class="hct"><div class="hcb" style="background:#60a5fa" data-pct="74"></div></div><div class="hcv" style="color:#60a5fa">74%</div></div>
-      <div class="hcr"><div class="hcl">Context</div><div class="hct"><div class="hcb" style="background:#f87171" data-pct="49"></div></div><div class="hcv r">49%</div></div>
+      <div class="hc-ttl">The gap the exam creates</div>
+      <div class="hcr"><div class="hcl">Read a source</div><div class="hct"><div class="hcb" style="background:#60a5fa" data-pct="74"></div></div><div class="hcv" style="color:#60a5fa">74%</div></div>
+      <div class="hcr"><div class="hcl">Contextualize it</div><div class="hct"><div class="hcb" style="background:#f87171" data-pct="49"></div></div><div class="hcv r">49%</div></div>
       <div class="hgd"><span class="hga">&#8597;</span><span class="hgn" data-count="24.9" data-sfx=" pt gap">0 pt gap</span></div>
-      <div class="hn" style="margin-top:8px">Consistent across <strong>all 5 USH cycles</strong></div>
+      <div class="hn" style="margin-top:8px">Students can read the document. The exam then asks them to supply context they were never taught &mdash; and records the gap as <strong>their failure.</strong></div>
     </div>
+
   </div>
+
   <div class="hmr">
-    <div class="hm hpf"><div class="hm-n pu" data-count="61" data-sfx="%">0%</div><div class="hm-l">of Re:Source sources are resistant or community-centered voices</div><div class="hm-s">By design &mdash; not by accident</div></div>
-    <div class="hm hpf"><div class="hm-n te" data-count="702" data-sfx="">0</div><div class="hm-l">student records across 12 Regents sittings</div><div class="hm-s">Bronx &amp; Harlem, 2022&ndash;2026</div></div>
-    <div class="hm hpf"><div class="hm-n bl" data-count="4.04" data-sfx="/5">0/5</div><div class="hm-l">mean neutrality challenge across all 781 sources</div><div class="hm-s">No source is neutral. Now that&rsquo;s measurable.</div></div>
+    <div class="hm hpf">
+      <div class="hm-n pu" data-count="61" data-sfx="%">0%</div>
+      <div class="hm-l">of Re:Source&rsquo;s 781 sources center resistant, community-centered, or liberatory voices</div>
+      <div class="hm-s">Not because dominant sources don&rsquo;t matter &mdash; because students need both</div>
+    </div>
+    <div class="hm hpf">
+      <div class="hm-n te" data-count="702" data-sfx="">0</div>
+      <div class="hm-l">student records across 12 Regents sittings in Bronx and Harlem classrooms</div>
+      <div class="hm-s">2022&ndash;2026 &nbsp;&middot;&nbsp; These are real students. Not averages.</div>
+    </div>
+    <div class="hm hpf">
+      <div class="hm-n bl" data-count="4.04" data-sfx="/5">0/5</div>
+      <div class="hm-l">mean neutrality challenge score across the source library</div>
+      <div class="hm-s">No source is neutral. Teaching students to see that is the work.</div>
+    </div>
   </div>
 </section>
+
+<!-- CAROUSEL -->
 <section class="hcar-sec">
-  <span class="hlbl">&mdash; six key findings</span>
-  <p class="hint">Across 12 exam sittings, 702 student records, and 781 coded primary sources, the data surfaces the same argument from every angle.</p>
+  <span class="hlbl">&mdash; six things the data makes visible</span>
+  <p class="hint">These findings don&rsquo;t describe student failure. They describe what happens when an assessment&rsquo;s implied reader and the actual student sitting in front of you are not the same person.</p>
   <div class="hcar-w">
     <button class="harr harr-l" id="hprev">&#8592;</button>
     <button class="harr harr-r" id="hnext">&#8594;</button>
     <div class="hcar" id="hcar">
-      <div class="hsl on"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big r">45.4</div><div class="hsl-bsub">Aug schema<br>burden</div><div style="font-size:10px;color:#374151;margin-top:5px">vs 37.6 June</div></div><div class="hsl-body"><span class="htag tr">August Problem</span><div class="hsl-ct">01 / 06</div><h3>Students returning in August receive a measurably harder exam</h3><p>Students scoring below 55 average <strong>35.1% in August</strong> against 10.7% in June &mdash; completing a graduation requirement on an instrument with greater contextual demand.</p></div></div></div>
-      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big a">24.9</div><div class="hsl-bsub">point gap</div><div style="font-size:10px;color:#374151;margin-top:5px">extraction vs.<br>context</div></div><div class="hsl-body"><span class="htag ta">Skill Gap</span><div class="hsl-ct">02 / 06</div><h3>The exam rewards source extraction far more than historical context</h3><p>Across 5 USH sittings this gap averages <strong>24.9 points</strong> &mdash; consistent every cycle. Reading a document is not the same skill as understanding why it exists.</p></div></div></div>
-      <div class="hsl"><div class="hsl-in"><div class="hsl-vis" style="gap:10px;padding:16px 10px"><div style="width:100%"><div style="font-size:9px;color:#60a5fa;font-family:'DM Mono',monospace;margin-bottom:4px">USH</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#f87171;width:72%;border-radius:4px"></div></div><div style="font-size:9px;color:#f87171;margin-top:2px">dominant-centered</div></div><div style="width:100%"><div style="font-size:9px;color:#2dd4bf;font-family:'DM Mono',monospace;margin-bottom:4px">Global II</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#34d399;width:48%;border-radius:4px"></div></div><div style="font-size:9px;color:#34d399;margin-top:2px">distributed</div></div></div><div class="hsl-body"><span class="htag tb">Centering</span><div class="hsl-ct">03 / 06</div><h3>US History centers dominant racial and national frames more than Global II</h3><p>Global II distributes attention across class, labor, coloniality, gender, religion, and race. The two exams in the sequence are not measuring the same historical thinking.</p></div></div></div>
-      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div class="hsl-big t">&plusmn;8.3</div><div class="hsl-bsub">pts std dev</div><div style="font-size:10px;color:#374151;margin-top:5px">93 students</div></div><div class="hsl-body"><span class="htag tt">Transition</span><div class="hsl-ct">04 / 06</div><h3>The GHG to USH transition has an 8.3-point SD &mdash; the exams measure different things</h3><p>Mean scores rose +1.8 pts but with 8.3-pt SD. Seven students dropped 10+ points. Nine who failed Global II passed US History. The same preparation does not reliably transfer.</p></div></div></div>
-      <div class="hsl"><div class="hsl-in"><div class="hsl-vis" style="gap:10px"><div style="text-align:center"><div style="font-size:26px;font-family:'Playfair Display',serif;font-weight:900;color:#f87171">2.6</div><div style="font-size:9px;color:#475569">Dominant voices</div></div><div style="font-size:10px;color:#374151;font-style:italic">neutrality score</div><div style="text-align:center"><div style="font-size:26px;font-family:'Playfair Display',serif;font-weight:900;color:#34d399">4.3</div><div style="font-size:9px;color:#475569">Resistant voices</div></div></div><div class="hsl-body"><span class="htag tpp">Hidden Pattern</span><div class="hsl-ct">05 / 06</div><h3>Resistant voices score as less neutral &mdash; dominant voices as more objective</h3><p>Sources that name power score <strong>4.34 on neutrality challenge</strong>. Sources that exercise it score 2.6. The framing of neutrality is itself a political act.</p></div></div></div>
-      <div class="hsl"><div class="hsl-in"><div class="hsl-vis"><div style="font-size:38px">&#127919;</div><div style="font-size:11px;color:#64748b;line-height:1.55;text-align:center;max-width:130px">Formation in the dominant frame <span style="color:#f87171;font-weight:600">produces wrong answers</span></div></div><div class="hsl-body"><span class="htag tr">Root Cause</span><div class="hsl-ct">06 / 06</div><h3>Thorough formation in the dominant gaze leads reliably to wrong answers</h3><p>What the curriculum trained students to do &mdash; <strong>read through the dominant frame</strong> &mdash; produces wrong answers on the most demanding items. This is not a design flaw. It is structural.</p></div></div></div>
+
+      <div class="hsl on"><div class="hsl-in">
+        <div class="hsl-vis"><div class="hsl-big r">45.4</div><div class="hsl-bsub">Aug schema<br>burden</div><div style="font-size:10px;color:#374151;margin-top:5px">vs 37.6 in June</div></div>
+        <div class="hsl-body"><span class="htag tr">The August Problem</span><div class="hsl-ct">01 / 06</div>
+          <h3>Students who returned in August met a harder exam &mdash; not because they were less ready</h3>
+          <p>Schema burden averaged <strong>45.4 in August vs. 37.6 in June.</strong> These students showed up again. They persisted. What they received was an instrument that asked more of them than the June exam did &mdash; silently, with the same cut score.</p>
+        </div>
+      </div></div>
+
+      <div class="hsl"><div class="hsl-in">
+        <div class="hsl-vis"><div class="hsl-big a">24.9</div><div class="hsl-bsub">point gap</div><div style="font-size:10px;color:#374151;margin-top:5px">not a skill gap &mdash;<br>a knowledge gap</div></div>
+        <div class="hsl-body"><span class="htag ta">What Gets Counted as Skill</span><div class="hsl-ct">02 / 06</div>
+          <h3>Students can read the document. The exam asks them to know the world it came from.</h3>
+          <p>Source extraction success: 74%. Historical context success: 49%. The <strong>24.9-point gap</strong> isn&rsquo;t evidence that students can&rsquo;t think historically. It&rsquo;s evidence that the exam rewards background knowledge that not all students were given equal access to build.</p>
+        </div>
+      </div></div>
+
+      <div class="hsl"><div class="hsl-in">
+        <div class="hsl-vis" style="gap:10px;padding:16px 10px">
+          <div style="width:100%"><div style="font-size:9px;color:#60a5fa;font-family:monospace;margin-bottom:4px">USH</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#f87171;width:72%;border-radius:4px"></div></div><div style="font-size:9px;color:#f87171;margin-top:2px">dominant-centered</div></div>
+          <div style="width:100%"><div style="font-size:9px;color:#2dd4bf;font-family:monospace;margin-bottom:4px">Global II</div><div style="height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden"><div style="height:100%;background:#34d399;width:48%;border-radius:4px"></div></div><div style="font-size:9px;color:#34d399;margin-top:2px">more distributed</div></div>
+        </div>
+        <div class="hsl-body"><span class="htag tb">Whose World the Exam Builds From</span><div class="hsl-ct">03 / 06</div>
+          <h3>US History assumes a particular starting point. Not every student was given that starting point.</h3>
+          <p>USH centers dominant, national, and elite institutional frames far more than Global II. Students who built knowledge from their own communities, from resistance movements, from the Global South &mdash; that knowledge is not the default reader this exam imagines.</p>
+        </div>
+      </div></div>
+
+      <div class="hsl"><div class="hsl-in">
+        <div class="hsl-vis"><div class="hsl-big t">+/-8.3</div><div class="hsl-bsub">pts std dev</div><div style="font-size:10px;color:#374151;margin-top:5px">93 students<br>year over year</div></div>
+        <div class="hsl-body"><span class="htag tt">The Transition</span><div class="hsl-ct">04 / 06</div>
+          <h3>The same students. Two different exams. An 8.3-point swing that has nothing to do with what they learned.</h3>
+          <p>Among 93 students tracked from GHG to USH: mean change +1.8 pts, SD 8.3. Seven students who passed Global II with strong scores dropped more than 10 points. <strong>What changed wasn&rsquo;t their preparation &mdash; it was what the next exam decided to reward.</strong></p>
+        </div>
+      </div></div>
+
+      <div class="hsl"><div class="hsl-in">
+        <div class="hsl-vis" style="gap:10px">
+          <div style="text-align:center"><div style="font-size:26px;font-family:serif;font-weight:900;color:#f87171">2.6</div><div style="font-size:9px;color:#475569">Dominant voices</div><div style="font-size:9px;color:#374151;font-style:italic">read as objective</div></div>
+          <div style="font-size:10px;color:#374151;font-style:italic;text-align:center">neutrality score</div>
+          <div style="text-align:center"><div style="font-size:26px;font-family:serif;font-weight:900;color:#34d399">4.3</div><div style="font-size:9px;color:#475569">Resistant voices</div><div style="font-size:9px;color:#374151;font-style:italic">read as biased</div></div>
+        </div>
+        <div class="hsl-body"><span class="htag tpp">Who Gets to Be Objective</span><div class="hsl-ct">05 / 06</div>
+          <h3>The sources that name oppression are called biased. The sources that enact it are called neutral.</h3>
+          <p>Resistant and community voices score <strong>4.34 on neutrality challenge</strong>. Dominant voices score 2.6. Students from communities whose knowledge challenges dominant narratives are being trained to see their own perspective as the one that needs justifying &mdash; and the dominant one as the default.</p>
+        </div>
+      </div></div>
+
+      <div class="hsl"><div class="hsl-in">
+        <div class="hsl-vis"><div style="font-size:38px">&#127919;</div><div style="font-size:11px;color:#64748b;line-height:1.6;text-align:center;max-width:130px">Following the curriculum <span style="color:#f87171;font-weight:600">leads to the wrong answer</span></div></div>
+        <div class="hsl-body"><span class="htag tr">The Trap</span><div class="hsl-ct">06 / 06</div>
+          <h3>Students who did exactly what the curriculum asked are being marked wrong for it.</h3>
+          <p>Distractor analysis shows that <strong>thorough formation in the dominant frame</strong> &mdash; the frame the curriculum has been teaching &mdash; leads reliably to wrong answers on the most demanding items. The exam punishes students for learning what school taught them to see. That is a structural problem. It has a structural response.</p>
+        </div>
+      </div></div>
+
     </div>
     <div class="hdots" id="hdots">
       <button class="hdot on" data-i="0"></button><button class="hdot" data-i="1"></button><button class="hdot" data-i="2"></button><button class="hdot" data-i="3"></button><button class="hdot" data-i="4"></button><button class="hdot" data-i="5"></button>
     </div>
   </div>
 </section>
+
+<!-- BAR CHARTS -->
 <section class="hbars">
-  <span class="hlbl">&mdash; what 781 sources actually look like</span>
-  <p class="hint">Every source is coded for whose perspective it centers, who is speaking, and what systems of power it addresses.</p>
+  <span class="hlbl">&mdash; building a library that starts from where students are</span>
+  <p class="hint">Re:Source was built to make the counter-archive visible. Every source is coded not just for topic and era, but for whose perspective organizes it, what systems it names, and what it asks students to do with power.</p>
   <div class="hbcols">
-    <div class="hbar-blk hpf"><div class="hbttl">Perspective distribution</div>
+    <div class="hbar-blk hpf">
+      <div class="hbttl">Voice &amp; perspective distribution</div>
       <div class="hbr"><div class="hbl">Resistant voices</div><div class="hbt"><div class="hbf" style="background:#34d399" data-pct="63.8"></div></div><div class="hbv">498</div></div>
       <div class="hbr"><div class="hbl">Dominant voices</div><div class="hbt"><div class="hbf" style="background:#f87171" data-pct="22.8"></div></div><div class="hbv">178</div></div>
       <div class="hbr"><div class="hbl">Institutional</div><div class="hbt"><div class="hbf" style="background:#fbbf24" data-pct="14.6"></div></div><div class="hbv">114</div></div>
       <div class="hbr"><div class="hbl">Ambiguous</div><div class="hbt"><div class="hbf" style="background:#94a3b8" data-pct="3.3"></div></div><div class="hbv">26</div></div>
     </div>
-    <div class="hbar-blk hpf"><div class="hbttl">Top systems addressed</div>
+    <div class="hbar-blk hpf">
+      <div class="hbttl">Systems of power named &amp; examined</div>
       <div class="hbr"><div class="hbl">White supremacy</div><div class="hbt"><div class="hbf" style="background:#f87171" data-pct="51.2"></div></div><div class="hbv">400</div></div>
       <div class="hbr"><div class="hbl">Capitalism</div><div class="hbt"><div class="hbf" style="background:#fb923c" data-pct="50.7"></div></div><div class="hbv">396</div></div>
       <div class="hbr"><div class="hbl">Nationalism</div><div class="hbt"><div class="hbf" style="background:#fbbf24" data-pct="46.0"></div></div><div class="hbv">359</div></div>
@@ -418,35 +473,50 @@ textarea{resize:vertical;min-height:80px;}
     </div>
   </div>
 </section>
-<section class="hpq"><div class="hpq-in">
-  <blockquote>&ldquo;In the Bronx and Harlem classrooms where this project began, the implied reader and the actual reader are rarely the same person.&rdquo;</blockquote>
-  <cite>&mdash; Questioning Neutrality: Re:Source &nbsp;&middot;&nbsp; 2026</cite>
-</div></section>
+
+<!-- PULL QUOTE -->
+<section class="hpq">
+  <div class="hpq-in">
+    <blockquote>&ldquo;To encounter oneself in curriculum and archive is not mere representation. It is a condition of legibility, agency, and being seen.&rdquo;</blockquote>
+    <cite>&mdash; Caswell, Cifor &amp; Ramirez (2016), cited in Questioning Neutrality: Re:Source &nbsp;&middot;&nbsp; 2026</cite>
+  </div>
+</section>
+
+<!-- SOURCE TEASER -->
 <section class="hlib">
   <span class="hlbl">&mdash; six sources from the library</span>
-  <p class="hint">Every source is analyzed across 32 fields &mdash; not just what it says, but <strong style="color:#e2e8f0">who speaks, to whom, from where, about what power.</strong></p>
+  <p class="hint">Each source is analyzed across 32 fields &mdash; not just what it says, but <strong style="color:#e2e8f0">who is speaking, who they&rsquo;re speaking to, what system they&rsquo;re responding to, and what the source asks a student to do with power.</strong></p>
   <div class="hsg">
     <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Darnella Frazier &mdash; Statement on Filming George Floyd&rsquo;s Murder</div><div class="hsc-m">2021 &middot; Oral History &middot; Contemporary</div><span class="hchip cr">resistant</span><span class="hchip cte">gaze: outward</span></div>
-    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Dred Scott v. Sandford &mdash; Chief Justice Taney Opinion</div><div class="hsc-m">1857 &middot; Legal Document &middot; 1800&ndash;1865</div><span class="hchip cd">dominant</span><span class="hchip crd">gaze: down</span></div>
-    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Fannie Lou Hamer &mdash; &ldquo;Is This America?&rdquo; DNC Speech</div><div class="hsc-m">1964 &middot; Testimony &middot; Cold War &amp; Civil Rights</div><span class="hchip cr">resistant</span><span class="hchip cpu">voice: direct</span></div>
-    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Social Security Act &mdash; Racial Exclusion of Domestic Workers</div><div class="hsc-m">1935 &middot; Legal Document &middot; World War I &amp; Interwar</div><span class="hchip ci">institutional</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Dred Scott v. Sandford &mdash; Chief Justice Taney Majority Opinion</div><div class="hsc-m">1857 &middot; Legal Document &middot; 1800&ndash;1865</div><span class="hchip cd">dominant</span><span class="hchip crd">gaze: down</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Fannie Lou Hamer &mdash; &ldquo;Is This America?&rdquo; DNC Testimony</div><div class="hsc-m">1964 &middot; Testimony &middot; Cold War &amp; Civil Rights</div><span class="hchip cr">resistant</span><span class="hchip cpu">voice: direct</span></div>
+    <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Social Security Act &mdash; Racial Exclusion of Domestic &amp; Agricultural Workers</div><div class="hsc-m">1935 &middot; Legal Document &middot; World War I &amp; Interwar</div><span class="hchip ci">institutional</span></div>
     <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Ho Chi Minh &mdash; Declaration of Independence of Vietnam</div><div class="hsc-m">1945 &middot; Political Document &middot; World War II</div><span class="hchip cr">resistant</span><span class="hchip cte">gaze: outward</span></div>
     <div class="hsc hpf" data-hp-nav="library"><div class="hsc-t">Calvin Coolidge &mdash; &ldquo;The Business of America Is Business&rdquo;</div><div class="hsc-m">1925 &middot; Speech &middot; World War I &amp; Interwar</div><span class="hchip cd">dominant</span><span class="hchip crd">maintains</span></div>
   </div>
-  <div style="text-align:center"><button class="hb hb-bl" data-hp-nav="library">Browse all 781 sources &#8599;</button></div>
+  <div style="text-align:center"><button class="hb hb-bl" data-hp-nav="library">Explore all 781 sources &#8599;</button></div>
 </section>
+
+<!-- CTA -->
 <section class="hcta">
-  <h2>Whose voices<br><em>anchor your unit?</em></h2>
-  <p>Re:Source takes 8&ndash;12 minutes and returns an exportable report across eight equity dimensions &mdash; access burden, centering, voice authenticity, schema demand, and more.</p>
+  <h2>Start from<br><em>your students.</em></h2>
+  <p>
+    Re:Source is a tool for teachers who believe their students are already thinkers &mdash;
+    and who want to build assessments that actually let them prove it.
+    An 8-minute audit. An exportable equity report. A source library built for the classroom you&rsquo;re actually in.
+  </p>
   <div class="hh-btns" style="justify-content:center;margin-top:0;">
-    <button class="hb hb-bl" data-hp-nav="audit">Run your first audit &rarr;</button>
-    <button class="hb hb-gh" data-hp-nav="library">Explore sources first</button>
+    <button class="hb hb-bl" data-hp-nav="audit">Audit your next unit &rarr;</button>
+    <button class="hb hb-gh" data-hp-nav="library">Find sources for your students</button>
   </div>
 </section>
+
+<!-- FOOTER -->
 <footer class="hfoot">
-  <div><div class="hfoot-b">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality</div><div class="hfoot-m" style="margin-top:4px">A project in history assessment equity, value, and teacher-facing intervention</div></div>
-  <div class="hfoot-m" style="text-align:right"><strong style="color:#475569">781 sources</strong> &nbsp;&middot;&nbsp; 702 student records &nbsp;&middot;&nbsp; 12 Regents sittings<br>Bronx &amp; Harlem, 2022&ndash;2026 &nbsp;&middot;&nbsp; Marie Connor</div>
+  <div><div class="hfoot-b">Re:Source &nbsp;&middot;&nbsp; Questioning Neutrality</div><div class="hfoot-m" style="margin-top:4px">A project in history assessment equity, value, and teacher-facing intervention &nbsp;&middot;&nbsp; Bronx &amp; Harlem, 2022&ndash;2026</div></div>
+  <div class="hfoot-m" style="text-align:right"><strong style="color:#475569">781 sources</strong> &nbsp;&middot;&nbsp; 702 student records &nbsp;&middot;&nbsp; 12 Regents sittings<br>Marie Connor</div>
 </footer>
+
 </div>
 
 
@@ -5816,115 +5886,70 @@ function switchTab(t) {
   if (t === 'maker') updateLive();
 }
 
-// ══════════════════════════════════════════════════
-// HOMEPAGE — nav + animations
-// Injected directly after switchTab definition so
-// switchTab is guaranteed to exist. No DOMContentLoaded
-// needed for the nav binding.
-// ══════════════════════════════════════════════════
+// ===== HOMEPAGE nav + animations (runs right after switchTab is defined) =====
 (function() {
-
-  // 1. NAVIGATION via data-hp-nav — event delegation on panel
   var panel = document.getElementById('panel-home');
   if (panel) {
     panel.addEventListener('click', function(ev) {
       var el = ev.target;
       while (el && el !== panel) {
-        if (el.getAttribute('data-hp-nav')) {
-          switchTab(el.getAttribute('data-hp-nav'));
-          return;
-        }
+        var nav = el.getAttribute('data-hp-nav');
+        if (nav) { switchTab(nav); return; }
         el = el.parentElement;
       }
     });
   }
-
-  // 2. ANIMATIONS — run when panel becomes active
   var inited = false;
-
-  function runAnimations() {
-    // counters
+  function runAll() {
     [].forEach.call(document.querySelectorAll('#panel-home [data-count]'), function(el) {
       var tgt = parseFloat(el.getAttribute('data-count'));
       var sfx = el.getAttribute('data-sfx') || '';
-      var fl  = tgt !== Math.floor(tgt);
-      var s0  = null;
+      var fl  = tgt !== Math.floor(tgt), s0 = null;
       (function tick(ts) {
         if (!s0) s0 = ts;
-        var p = Math.min((ts - s0) / 1800, 1);
-        var e = 1 - Math.pow(1 - p, 4);
-        el.textContent = (fl ? (tgt*e).toFixed(1) : Math.round(tgt*e)) + sfx;
-        if (p < 1) requestAnimationFrame(tick);
-        else el.textContent = (fl ? tgt.toFixed(1) : tgt) + sfx;
+        var p = Math.min((ts-s0)/1800,1), e = 1-Math.pow(1-p,4);
+        el.textContent = (fl?(tgt*e).toFixed(1):Math.round(tgt*e))+sfx;
+        if (p<1) requestAnimationFrame(tick);
+        else el.textContent=(fl?tgt.toFixed(1):tgt)+sfx;
       })(performance.now());
     });
-    // bars
-    setTimeout(function() {
-      [].forEach.call(document.querySelectorAll('#panel-home .hcb, #panel-home .hbf'), function(b) {
-        var p = parseFloat(b.getAttribute('data-pct'));
-        if (!isNaN(p)) b.style.width = p + '%';
+    setTimeout(function(){
+      [].forEach.call(document.querySelectorAll('#panel-home .hcb,#panel-home .hbf'),function(b){
+        var p=parseFloat(b.getAttribute('data-pct'));if(!isNaN(p))b.style.width=p+'%';
       });
-    }, 400);
-    // ring
-    setTimeout(function() {
-      var arc = document.querySelector('#panel-home .hring-arc');
-      if (arc) { arc.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)'; arc.style.strokeDashoffset = '0'; }
-    }, 500);
-    // scroll fade
-    setTimeout(function() {
-      if (!('IntersectionObserver' in window)) {
-        [].forEach.call(document.querySelectorAll('#panel-home .hpf'), function(el) { el.classList.add('vis'); });
-        return;
-      }
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
-      }, { threshold: 0.08 });
-      [].forEach.call(document.querySelectorAll('#panel-home .hpf'), function(el) { io.observe(el); });
-    }, 200);
-    // carousel
-    var cur = 0;
-    var slides = document.querySelectorAll('#hcar .hsl');
-    var dots   = document.querySelectorAll('#hdots .hdot');
-    var timer  = null;
-    function goTo(n) {
-      if (!slides.length) return;
-      slides[cur].classList.remove('on'); slides[cur].classList.add('out');
-      dots[cur].classList.remove('on');
-      var prev = cur;
-      cur = ((n % slides.length) + slides.length) % slides.length;
-      setTimeout(function() { slides[prev].classList.remove('out'); }, 460);
-      slides[cur].classList.add('on'); dots[cur].classList.add('on');
-      clearInterval(timer);
-      timer = setInterval(function() { goTo(cur + 1); }, 6000);
+    },400);
+    setTimeout(function(){
+      var arc=document.querySelector('#panel-home .hring-arc');
+      if(arc){arc.style.transition='stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)';arc.style.strokeDashoffset='0';}
+    },500);
+    setTimeout(function(){
+      if(!window.IntersectionObserver){[].forEach.call(document.querySelectorAll('#panel-home .hpf'),function(el){el.classList.add('vis');});return;}
+      var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});},{threshold:0.08});
+      [].forEach.call(document.querySelectorAll('#panel-home .hpf'),function(el){io.observe(el);});
+    },200);
+    var cur=0,slides=document.querySelectorAll('#hcar .hsl'),dots=document.querySelectorAll('#hdots .hdot'),timer=null;
+    function goTo(n){
+      if(!slides.length)return;
+      slides[cur].classList.remove('on');slides[cur].classList.add('out');dots[cur].classList.remove('on');
+      var prev=cur;cur=((n%slides.length)+slides.length)%slides.length;
+      setTimeout(function(){slides[prev].classList.remove('out');},460);
+      slides[cur].classList.add('on');dots[cur].classList.add('on');
+      clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},6500);
     }
-    var bp = document.getElementById('hprev');
-    var bn = document.getElementById('hnext');
-    if (bp) bp.addEventListener('click', function() { goTo(cur - 1); });
-    if (bn) bn.addEventListener('click', function() { goTo(cur + 1); });
-    [].forEach.call(dots, function(d) {
-      d.addEventListener('click', function() { goTo(parseInt(d.getAttribute('data-i'), 10)); });
-    });
-    if (slides.length) timer = setInterval(function() { goTo(cur + 1); }, 6000);
+    var bp=document.getElementById('hprev'),bn=document.getElementById('hnext');
+    if(bp)bp.addEventListener('click',function(){goTo(cur-1);});
+    if(bn)bn.addEventListener('click',function(){goTo(cur+1);});
+    [].forEach.call(dots,function(d){d.addEventListener('click',function(){goTo(parseInt(d.getAttribute('data-i'),10));});});
+    if(slides.length)timer=setInterval(function(){goTo(cur+1);},6500);
   }
-
-  function checkAndInit() {
-    var p = document.getElementById('panel-home');
-    if (p && p.classList.contains('active') && !inited) {
-      inited = true;
-      runAnimations();
-    }
+  function check(){
+    var p=document.getElementById('panel-home');
+    if(p&&p.classList.contains('active')&&!inited){inited=true;runAll();}
   }
-
-  // Watch for panel activation
-  var mo = new MutationObserver(checkAndInit);
-  var target = document.getElementById('panel-home');
-  if (target) mo.observe(target, { attributes: true, attributeFilter: ['class'] });
-
-  // Also run now in case panel is already active (page load)
-  // Use a short delay to ensure DOM is ready
-  setTimeout(checkAndInit, 50);
-
+  new MutationObserver(check).observe(document.getElementById('panel-home'),{attributes:true,attributeFilter:['class']});
+  setTimeout(check,100);
 })();
+// ===== END HOMEPAGE =====
 
 
 function setCourse(v) { S.purpose.course = v; }
