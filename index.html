@@ -6256,6 +6256,8 @@ function switchTab(t) {
   if (t === 'myset') renderMySet();
   if (t === 'maker') updateLive();
 }
+const showTab = switchTab; // alias for homepage CTA buttons
+
 
 function setCourse(v) { S.purpose.course = v; }
 
