@@ -6256,7 +6256,7 @@ function switchTab(t) {
   if (t === 'myset') renderMySet();
   if (t === 'maker') updateLive();
 }
-const showTab = switchTab; // alias for homepage CTA buttons
+const showTab = switchTab;
 
 
 function setCourse(v) { S.purpose.course = v; }
@@ -6318,7 +6318,7 @@ function delQ(id) {
 function renderQs() {
   const container = document.getElementById('q-list');
   if (!container) return;
-  container.innerHTML = S.questions.map((q, i) => `,powerRelation:`resists`,gazeDirection:`up`,voiceAuthenticity:`direct`,systemsAddressed:[`anti-Blackness`,`white supremacy`,`democracy`,`labor exploitation`],audienceIdentity:{race:`white`,gender:`men`,class:`elite`,nationality:`American`},mediumFunction:`political`
+  container.innerHTML = S.questions.map((q, i) => `
     <div class="qcard">
       <div class="qcard-head">
         <span class="qnum">Q${i+1}</span>
@@ -24820,79 +24820,78 @@ if (SHEETS_URL) {
 }
 </script>
 
-<!-- ══ DATA ANALYSIS TAB ══ -->
+<!-- DATA ANALYSIS TAB -->
 <div class="tp" id="panel-analysis">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-.an-page{max-width:980px;margin:0 auto;padding:28px 20px;}
-.an-hero{background:#0f172a;border-radius:12px;padding:32px 28px;color:#fff;margin-bottom:20px;}
-.an-hero h1{font-size:clamp(20px,3vw,32px);font-weight:800;line-height:1.2;margin-bottom:8px;}
-.an-hero h1 em{color:#60a5fa;font-style:italic;}
-.an-hero p{font-size:12px;color:#94a3b8;max-width:600px;line-height:1.7;}
-.an-hstats{display:flex;flex-wrap:wrap;gap:2px;margin-top:18px;}
-.an-hs{background:rgba(255,255,255,.07);padding:10px 14px;flex:1;min-width:90px;border-radius:4px;}
-.an-hv{font-size:17px;font-weight:800;color:#60a5fa;line-height:1;}
-.an-hl{font-size:10px;color:#475569;margin-top:2px;}
-.an-ph{background:#1e293b;border-radius:10px;padding:20px 24px;margin-bottom:14px;}
-.an-pnum{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#475569;margin-bottom:4px;}
-.an-ph h2{font-size:clamp(15px,2vw,20px);font-weight:800;color:#fff;margin-bottom:4px;}
-.an-ph p{font-size:12px;color:#64748b;line-height:1.65;}
-.an-sec{background:#fff;border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.07);}
-.an-ey{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#94a3b8;margin-bottom:3px;}
-.an-st{font-size:clamp(14px,1.8vw,18px);font-weight:800;color:#0f172a;margin-bottom:3px;}
-.an-sd{font-size:12px;color:#64748b;line-height:1.7;margin-bottom:14px;}
-.an-srow{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:14px;}
-.an-sc{border:.5px solid #e2e8f0;border-radius:8px;padding:9px;}
-.an-sv{font-size:17px;font-weight:800;line-height:1.1;margin-bottom:2px;}
-.an-sl{font-size:10px;color:#64748b;line-height:1.4;}
-.an-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;}
-@media(max-width:560px){.an-2col{grid-template-columns:1fr;}}
-.an-cc{border:.5px solid #e2e8f0;border-radius:8px;padding:11px;}
-.an-ct{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:8px;}
-.an-cw{position:relative;width:100%;}
-.an-3box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px;}
-@media(max-width:600px){.an-3box{grid-template-columns:1fr;}}
-.an-bx{border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.7;}
-.an-bx h4{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
-.an-bd{background:#eff6ff;border-left:3px solid #2563eb;}.an-bd h4{color:#1e40af;}.an-bd p{color:#1e3a5f;}
-.an-bs{background:#fffbeb;border-left:3px solid #d97706;}.an-bs h4{color:#92400e;}.an-bs p{color:#78350f;}
-.an-ba{background:#f0fdf4;border-left:3px solid #16a34a;}.an-ba h4{color:#14532d;}.an-ba p{color:#064e3b;}
-.an-lg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:10px;color:#64748b;align-items:center;}
-.an-ld{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:2px;vertical-align:middle;}
-.an-tbl{width:100%;border-collapse:collapse;font-size:11px;}
-.an-tbl th{text-align:left;font-size:9px;font-weight:700;color:#64748b;padding:5px 6px;border-bottom:.5px solid #e2e8f0;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:#f8fafc;}
-.an-tbl td{padding:5px 6px;border-bottom:.5px solid #f1f5f9;color:#334155;}
-.an-badge{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;}
-.bsev{background:#fee2e2;color:#991b1b;}.bhi{background:#fef3c7;color:#92400e;}
-.bmod{background:#dbeafe;color:#1e40af;}.bexc{background:#dcfce7;color:#166534;}
-.bgd{background:#dbeafe;color:#1e40af;}.bmg{background:#fef3c7;color:#92400e;}.bpr{background:#fee2e2;color:#991b1b;}
-.an-dark{background:#0f172a;border-radius:10px;padding:20px;margin-bottom:14px;}
-.an-dark .an-ey{color:#475569;}.an-dark .an-st{color:#f1f5f9;}.an-dark .an-sd{color:#64748b;}
-.an-fi{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);border-radius:9px;padding:14px;margin-bottom:10px;border-left:4px solid transparent;}
-.an-ft{font-size:12px;font-weight:700;color:#f1f5f9;margin-bottom:5px;line-height:1.3;}
-.an-fb{font-size:11px;color:#64748b;line-height:1.7;margin-bottom:8px;}
-.an-fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
-@media(max-width:500px){.an-fr3{grid-template-columns:1fr;}}
-.an-fr{border-radius:6px;padding:8px 10px;font-size:10px;line-height:1.6;}
-.an-fr strong{display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
-.fr-sys{background:rgba(37,99,235,.12);}.fr-sys strong{color:#60a5fa;}.fr-sys p{color:#94a3b8;}
-.fr-sch{background:rgba(217,119,6,.12);}.fr-sch strong{color:#fbbf24;}.fr-sch p{color:#94a3b8;}
-.fr-tc{background:rgba(22,163,74,.12);}.fr-tc strong{color:#4ade80;}.fr-tc p{color:#94a3b8;}
-.an-ftags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px;}
-.an-ftag{font-size:9px;padding:1px 5px;border-radius:3px;background:rgba(255,255,255,.08);color:#94a3b8;font-weight:600;}
-.dp-pair{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.an-epist{font-size:10px;background:#fffbeb;color:#92400e;padding:2px 6px;border-radius:4px;margin:4px 0;display:inline-block;font-style:italic;}
-.an-qcbox{background:#1e293b;border-radius:9px;padding:16px;margin:14px 0;color:#f1f5f9;}
-.an-qcbox h3{font-size:12px;font-weight:700;color:#60a5fa;margin-bottom:6px;}
-.an-qcbox p{font-size:11px;line-height:1.8;color:#94a3b8;}
-.an-qcbox strong{color:#f1f5f9;}
+.an-page{max-width:980px;margin:0 auto;padding:28px 20px}
+.an-hero{background:#0f172a;border-radius:12px;padding:32px 28px;color:#fff;margin-bottom:20px}
+.an-hero h1{font-size:clamp(20px,3vw,32px);font-weight:800;line-height:1.2;margin-bottom:8px}
+.an-hero h1 em{color:#60a5fa;font-style:italic}
+.an-hero p{font-size:12px;color:#94a3b8;max-width:600px;line-height:1.7}
+.an-hstats{display:flex;flex-wrap:wrap;gap:2px;margin-top:18px}
+.an-hs{background:rgba(255,255,255,.07);padding:10px 14px;flex:1;min-width:90px;border-radius:4px}
+.an-hv{font-size:17px;font-weight:800;color:#60a5fa;line-height:1}
+.an-hl{font-size:10px;color:#475569;margin-top:2px}
+.an-ph{background:#1e293b;border-radius:10px;padding:20px 24px;margin-bottom:14px}
+.an-pnum{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#475569;margin-bottom:4px}
+.an-ph h2{font-size:clamp(15px,2vw,20px);font-weight:800;color:#fff;margin-bottom:4px}
+.an-ph p{font-size:12px;color:#64748b;line-height:1.65}
+.an-sec{background:#fff;border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.an-ey{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#94a3b8;margin-bottom:3px}
+.an-st{font-size:clamp(14px,1.8vw,18px);font-weight:800;color:#0f172a;margin-bottom:3px}
+.an-sd{font-size:12px;color:#64748b;line-height:1.7;margin-bottom:14px}
+.an-srow{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:14px}
+.an-sc{border:.5px solid #e2e8f0;border-radius:8px;padding:9px}
+.an-sv{font-size:17px;font-weight:800;line-height:1.1;margin-bottom:2px}
+.an-sl{font-size:10px;color:#64748b;line-height:1.4}
+.an-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+@media(max-width:560px){.an-2col{grid-template-columns:1fr}}
+.an-cc{border:.5px solid #e2e8f0;border-radius:8px;padding:11px}
+.an-ct{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:8px}
+.an-cw{position:relative;width:100%}
+.an-3box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}
+@media(max-width:600px){.an-3box{grid-template-columns:1fr}}
+.an-bx{border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.7}
+.an-bx h4{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.an-bd{background:#eff6ff;border-left:3px solid #2563eb}.an-bd h4{color:#1e40af}.an-bd p{color:#1e3a5f}
+.an-bs{background:#fffbeb;border-left:3px solid #d97706}.an-bs h4{color:#92400e}.an-bs p{color:#78350f}
+.an-ba{background:#f0fdf4;border-left:3px solid #16a34a}.an-ba h4{color:#14532d}.an-ba p{color:#064e3b}
+.an-lg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:10px;color:#64748b;align-items:center}
+.an-ld{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:2px;vertical-align:middle}
+.an-tbl{width:100%;border-collapse:collapse;font-size:11px}
+.an-tbl th{text-align:left;font-size:9px;font-weight:700;color:#64748b;padding:5px 6px;border-bottom:.5px solid #e2e8f0;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:#f8fafc}
+.an-tbl td{padding:5px 6px;border-bottom:.5px solid #f1f5f9;color:#334155}
+.an-badge{display:inline-block;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700}
+.bsev{background:#fee2e2;color:#991b1b}.bhi{background:#fef3c7;color:#92400e}
+.bmod{background:#dbeafe;color:#1e40af}.bexc{background:#dcfce7;color:#166534}
+.bgd{background:#dbeafe;color:#1e40af}.bmg{background:#fef3c7;color:#92400e}.bpr{background:#fee2e2;color:#991b1b}
+.an-dark{background:#0f172a;border-radius:10px;padding:20px;margin-bottom:14px}
+.an-dark .an-ey{color:#475569}.an-dark .an-st{color:#f1f5f9}.an-dark .an-sd{color:#64748b}
+.an-fi{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);border-radius:9px;padding:14px;margin-bottom:10px;border-left:4px solid transparent}
+.an-ft{font-size:12px;font-weight:700;color:#f1f5f9;margin-bottom:5px;line-height:1.3}
+.an-fb{font-size:11px;color:#64748b;line-height:1.7;margin-bottom:8px}
+.an-fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+@media(max-width:500px){.an-fr3{grid-template-columns:1fr}}
+.an-fr{border-radius:6px;padding:8px 10px;font-size:10px;line-height:1.6}
+.an-fr strong{display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.fr-sys{background:rgba(37,99,235,.12)}.fr-sys strong{color:#60a5fa}.fr-sys p{color:#94a3b8}
+.fr-sch{background:rgba(217,119,6,.12)}.fr-sch strong{color:#fbbf24}.fr-sch p{color:#94a3b8}
+.fr-tc{background:rgba(22,163,74,.12)}.fr-tc strong{color:#4ade80}.fr-tc p{color:#94a3b8}
+.an-ftags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.an-ftag{font-size:9px;padding:1px 5px;border-radius:3px;background:rgba(255,255,255,.08);color:#94a3b8;font-weight:600}
+.dp-pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.an-epist{font-size:10px;background:#fffbeb;color:#92400e;padding:2px 6px;border-radius:4px;margin:4px 0;display:inline-block;font-style:italic}
+.an-qcbox{background:#1e293b;border-radius:9px;padding:16px;margin:14px 0;color:#f1f5f9}
+.an-qcbox h3{font-size:12px;font-weight:700;color:#60a5fa;margin-bottom:6px}
+.an-qcbox p{font-size:11px;line-height:1.8;color:#94a3b8}
+.an-qcbox strong{color:#f1f5f9}
 </style>
 <div class="an-page">
-
 <div class="an-hero">
-  <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#60a5fa;margin-bottom:10px;font-weight:700;">Questioning Neutrality · Re:Source · Mott Haven, Bronx</div>
+  <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#60a5fa;margin-bottom:10px;font-weight:700">Questioning Neutrality &middot; Re:Source &middot; Mott Haven, Bronx</div>
   <h1>The test does not see<br><em>your students.</em></h1>
-  <p>702 student records across 12 Regents sittings from Bronx and Harlem classrooms, 2022-2026. Every chart is grounded in item-level data from Black and Brown students in Mott Haven taking the USH and GHG Regents as a graduation requirement.</p>
+  <p>702 student records across 12 Regents sittings, 2022-2026. Every chart is grounded in item-level data from Black and Brown students in Mott Haven taking USH and GHG as a graduation requirement.</p>
   <div class="an-hstats">
     <div class="an-hs"><div class="an-hv">702</div><div class="an-hl">student records</div></div>
     <div class="an-hs"><div class="an-hv">12</div><div class="an-hl">exam sittings</div></div>
@@ -24901,506 +24900,91 @@ if (SHEETS_URL) {
     <div class="an-hs"><div class="an-hv">~18 pts</div><div class="an-hl">gap vs state avg</div></div>
   </div>
 </div>
-
-<!-- PART I -->
 <div class="an-ph"><div class="an-pnum">Part I</div><h2>Is this a consistent exam sitting to sitting?</h2><p>Both exams fail this standard not because students change, but because the instrument does.</p></div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 1</div><div class="an-st">Pass rates, below-55 rates, and schema burden across all 12 sittings</div>
-  <div class="an-sd">August and January retake sittings shown in orange. Schema burden (dashed, right axis) measures the spread between easiest and hardest item on each sitting.</div>
-  <div class="an-srow">
-    <div class="an-sc"><div class="an-sv" style="color:#dc2626">35.1%</div><div class="an-sl">avg below-55, August</div></div>
-    <div class="an-sc"><div class="an-sv" style="color:#2563eb">10.7%</div><div class="an-sl">avg below-55, June</div></div>
-    <div class="an-sc"><div class="an-sv" style="color:#d97706">45.4</div><div class="an-sl">schema burden avg, Aug</div></div>
-    <div class="an-sc"><div class="an-sv" style="color:#16a34a">37.6</div><div class="an-sl">schema burden avg, June</div></div>
-  </div>
-  <div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>Pass 65+</span><span><span class="an-ld" style="background:#dc2626"></span>Below 55</span><span>Dashed = schema burden</span></div>
-  <div class="an-cw" style="height:250px"><canvas id="an_v1"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>Aug sittings avg 35.1% below-55 vs 10.7% for June. GHG Aug 2025: 11.1% pass, 63% below 55. Schema burden tracks with failure.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>19 students who sat GHG both June and August dropped from 55.3 to 47.7. The instrument changed; the students did not.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Mandate schema burden comparability. <strong>School:</strong> Report Aug/June as separate cohorts. <strong>Teacher:</strong> Name the harder instrument explicitly.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 2</div><div class="an-st">Score distributions by sitting -- IQR and median with 65-pt pass threshold</div>
-  <div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>June IQR</span><span><span class="an-ld" style="background:#d97706"></span>Aug/Jan IQR</span></div>
-  <div class="an-cw" style="height:260px"><canvas id="an_v2"></canvas></div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 3</div><div class="an-st">Item success rate stability across sittings (red = high SD, amber = moderate, green = stable)</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH item stability</div><div class="an-cw" style="height:180px"><canvas id="an_v3a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG item stability</div><div class="an-cw" style="height:180px"><canvas id="an_v3b"></canvas></div></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 4</div><div class="an-st">CivLit 34A vs 34B -- 66-point swing across GHG sittings</div>
-  <div class="an-cw" style="height:210px"><canvas id="an_v4"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>34B ranges 14.7% to 85.7% -- a 66-pt swing. 34A avg 47.3%, 34B avg 25.6%. An item with 66-pt variance is not measuring a stable competency.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>Students cannot prepare for something the exam itself does not reliably define. For Black and Brown students, democratic vocabulary is not neutral -- it carries the history of exclusion.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Equate CivLit items before release. <strong>School:</strong> Do not treat CivLit performance as reflecting stable civic knowledge. <strong>Teacher:</strong> Teach democratic vocabulary as a language with a history.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 5</div><div class="an-st">Near-miss students: % within 10 pts of passing, and avg pts from 65</div>
-  <div class="an-cw" style="height:230px"><canvas id="an_v5"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>USH Aug 2024: 89% of failing students within 10 pts of passing. Across sittings, near-miss students avg 4.3-7.0 pts from passing. They extract at 52-61% but contextualize at 29-36%.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>These students are not failing because they cannot think historically. They are 5-7 points from graduating. The gap has a name: historical contextualization. That skill is teachable.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Fund targeted near-miss intervention. <strong>School:</strong> Track near-miss rate as a key equity metric. <strong>Teacher:</strong> Contextualization using Re:Source high-DIF source sets is the direct intervention.</p></div>
-  </div>
-</div>
-
-<!-- PART II -->
+<div class="an-sec"><div class="an-ey">Viz 1</div><div class="an-st">Pass rates, below-55 rates, and schema burden across all 12 sittings</div><div class="an-srow"><div class="an-sc"><div class="an-sv" style="color:#dc2626">35.1%</div><div class="an-sl">avg below-55, August</div></div><div class="an-sc"><div class="an-sv" style="color:#2563eb">10.7%</div><div class="an-sl">avg below-55, June</div></div><div class="an-sc"><div class="an-sv" style="color:#d97706">45.4</div><div class="an-sl">schema burden avg, Aug</div></div><div class="an-sc"><div class="an-sv" style="color:#16a34a">37.6</div><div class="an-sl">schema burden avg, June</div></div></div><div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>Pass 65+</span><span><span class="an-ld" style="background:#dc2626"></span>Below 55</span><span>Dashed = schema burden</span></div><div class="an-cw" style="height:250px"><canvas id="an_v1"></canvas></div><div class="an-3box"><div class="an-bx an-bd"><h4>Data</h4><p>Aug sittings avg 35.1% below-55 vs 10.7% for June. GHG Aug 2025: 11.1% pass, 63% below 55.</p></div><div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>19 students who sat GHG both June and August dropped from 55.3 to 47.7. The instrument changed; the students did not.</p></div><div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Mandate schema burden comparability. <strong>School:</strong> Report Aug/June as separate cohorts. <strong>Teacher:</strong> Name the harder instrument explicitly.</p></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 2</div><div class="an-st">Score distributions by sitting -- IQR and median with 65-pt pass threshold</div><div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>June IQR</span><span><span class="an-ld" style="background:#d97706"></span>Aug/Jan IQR</span></div><div class="an-cw" style="height:260px"><canvas id="an_v2"></canvas></div></div>
+<div class="an-sec"><div class="an-ey">Viz 3</div><div class="an-st">Item success rate stability -- red=high SD, amber=moderate, green=stable</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH item stability</div><div class="an-cw" style="height:180px"><canvas id="an_v3a"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG item stability</div><div class="an-cw" style="height:180px"><canvas id="an_v3b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 4</div><div class="an-st">CivLit 34A vs 34B -- 66-point swing across GHG sittings</div><div class="an-cw" style="height:210px"><canvas id="an_v4"></canvas></div><div class="an-3box"><div class="an-bx an-bd"><h4>Data</h4><p>34B ranges 14.7% to 85.7% -- a 66-pt swing. Not measuring stable civic competency.</p></div><div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>Democratic vocabulary carries the history of exclusion it has organized. Students cannot prepare for something the exam itself cannot define reliably.</p></div><div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Equate CivLit items before release. <strong>School:</strong> Do not treat CivLit as stable civic knowledge. <strong>Teacher:</strong> Teach democratic vocabulary as a language with a history.</p></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 5</div><div class="an-st">Near-miss students: % within 10 pts of passing and avg pts from 65</div><div class="an-cw" style="height:230px"><canvas id="an_v5"></canvas></div><div class="an-3box"><div class="an-bx an-bd"><h4>Data</h4><p>USH Aug 2024: 89% of failing students within 10 pts of passing. Near-miss students extract at 52-61% but contextualize at 29-36%.</p></div><div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>These students are 5-7 points from graduating. The gap has a name: historical contextualization. That skill is teachable.</p></div><div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Fund near-miss intervention. <strong>School:</strong> Track near-miss rate as key equity metric. <strong>Teacher:</strong> Re:Source source sets around high-DIF CRQ topics is the direct intervention.</p></div></div></div>
 <div class="an-ph"><div class="an-pnum">Part II</div><h2>Do Mott Haven students have an equitable experience relative to the state?</h2><p>Equity requires comparable outcomes AND comparable access to the knowledge the exam assumes.</p></div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 6</div><div class="an-st">School vs Bronx district vs state pass rates, and neutrality challenge by voice type</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">Pass rate comparison (June sittings)</div><div class="an-cw" style="height:190px"><canvas id="an_v6a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">Neutrality challenge by voice type (Re:Source, n=781)</div><div class="an-cw" style="height:190px"><canvas id="an_v6b"></canvas></div></div>
-  </div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>School June avg: USH 69.9%, GHG 69.7%. State: USH 76%, GHG 73%. Bronx district: USH 58%, GHG 61%. The gap between this school and the state is approximately 15-18 pts.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>This gap is not an ability gap -- it is the quantified distance between the implied reader of the exam and the actual reader. State averages are pulled by districts whose students more closely match the exam assumptions.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Disaggregate state pass rates by school demographic context. <strong>School:</strong> Use Re:Source as counter-archive in curriculum planning. <strong>Teacher:</strong> Name the equity gap explicitly.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 7</div><div class="an-st">DIF gap by source voice type and near-miss vs passing rate by source type</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">Avg DIF gap by source voice type (pts)</div><div class="an-cw" style="height:190px"><canvas id="an_v7a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">Near-miss vs passing rate by source type</div><div class="an-cw" style="height:190px"><canvas id="an_v7b"></canvas></div></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 8</div><div class="an-st">Source characteristics: era and speaker identity vs near-miss performance</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">Near-miss correct rate by era of source</div><div class="an-cw" style="height:180px"><canvas id="an_v8a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">Near-miss vs passing rate by speaker identity</div><div class="an-cw" style="height:180px"><canvas id="an_v8b"></canvas></div></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 9</div><div class="an-st">Schema demand vs success -- the equity gradient (USH 31.9-pt spread, GHG 19.4-pt spread)</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH schema demand gradient</div><div class="an-cw" style="height:180px"><canvas id="an_v9a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG schema demand gradient</div><div class="an-cw" style="height:180px"><canvas id="an_v9b"></canvas></div></div>
-  </div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>USH: LOW items succeed at 63.1%, VERY HIGH at 31.2% -- a 31.9-point spread. GHG gradient is shallower (19.4 pts), confirming GHG rewards argument over canonical recall more than USH does.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>High-schema items are items where students rich in community historical knowledge do not activate the specific canonical frame the exam rewards. The 31-pt spread is not ability vs no ability -- it is whose prior knowledge matches.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Schema demand should be a documented item specification. <strong>School:</strong> Curriculum must name what canonical knowledge each unit builds. <strong>Teacher:</strong> Re:Source schema burden coding makes this visible before you select a source.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 10</div><div class="an-st">Extraction vs historical context -- USH (24.9-pt gap) and GHG (7.3-pt gap)</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH: extraction vs context by score band</div><div class="an-cw" style="height:190px"><canvas id="an_v10a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG: extraction vs context by score band</div><div class="an-cw" style="height:190px"><canvas id="an_v10b"></canvas></div></div>
-  </div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>USH near-miss: extract at 57%, contextualize at 31% -- 26-pt gap. GHG shows 7.3-pt gap -- because GHG rewards argumentation over canonical recall.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>These students have the reading skill. What they lack is the specific American historical canon USH extended items presuppose. Students who thrive in GHG by reading closely now meet an exam that demands prior canonical knowledge.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> CRQ items should make required contextual knowledge explicit. <strong>School:</strong> GHG-to-USH sequence must include explicit periodization instruction. <strong>Teacher:</strong> Re:Source source sets around high-DIF CRQ topics are the direct intervention.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 11</div><div class="an-st">Open response vs binary CR equity ratios -- near-miss students perform better on essays</div>
-  <div class="an-lg"><span><span class="an-ld" style="background:#dc2626"></span>Binary CR equity</span><span><span class="an-ld" style="background:#16a34a"></span>Essay equity</span></div>
-  <div class="an-cw" style="height:220px"><canvas id="an_v11"></canvas></div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 12</div><div class="an-st">Historical thinking skill success rates -- USH has a 27.5-pt gap, GHG only 7.4 pts</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH skill family success rates</div><div class="an-cw" style="height:180px"><canvas id="an_v12a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG skill family success rates</div><div class="an-cw" style="height:180px"><canvas id="an_v12b"></canvas></div></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 13</div><div class="an-st">DIF severity -- average and maximum gaps by exam sitting</div>
-  <div class="an-cw" style="height:230px"><canvas id="an_v13"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>GHG Jun 2025: 42.9% of items flagged. GHG Aug 2024 max gap: 80 pts -- near-miss 10%, passing 90% on the same item. 6 SEVERE DIF items identified across all sittings.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>DIF measures which students have the cultural schema the item presupposes. A near-miss student who fails CivLit34B is not failing because they cannot reason civically -- the item assumes a specific democratic vocabulary that was never named as curriculum.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Publish DIF statistics for all released items. <strong>School:</strong> Use DIF patterns in instructional data review. <strong>Teacher:</strong> Use high-DIF items as entry points for explicit schema building.</p></div>
-  </div>
-</div>
-
-<!-- PART III -->
+<div class="an-sec"><div class="an-ey">Viz 6</div><div class="an-st">School vs Bronx district vs state pass rates</div><div class="an-2col"><div class="an-cc"><div class="an-ct">Pass rate comparison (June sittings)</div><div class="an-cw" style="height:190px"><canvas id="an_v6a"></canvas></div></div><div class="an-cc"><div class="an-ct">Neutrality challenge by voice type (Re:Source n=781)</div><div class="an-cw" style="height:190px"><canvas id="an_v6b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 7</div><div class="an-st">DIF gap by source voice type and near-miss vs passing by source type</div><div class="an-2col"><div class="an-cc"><div class="an-ct">Avg DIF gap by voice type (pts)</div><div class="an-cw" style="height:190px"><canvas id="an_v7a"></canvas></div></div><div class="an-cc"><div class="an-ct">Near-miss vs passing by source type</div><div class="an-cw" style="height:190px"><canvas id="an_v7b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 8</div><div class="an-st">Source era and speaker identity vs near-miss performance</div><div class="an-2col"><div class="an-cc"><div class="an-ct">Near-miss correct rate by era</div><div class="an-cw" style="height:180px"><canvas id="an_v8a"></canvas></div></div><div class="an-cc"><div class="an-ct">Near-miss vs passing by speaker identity</div><div class="an-cw" style="height:180px"><canvas id="an_v8b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 9</div><div class="an-st">Schema demand vs success -- USH 31.9-pt spread, GHG 19.4-pt spread</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH schema demand gradient</div><div class="an-cw" style="height:180px"><canvas id="an_v9a"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG schema demand gradient</div><div class="an-cw" style="height:180px"><canvas id="an_v9b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 10</div><div class="an-st">Extraction vs historical context -- USH 24.9-pt gap, GHG 7.3-pt gap</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH: extraction vs context by score band</div><div class="an-cw" style="height:190px"><canvas id="an_v10a"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG: extraction vs context by score band</div><div class="an-cw" style="height:190px"><canvas id="an_v10b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 11</div><div class="an-st">Open response vs binary CR equity ratios</div><div class="an-lg"><span><span class="an-ld" style="background:#dc2626"></span>Binary CR equity</span><span><span class="an-ld" style="background:#16a34a"></span>Essay equity</span></div><div class="an-cw" style="height:220px"><canvas id="an_v11"></canvas></div></div>
+<div class="an-sec"><div class="an-ey">Viz 12</div><div class="an-st">HTS skill success rates -- USH 27.5-pt gap, GHG 7.4-pt gap</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH skill family success rates</div><div class="an-cw" style="height:180px"><canvas id="an_v12a"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG skill family success rates</div><div class="an-cw" style="height:180px"><canvas id="an_v12b"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 13</div><div class="an-st">DIF severity -- average and maximum gaps by exam sitting</div><div class="an-cw" style="height:230px"><canvas id="an_v13"></canvas></div></div>
 <div class="an-ph"><div class="an-pnum">Part III</div><h2>Distractor analysis: what kind of knowing does each wrong answer represent?</h2><p>When near-miss and passing students select different answers, they are demonstrating different epistemological positions.</p></div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 14</div><div class="an-st">Near-miss vs passing choice distributions -- most epistemically significant items</div>
-  <div class="an-sd">Left = near-miss (55-64), right = passing (65-84). Highlighted slice = dominant choice. Entropy shown below each donut.</div>
-  <div id="an_donut_grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;"></div>
-  <div class="an-3box" style="margin-top:14px;">
-    <div class="an-bx an-bd"><h4>Data</h4><p>43 item-sitting pairs show near-miss and passing students selecting different dominant answers. Near-miss entropy avg 1.47 vs passing 1.27. Near-miss students are more certain -- and more wrong. Their certainty is curriculum formation.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>QuantCrit frames this as measurement that encodes dominant epistemologies as correct. The wrong answer is not cognitive error -- it is evidence of a different but valid historical frame that the exam key does not recognize as authoritative.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Release distractor distribution data by school demographic context. <strong>School:</strong> Post-exam analysis should examine which answer was selected, not just which items were missed. <strong>Teacher:</strong> Teach what makes the exam answer correct AND why the student answer is historically defensible.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 15</div><div class="an-st">Epistemic framework comparison -- what interpretive tradition does the near-miss dominant choice reflect?</div>
-  <div class="an-cw" style="height:240px"><canvas id="an_v15"></canvas></div>
-</div>
-
-<!-- PART IV -->
-<div class="an-ph"><div class="an-pnum">Part IV</div><h2>Item Response Theory analysis</h2><p>IRT reveals not just which items discriminate but what they discriminate on -- historical thinking or cultural schema access.</p></div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 16</div><div class="an-st">IRT: discrimination vs difficulty -- the essay is the best psychometric item on both exams</div>
-  <div class="an-lg"><span><span class="an-ld" style="background:#7c3aed"></span>Essay/Ext CRQ</span><span><span class="an-ld" style="background:#2563eb"></span>Binary CR</span><span><span class="an-ld" style="background:#d97706"></span>Civic Lit</span></div>
-  <div class="an-cw" style="height:270px"><canvas id="an_v16"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>USH Essay (a=1.47, rpbi=0.65) and GHG P3 (a=1.11, rpbi=0.55) are the highest-discrimination items on both exams. USH CR33 has a=0.25 -- near-zero, providing almost no information about historical thinking ability.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>Items doing the most sorting work on graduation are often the least valid measures of historical thinking. CR33 near-zero discrimination means it is measuring schema access, not skill. Students who pass it are not more capable -- they are more culturally proximate to what it assumes.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Remove items with a under 0.4 and rpbi under 0.2. <strong>School:</strong> IRT grading should be part of annual data review. <strong>Teacher:</strong> Essay instruction has the best instructional return of any item type on either exam.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 17</div><div class="an-st">Item Characteristic Curves -- steep ICC = high discrimination, flat = culturally loaded</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH Essay (a=1.47, Excellent)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_essay"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">USH CRQ30 (a=1.05)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_crq30"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">USH CR33 (a=0.25, Poor -- near-flat)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_cr33"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG P3 Essay (a=1.11, Excellent)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_p3"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG CivLit34B (a=0.83, unstable)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_34b"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG CR31 (a=0.99, Good)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_cr31"></canvas></div></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 18</div><div class="an-st">Test Information Function -- both exams peak below the pass threshold</div>
-  <div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>USH TIF (peaks theta=-1.0)</span><span><span class="an-ld" style="background:#16a34a"></span>GHG TIF (peaks theta=-0.6)</span><span style="font-size:10px;color:#94a3b8;">Pass threshold ≈ theta=0</span></div>
-  <div class="an-cw" style="height:240px"><canvas id="an_v18"></canvas></div>
-  <div class="an-3box">
-    <div class="an-bx an-bd"><h4>Data</h4><p>USH TIF peaks at theta=-1.0; GHG at theta=-0.6. The pass threshold sits at approximately theta=0. Both exams are significantly more informative below passing than above it. They are gatekeeping instruments, not learning measurement instruments.</p></div>
-    <div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>The exam is sharpest exactly where these students are. Every DIF-flagged item, every schema-loaded question, every distractor divergence -- these happen with maximum measurement consequence for students at theta -0.5 to 0. These students are not on the margins of the exam. They are at its center.</p></div>
-    <div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Publish TIF distributions. An exam whose information peaks at failure should not be a graduation requirement without equity review. <strong>School:</strong> Near-miss band support is the highest-leverage school-level intervention. <strong>Teacher:</strong> Your students are where the exam is most precise.</p></div>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 19</div><div class="an-st">Full IRT parameter table -- all 17 items graded on psychometric quality</div>
-  <div style="overflow-x:auto">
-    <table class="an-tbl"><thead><tr>
-      <th>Item</th><th>Subj</th><th>Type</th><th>Facility</th><th>a (discrim)</th><th>b (diff)</th><th>rpbi</th><th>HTS</th><th>Schema</th><th>Voice</th><th>Grade</th>
-    </tr></thead><tbody id="an_irt_tbody"></tbody></table>
-  </div>
-</div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 20</div><div class="an-st">Facility vs discrimination and rpbi by item type</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">Facility (% correct) vs discrimination (a)</div><div class="an-cw" style="height:190px"><canvas id="an_v20a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">Point-biserial correlation (rpbi) by item type</div><div class="an-cw" style="height:190px"><canvas id="an_v20b"></canvas></div></div>
-  </div>
-</div>
-
-<!-- PART V -->
+<div class="an-sec"><div class="an-ey">Viz 14</div><div class="an-st">Near-miss vs passing choice distributions</div><div id="an_donut_grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"></div></div>
+<div class="an-sec"><div class="an-ey">Viz 15</div><div class="an-st">Epistemic framework comparison</div><div class="an-cw" style="height:240px"><canvas id="an_v15"></canvas></div></div>
+<div class="an-ph"><div class="an-pnum">Part IV</div><h2>Item Response Theory analysis</h2><p>IRT reveals not just which items discriminate but what they discriminate on.</p></div>
+<div class="an-sec"><div class="an-ey">Viz 16</div><div class="an-st">IRT: discrimination vs difficulty -- essays are the best psychometric items</div><div class="an-lg"><span><span class="an-ld" style="background:#7c3aed"></span>Essay/Ext CRQ</span><span><span class="an-ld" style="background:#2563eb"></span>Binary CR</span><span><span class="an-ld" style="background:#d97706"></span>Civic Lit</span></div><div class="an-cw" style="height:270px"><canvas id="an_v16"></canvas></div><div class="an-3box"><div class="an-bx an-bd"><h4>Data</h4><p>USH Essay a=1.47, rpbi=0.65. GHG P3 a=1.11, rpbi=0.55. USH CR33 a=0.25 -- near-zero discrimination.</p></div><div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>Items doing the most sorting work on graduation are often the least valid measures of historical thinking. CR33 measures schema access, not skill.</p></div><div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Remove items with a under 0.4 and rpbi under 0.2. <strong>School:</strong> IRT grading as part of data review. <strong>Teacher:</strong> Essay instruction has the best instructional return.</p></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 17</div><div class="an-st">Item Characteristic Curves -- steep=high discrimination, flat=culturally loaded</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH Essay (a=1.47, Excellent)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_essay"></canvas></div></div><div class="an-cc"><div class="an-ct">USH CRQ30 (a=1.05)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_crq30"></canvas></div></div><div class="an-cc"><div class="an-ct">USH CR33 (a=0.25, Poor)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_cr33"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG P3 Essay (a=1.11)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_p3"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG CivLit34B (a=0.83)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_34b"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG CR31 (a=0.99)</div><div class="an-cw" style="height:140px"><canvas id="an_icc_cr31"></canvas></div></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 18</div><div class="an-st">Test Information Function -- both exams peak BELOW the pass threshold</div><div class="an-lg"><span><span class="an-ld" style="background:#2563eb"></span>USH (peaks theta=-1.0)</span><span><span class="an-ld" style="background:#16a34a"></span>GHG (peaks theta=-0.6)</span></div><div class="an-cw" style="height:240px"><canvas id="an_v18"></canvas></div><div class="an-3box"><div class="an-bx an-bd"><h4>Data</h4><p>Both exams are more informative below passing than above. They are gatekeeping instruments, not learning measurement instruments.</p></div><div class="an-bx an-bs"><h4>For Mott Haven students</h4><p>The exam is sharpest exactly where these students are. They are not on the margins of the exam. They are at its center.</p></div><div class="an-bx an-ba"><h4>What should change</h4><p><strong>System:</strong> Publish TIF distributions. <strong>School:</strong> Near-miss band support is the highest-leverage intervention. <strong>Teacher:</strong> Your students are where the exam is most precise.</p></div></div></div>
+<div class="an-sec"><div class="an-ey">Viz 19</div><div class="an-st">Full IRT parameter table -- all 17 items</div><div style="overflow-x:auto"><table class="an-tbl"><thead><tr><th>Item</th><th>Subj</th><th>Type</th><th>Facility</th><th>a</th><th>b</th><th>rpbi</th><th>HTS</th><th>Schema</th><th>Voice</th><th>Grade</th></tr></thead><tbody id="an_irt_tbody"></tbody></table></div></div>
+<div class="an-sec"><div class="an-ey">Viz 20</div><div class="an-st">Facility vs discrimination and rpbi by item type</div><div class="an-2col"><div class="an-cc"><div class="an-ct">Facility vs discrimination (a)</div><div class="an-cw" style="height:190px"><canvas id="an_v20a"></canvas></div></div><div class="an-cc"><div class="an-ct">rpbi by item type</div><div class="an-cw" style="height:190px"><canvas id="an_v20b"></canvas></div></div></div></div>
 <div class="an-ph"><div class="an-pnum">Part V</div><h2>Teaching critical consciousness and graduation access simultaneously</h2><p>The data points toward a third path: teach the canon as a tool, not a truth.</p></div>
-
-<div class="an-sec">
-  <div class="an-ey">Viz 21</div><div class="an-st">Near-miss intervention: the contextualization gap, USH and GHG</div>
-  <div class="an-2col">
-    <div class="an-cc"><div class="an-ct">USH: extraction vs context gap</div><div class="an-cw" style="height:180px"><canvas id="an_v21a"></canvas></div></div>
-    <div class="an-cc"><div class="an-ct">GHG: extraction vs context gap</div><div class="an-cw" style="height:180px"><canvas id="an_v21b"></canvas></div></div>
-  </div>
-  <div class="an-qcbox">
-    <h3>The third path</h3>
-    <p><strong>Teach the canon as a tool, not a truth.</strong> Name it as one interpretive tradition among many, practice it for the exam, then teach the counter-narrative alongside it through Re:Source. Students who can hold both frames are better positioned to identify which one the exam is asking for and deploy it strategically without their critical consciousness being colonized by it.<br><br><strong>The distractor is a curriculum audit.</strong> When 70% of near-miss students converge on the same wrong answer with high confidence, that is not confusion -- it is evidence that the curriculum formed them toward one frame. The pedagogical move: make the exam frame visible as a choice.<br><br><strong>Graduation is the floor. Critical consciousness is the ceiling.</strong> These are not in conflict. The essay ICC proves it: the most psychometrically valid item on both exams is also the most equitable. It rewards argument -- and argument is the same skill that builds critical consciousness.</p>
-  </div>
+<div class="an-sec"><div class="an-ey">Viz 21</div><div class="an-st">Near-miss intervention: the contextualization gap</div><div class="an-2col"><div class="an-cc"><div class="an-ct">USH: extraction vs context</div><div class="an-cw" style="height:180px"><canvas id="an_v21a"></canvas></div></div><div class="an-cc"><div class="an-ct">GHG: extraction vs context</div><div class="an-cw" style="height:180px"><canvas id="an_v21b"></canvas></div></div></div><div class="an-qcbox"><h3>The third path</h3><p><strong>Teach the canon as a tool, not a truth.</strong> Name it as one interpretive tradition among many, practice it for the exam, then teach the counter-narrative alongside it through Re:Source. Students who can hold both frames are better positioned to identify which one the exam is asking for and deploy it strategically without their critical consciousness being colonized by it.<br><br><strong>The distractor is a curriculum audit.</strong> When 70% of near-miss students converge on the same wrong answer with high confidence, that is not confusion -- it is evidence that the curriculum formed them toward one frame.<br><br><strong>Graduation is the floor. Critical consciousness is the ceiling.</strong> The essay ICC proves it: the most psychometrically valid item on both exams is also the most equitable.</p></div></div>
+<div class="an-dark"><div class="an-ey">Synthesis</div><div class="an-st">Top 10 findings</div><div class="an-sd">Synthesized across all 21 visualizations, 702 student records, 12 sittings.</div><div id="an_findings_list"></div></div>
 </div>
-
-<div class="an-dark">
-  <div class="an-ey">Synthesis</div>
-  <div class="an-st">Top 10 findings</div>
-  <div class="an-sd">Synthesized across all 21 visualizations, 702 student records, 12 sittings, IRT, DIF, distractor, HTS, schema demand, voice type, and QuantCrit analysis.</div>
-  <div id="an_findings_list"></div>
-</div>
-
-</div><!-- /an-page -->
-
 <script>
 (function(){
 var D={"results": [{"exam": "USH June 2024", "subject": "USH", "session": "June", "n": 87, "mean": 68.2, "median": 69.0, "sd": 10.9, "pass": 65.5, "mastery": 5.7, "b55": 11.5, "nm": 23.0, "avg_cr": 74.2, "avg_es": 53.0, "cr_eq": 72.7, "es_eq": 78.0, "openness": 5.3, "ext_ctx": 31.5, "schema": 44.9, "q1": 61.0, "q3": 76.0, "min": 43, "max": 89}, {"exam": "USH Aug 2024", "subject": "USH", "session": "Aug/Jan", "n": 12, "mean": 61.1, "median": 60.5, "sd": 5.1, "pass": 25.0, "mastery": 0.0, "b55": 8.3, "nm": 66.7, "avg_cr": 62.5, "avg_es": 44.2, "cr_eq": 72.3, "es_eq": 68.4, "openness": -3.9, "ext_ctx": 33.3, "schema": 41.6, "q1": 58.8, "q3": 62.5, "min": 52, "max": 70}, {"exam": "USH Jan 2025", "subject": "USH", "session": "Aug/Jan", "n": 6, "mean": 56.7, "median": 56.0, "sd": 3.6, "pass": 0.0, "mastery": 0.0, "b55": 33.3, "nm": 66.7, "avg_cr": 44.4, "avg_es": 38.3, "cr_eq": null, "es_eq": null, "openness": null, "ext_ctx": 9.4, "schema": 66.7, "q1": 54.2, "q3": 57.8, "min": 53, "max": 63}, {"exam": "USH June 2025", "subject": "USH", "session": "June", "n": 105, "mean": 70.1, "median": 73.0, "sd": 10.1, "pass": 74.3, "mastery": 3.8, "b55": 7.6, "nm": 18.1, "avg_cr": 68.0, "avg_es": 55.5, "cr_eq": 78.2, "es_eq": 75.9, "openness": -2.3, "ext_ctx": 27.8, "schema": 22.9, "q1": 64.0, "q3": 77.0, "min": 39, "max": 93}, {"exam": "USH Aug 2025", "subject": "USH", "session": "Aug/Jan", "n": 13, "mean": 55.2, "median": 55.0, "sd": 9.4, "pass": 15.4, "mastery": 0.0, "b55": 30.8, "nm": 53.8, "avg_cr": 42.3, "avg_es": 47.7, "cr_eq": 157.1, "es_eq": 57.1, "openness": -100.0, "ext_ctx": 22.3, "schema": 53.8, "q1": 54.0, "q3": 60.0, "min": 31, "max": 67}, {"exam": "Global II Jan 2024", "subject": "GHG", "session": "Aug/Jan", "n": 7, "mean": 62.7, "median": 70.0, "sd": 16.1, "pass": 71.4, "mastery": 0.0, "b55": 28.6, "nm": 0.0, "avg_cr": 62.8, "avg_es": 70.9, "cr_eq": null, "es_eq": null, "openness": null, "ext_ctx": null, "schema": 57.1, "q1": 59.0, "q3": 72.5, "min": 32, "max": 74}, {"exam": "Global II Jun 2024", "subject": "GHG", "session": "June", "n": 106, "mean": 66.9, "median": 67.5, "sd": 11.6, "pass": 60.4, "mastery": 3.8, "b55": 17.0, "nm": 22.6, "avg_cr": 57.9, "avg_es": 42.1, "cr_eq": 61.0, "es_eq": 74.2, "openness": 13.2, "ext_ctx": null, "schema": 45.3, "q1": 58.2, "q3": 76.0, "min": 40, "max": 96}, {"exam": "Global II Aug 2024", "subject": "GHG", "session": "Aug/Jan", "n": 34, "mean": 58.3, "median": 57.5, "sd": 12.0, "pass": 32.4, "mastery": 2.9, "b55": 38.2, "nm": 29.4, "avg_cr": 38.8, "avg_es": 46.7, "cr_eq": 57.1, "es_eq": 82.3, "openness": 25.2, "ext_ctx": null, "schema": 67.6, "q1": 50.2, "q3": 65.8, "min": 31, "max": 90}, {"exam": "Global II Jan 2025", "subject": "GHG", "session": "Aug/Jan", "n": 2, "mean": 59.5, "median": 59.5, "sd": 10.6, "pass": 50.0, "mastery": 0.0, "b55": 50.0, "nm": 0.0, "avg_cr": 50.0, "avg_es": 51.7, "cr_eq": null, "es_eq": null, "openness": null, "ext_ctx": null, "schema": 100.0, "q1": 55.8, "q3": 63.2, "min": 52, "max": 67}, {"exam": "Global II June 2025", "subject": "GHG", "session": "June", "n": 205, "mean": 73.2, "median": 75.0, "sd": 11.2, "pass": 79.0, "mastery": 12.2, "b55": 6.8, "nm": 14.1, "avg_cr": 64.6, "avg_es": 53.5, "cr_eq": 55.2, "es_eq": 40.2, "openness": -15.0, "ext_ctx": null, "schema": 37.1, "q1": 66.0, "q3": 81.0, "min": 38, "max": 96}, {"exam": "Global II Aug 2025", "subject": "GHG", "session": "Aug/Jan", "n": 27, "mean": 49.5, "median": 52.0, "sd": 14.2, "pass": 11.1, "mastery": 0.0, "b55": 63.0, "nm": 25.9, "avg_cr": 11.8, "avg_es": 22.5, "cr_eq": 60.1, "es_eq": 35.0, "openness": -25.1, "ext_ctx": null, "schema": 18.5, "q1": 37.0, "q3": 59.0, "min": 27, "max": 78}, {"exam": "Global II Jan 2026", "subject": "GHG", "session": "Aug/Jan", "n": 98, "mean": 59.2, "median": 60.0, "sd": 12.1, "pass": 36.7, "mastery": 0.0, "b55": 33.7, "nm": 29.6, "avg_cr": 40.8, "avg_es": 32.1, "cr_eq": 78.1, "es_eq": 69.5, "openness": -8.6, "ext_ctx": null, "schema": 48.0, "q1": 51.0, "q3": 69.0, "min": 29, "max": 83}], "consistency": {"USH": {"CRQ29": {"rates": [48.5, 31.7, 33.3, 38.5, 23.1], "mean": 35.0, "sd": 8.4, "range": 25.4, "min": 23.1, "max": 48.5}, "CRQ30": {"rates": [36.8, 26.7, 36.7, 41.9, 16.9], "mean": 31.8, "sd": 8.9, "range": 25.0, "min": 16.9, "max": 41.9}, "CR31": {"rates": [83.9, 41.7, 50.0, 58.1, 38.5], "mean": 54.4, "sd": 16.2, "range": 45.4, "min": 38.5, "max": 83.9}, "CR32": {"rates": [89.7, 83.3, 33.3, 62.9, 69.2], "mean": 67.7, "sd": 19.7, "range": 56.4, "min": 33.3, "max": 89.7}, "CR33": {"rates": [70.1, 66.7, 50.0, 63.8, 46.2], "mean": 59.4, "sd": 9.5, "range": 23.9, "min": 46.2, "max": 70.1}, "CR34": {"rates": [82.8, 50.0, 66.7, 65.7, 46.2], "mean": 62.3, "sd": 13.1, "range": 36.6, "min": 46.2, "max": 82.8}, "CR35": {"rates": [73.6, 58.3, 0.0, 81.0, 38.5], "mean": 50.3, "sd": 29.0, "range": 81.0, "min": 0.0, "max": 81.0}, "CR36": {"rates": [44.8, 75.0, 66.7, 76.2, 15.4], "mean": 55.6, "sd": 23.1, "range": 60.8, "min": 15.4, "max": 76.2}, "Essay": {"rates": [53.0, 44.2, 38.3, 55.5, 47.7], "mean": 47.7, "sd": 6.2, "range": 17.2, "min": 38.3, "max": 55.5}}, "GHG": {"CR29": {"rates": [28.6, 34.9, 11.8, 72.2, 18.5, 28.6], "mean": 32.4, "sd": 19.3, "range": 60.4, "min": 11.8, "max": 72.2}, "CR30": {"rates": [57.1, 73.6, 44.1, 53.2, 3.7, 15.3], "mean": 41.2, "sd": 24.3, "range": 69.9, "min": 3.7, "max": 73.6}, "CR31": {"rates": [71.4, 60.4, 29.4, 67.8, 3.7, 56.1], "mean": 48.1, "sd": 24.0, "range": 67.7, "min": 3.7, "max": 71.4}, "CR32": {"rates": [71.4, 40.6, 29.4, 46.3, 22.2, 40.8], "mean": 41.8, "sd": 15.5, "range": 49.2, "min": 22.2, "max": 71.4}, "CR33": {"rates": [85.7, 80.2, 79.4, 83.4, 11.1, 63.3], "mean": 67.2, "sd": 26.1, "range": 74.6, "min": 11.1, "max": 85.7}, "CivLit34A": {"rates": [85.7, 57.5, 79.4, 61.5, 18.5, 19.4], "mean": 53.7, "sd": 26.4, "range": 67.2, "min": 18.5, "max": 85.7}, "CivLit34B": {"rates": [85.7, 19.8, 14.7, 40.0, 14.8, 38.8], "mean": 35.6, "sd": 24.7, "range": 71.0, "min": 14.7, "max": 85.7}, "P3Essay": {"rates": [41.4, 49.0, 45.9, 59.1, 34.1, 38.0], "mean": 44.6, "sd": 8.1, "range": 25.0, "min": 34.1, "max": 59.1}}}, "state_comparison": {"note": "NYS statewide averages from NYSED public reporting. School data from this dataset.", "ush": {"state_pass_pct": [74, 78, 76, 79], "school_pass_pct": [65.5, 74.3], "state_mean": [71, 73, 72, 74], "school_mean": [68.2, 70.1], "years": ["2024", "2024Aug", "2025", "2025Aug"], "june_labels": ["Jun 24", "Jun 25"]}, "ghg": {"state_pass_pct": [71, 73, 75, 73, 74, 71], "school_pass_pct": [60.4, 79.0], "state_mean": [68, 70, 71, 69, 71, 68], "school_mean": [66.9, 73.2], "june_labels": ["Jun 24", "Jun 25"]}, "bronx_context": {"bronx_ush_pass_approx": 58, "bronx_ghg_pass_approx": 61, "state_ush_pass_approx": 76, "state_ghg_pass_approx": 73, "school_ush_june_avg": 69.9, "school_ghg_june_avg": 69.7}}, "dif": [{"exam": "USH June 2024", "subject": "USH", "item": "CRQ29", "overall": 48.5, "b55": 32.0, "nm": 40.0, "ps": 51.9, "ms": 80.0, "gap": 11.9, "sev": "None"}, {"exam": "USH June 2024", "subject": "USH", "item": "CRQ30", "overall": 36.8, "b55": 14.0, "nm": 32.0, "ps": 40.0, "ms": 68.0, "gap": 8.0, "sev": "None"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR31", "overall": 83.9, "b55": 50.0, "nm": 70.0, "ps": 94.2, "ms": 100.0, "gap": 24.2, "sev": "MILD"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR32", "overall": 89.7, "b55": 50.0, "nm": 85.0, "ps": 98.1, "ms": 100.0, "gap": 13.1, "sev": "None"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR33", "overall": 70.1, "b55": 50.0, "nm": 65.0, "ps": 73.1, "ms": 100.0, "gap": 8.1, "sev": "None"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR34", "overall": 82.8, "b55": 40.0, "nm": 65.0, "ps": 96.2, "ms": 100.0, "gap": 31.2, "sev": "MODERATE"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR35", "overall": 73.6, "b55": 30.0, "nm": 55.0, "ps": 86.5, "ms": 100.0, "gap": 31.5, "sev": "MODERATE"}, {"exam": "USH June 2024", "subject": "USH", "item": "CR36", "overall": 44.8, "b55": 40.0, "nm": 25.0, "ps": 53.8, "ms": 40.0, "gap": 28.8, "sev": "MODERATE"}, {"exam": "USH June 2024", "subject": "USH", "item": "Essay", "overall": 53.0, "b55": 29.0, "nm": 45.0, "ps": 57.7, "ms": 84.0, "gap": 12.7, "sev": "None"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CRQ29", "overall": 31.7, "b55": null, "nm": 37.5, "ps": 26.7, "ms": null, "gap": -10.8, "sev": "None"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CRQ30", "overall": 26.7, "b55": null, "nm": 27.5, "ps": 33.3, "ms": null, "gap": 5.8, "sev": "None"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR31", "overall": 41.7, "b55": null, "nm": 25.0, "ps": 100.0, "ms": null, "gap": 75.0, "sev": "SEVERE"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR32", "overall": 83.3, "b55": null, "nm": 75.0, "ps": 100.0, "ms": null, "gap": 25.0, "sev": "MILD"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR33", "overall": 66.7, "b55": null, "nm": 75.0, "ps": 33.3, "ms": null, "gap": -41.7, "sev": "None"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR34", "overall": 50.0, "b55": null, "nm": 37.5, "ps": 100.0, "ms": null, "gap": 62.5, "sev": "SEVERE"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR35", "overall": 58.3, "b55": null, "nm": 50.0, "ps": 66.7, "ms": null, "gap": 16.7, "sev": "MILD"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "CR36", "overall": 75.0, "b55": null, "nm": 75.0, "ps": 66.7, "ms": null, "gap": -8.3, "sev": "None"}, {"exam": "USH Aug 2024", "subject": "USH", "item": "Essay", "overall": 44.2, "b55": null, "nm": 38.8, "ps": 56.7, "ms": null, "gap": 17.9, "sev": "MILD"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CRQ29", "overall": 33.3, "b55": 30.0, "nm": 35.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CRQ30", "overall": 36.7, "b55": 40.0, "nm": 35.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR31", "overall": 50.0, "b55": 100.0, "nm": 25.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR32", "overall": 33.3, "b55": 0.0, "nm": 50.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR33", "overall": 50.0, "b55": 50.0, "nm": 50.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR34", "overall": 66.7, "b55": 50.0, "nm": 75.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR35", "overall": 0.0, "b55": 0.0, "nm": 0.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "CR36", "overall": 66.7, "b55": 50.0, "nm": 75.0, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH Jan 2025", "subject": "USH", "item": "Essay", "overall": 38.3, "b55": 30.0, "nm": 42.5, "ps": null, "ms": null, "gap": null, "sev": "None"}, {"exam": "USH June 2025", "subject": "USH", "item": "CRQ29", "overall": 38.5, "b55": 32.5, "nm": 27.4, "ps": 40.0, "ms": 75.0, "gap": 12.6, "sev": "None"}, {"exam": "USH June 2025", "subject": "USH", "item": "CRQ30", "overall": 41.9, "b55": 25.0, "nm": 31.6, "ps": 44.6, "ms": 75.0, "gap": 13.0, "sev": "None"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR31", "overall": 58.1, "b55": 25.0, "nm": 47.4, "ps": 63.5, "ms": 75.0, "gap": 16.1, "sev": "MILD"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR32", "overall": 62.9, "b55": 12.5, "nm": 63.2, "ps": 67.6, "ms": 75.0, "gap": 4.4, "sev": "None"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR33", "overall": 63.8, "b55": 37.5, "nm": 63.2, "ps": 66.2, "ms": 75.0, "gap": 3.0, "sev": "None"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR34", "overall": 65.7, "b55": 37.5, "nm": 47.4, "ps": 71.6, "ms": 100.0, "gap": 24.2, "sev": "MILD"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR35", "overall": 81.0, "b55": 75.0, "nm": 63.2, "ps": 85.1, "ms": 100.0, "gap": 21.9, "sev": "MILD"}, {"exam": "USH June 2025", "subject": "USH", "item": "CR36", "overall": 76.2, "b55": 50.0, "nm": 57.9, "ps": 83.8, "ms": 75.0, "gap": 25.9, "sev": "MODERATE"}, {"exam": "USH June 2025", "subject": "USH", "item": "Essay", "overall": 55.5, "b55": 32.5, "nm": 44.7, "ps": 58.9, "ms": 90.0, "gap": 14.2, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CRQ29", "overall": 23.1, "b55": 20.0, "nm": 20.0, "ps": 40.0, "ms": null, "gap": 20.0, "sev": "MILD"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CRQ30", "overall": 16.9, "b55": 10.0, "nm": 17.1, "ps": 30.0, "ms": null, "gap": 12.9, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR31", "overall": 38.5, "b55": 0.0, "nm": 57.1, "ps": 50.0, "ms": null, "gap": -7.1, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR32", "overall": 69.2, "b55": 75.0, "nm": 71.4, "ps": 50.0, "ms": null, "gap": -21.4, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR33", "overall": 46.2, "b55": 50.0, "nm": 42.9, "ps": 50.0, "ms": null, "gap": 7.1, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR34", "overall": 46.2, "b55": 25.0, "nm": 71.4, "ps": 0.0, "ms": null, "gap": -71.4, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR35", "overall": 38.5, "b55": 25.0, "nm": 42.9, "ps": 50.0, "ms": null, "gap": 7.1, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "CR36", "overall": 15.4, "b55": 0.0, "nm": 28.6, "ps": 0.0, "ms": null, "gap": -28.6, "sev": "None"}, {"exam": "USH Aug 2025", "subject": "USH", "item": "Essay", "overall": 47.7, "b55": 35.0, "nm": 45.7, "ps": 80.0, "ms": null, "gap": 34.3, "sev": "MODERATE"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CR29", "overall": 28.6, "b55": 0.0, "nm": null, "ps": 40.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CR30", "overall": 57.1, "b55": 0.0, "nm": null, "ps": 80.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CR31", "overall": 71.4, "b55": 0.0, "nm": null, "ps": 100.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CR32", "overall": 71.4, "b55": 0.0, "nm": null, "ps": 100.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CR33", "overall": 85.7, "b55": 50.0, "nm": null, "ps": 100.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CivLit34A", "overall": 85.7, "b55": 50.0, "nm": null, "ps": 100.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "CivLit34B", "overall": 85.7, "b55": 100.0, "nm": null, "ps": 80.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jan 2024", "subject": "GHG", "item": "P3Essay", "overall": 41.4, "b55": 25.0, "nm": null, "ps": 48.0, "ms": null, "gap": null, "sev": "None"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CR29", "overall": 34.9, "b55": 0.0, "nm": 8.3, "ps": 51.7, "ms": 100.0, "gap": 43.4, "sev": "HIGH"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CR30", "overall": 73.6, "b55": 27.8, "nm": 62.5, "ps": 90.0, "ms": 100.0, "gap": 27.5, "sev": "MODERATE"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CR31", "overall": 60.4, "b55": 11.1, "nm": 50.0, "ps": 76.7, "ms": 100.0, "gap": 26.7, "sev": "MODERATE"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CR32", "overall": 40.6, "b55": 27.8, "nm": 20.8, "ps": 48.3, "ms": 100.0, "gap": 27.5, "sev": "MODERATE"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CR33", "overall": 80.2, "b55": 55.6, "nm": 75.0, "ps": 88.3, "ms": 100.0, "gap": 13.3, "sev": "None"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CivLit34A", "overall": 57.5, "b55": 22.2, "nm": 54.2, "ps": 66.7, "ms": 100.0, "gap": 12.5, "sev": "None"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "CivLit34B", "overall": 19.8, "b55": 0.0, "nm": 8.3, "ps": 26.7, "ms": 75.0, "gap": 18.4, "sev": "MILD"}, {"exam": "Global II Jun 2024", "subject": "GHG", "item": "P3Essay", "overall": 49.0, "b55": 38.3, "nm": 45.4, "ps": 52.0, "ms": 72.5, "gap": 6.6, "sev": "None"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CR29", "overall": 11.8, "b55": 0.0, "nm": 0.0, "ps": 40.0, "ms": null, "gap": 40.0, "sev": "HIGH"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CR30", "overall": 44.1, "b55": 30.8, "nm": 10.0, "ps": 90.0, "ms": null, "gap": 80.0, "sev": "SEVERE"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CR31", "overall": 29.4, "b55": 15.4, "nm": 20.0, "ps": 50.0, "ms": null, "gap": 30.0, "sev": "MODERATE"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CR32", "overall": 29.4, "b55": 15.4, "nm": 50.0, "ps": 20.0, "ms": null, "gap": -30.0, "sev": "None"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CR33", "overall": 79.4, "b55": 76.9, "nm": 80.0, "ps": 80.0, "ms": null, "gap": 0.0, "sev": "None"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CivLit34A", "overall": 79.4, "b55": 61.5, "nm": 90.0, "ps": 90.0, "ms": null, "gap": 0.0, "sev": "None"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "CivLit34B", "overall": 14.7, "b55": 0.0, "nm": 10.0, "ps": 30.0, "ms": null, "gap": 20.0, "sev": "MILD"}, {"exam": "Global II Aug 2024", "subject": "GHG", "item": "P3Essay", "overall": 45.9, "b55": 36.9, "nm": 44.0, "ps": 55.0, "ms": null, "gap": 11.0, "sev": "None"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CR29", "overall": 72.2, "b55": 14.3, "nm": 51.7, "ps": 77.4, "ms": 100.0, "gap": 25.7, "sev": "MODERATE"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CR30", "overall": 53.2, "b55": 21.4, "nm": 27.6, "ps": 54.0, "ms": 96.0, "gap": 26.4, "sev": "MODERATE"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CR31", "overall": 67.8, "b55": 7.1, "nm": 34.5, "ps": 75.2, "ms": 100.0, "gap": 40.7, "sev": "HIGH"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CR32", "overall": 46.3, "b55": 7.1, "nm": 13.8, "ps": 47.4, "ms": 100.0, "gap": 33.6, "sev": "MODERATE"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CR33", "overall": 83.4, "b55": 35.7, "nm": 62.1, "ps": 89.8, "ms": 100.0, "gap": 27.7, "sev": "MODERATE"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CivLit34A", "overall": 61.5, "b55": 21.4, "nm": 13.8, "ps": 69.3, "ms": 96.0, "gap": 55.5, "sev": "SEVERE"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "CivLit34B", "overall": 40.0, "b55": 7.1, "nm": 3.4, "ps": 43.8, "ms": 80.0, "gap": 40.4, "sev": "HIGH"}, {"exam": "Global II June 2025", "subject": "GHG", "item": "P3Essay", "overall": 59.1, "b55": 43.6, "nm": 51.7, "ps": 58.3, "ms": 80.8, "gap": 6.6, "sev": "None"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CR29", "overall": 18.5, "b55": 5.9, "nm": 42.9, "ps": 33.3, "ms": null, "gap": -9.6, "sev": "None"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CR30", "overall": 3.7, "b55": 0.0, "nm": 0.0, "ps": 33.3, "ms": null, "gap": 33.3, "sev": "MODERATE"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CR31", "overall": 3.7, "b55": 0.0, "nm": 14.3, "ps": 0.0, "ms": null, "gap": -14.3, "sev": "None"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CR32", "overall": 22.2, "b55": 11.8, "nm": 42.9, "ps": 33.3, "ms": null, "gap": -9.6, "sev": "None"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CR33", "overall": 11.1, "b55": 5.9, "nm": 0.0, "ps": 66.7, "ms": null, "gap": 66.7, "sev": "SEVERE"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CivLit34A", "overall": 18.5, "b55": 17.6, "nm": 14.3, "ps": 33.3, "ms": null, "gap": 19.0, "sev": "MILD"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "CivLit34B", "overall": 14.8, "b55": 11.8, "nm": 0.0, "ps": 66.7, "ms": null, "gap": 66.7, "sev": "SEVERE"}, {"exam": "Global II Aug 2025", "subject": "GHG", "item": "P3Essay", "overall": 34.1, "b55": 30.6, "nm": 37.1, "ps": 46.7, "ms": null, "gap": 9.6, "sev": "None"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CR29", "overall": 28.6, "b55": 9.1, "nm": 31.0, "ps": 44.4, "ms": null, "gap": 13.4, "sev": "None"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CR30", "overall": 15.3, "b55": 6.1, "nm": 10.3, "ps": 27.8, "ms": null, "gap": 17.5, "sev": "MILD"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CR31", "overall": 56.1, "b55": 27.3, "nm": 72.4, "ps": 69.4, "ms": null, "gap": -3.0, "sev": "None"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CR32", "overall": 40.8, "b55": 15.2, "nm": 51.7, "ps": 55.6, "ms": null, "gap": 3.9, "sev": "None"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CR33", "overall": 63.3, "b55": 54.5, "nm": 51.7, "ps": 80.6, "ms": null, "gap": 28.9, "sev": "MODERATE"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CivLit34A", "overall": 19.4, "b55": 0.0, "nm": 20.7, "ps": 36.1, "ms": null, "gap": 15.4, "sev": "MILD"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "CivLit34B", "overall": 38.8, "b55": 9.1, "nm": 44.8, "ps": 61.1, "ms": null, "gap": 16.3, "sev": "MILD"}, {"exam": "Global II Jan 2026", "subject": "GHG", "item": "P3Essay", "overall": 38.0, "b55": 24.8, "nm": 37.2, "ps": 50.6, "ms": null, "gap": 13.4, "sev": "None"}], "hts": {"ush": {"Evidence": 60.9, "Argumentation": 47.7, "Comparison": 50.3, "Chronology": 55.6, "Context/Causation": 33.4}, "ghg": {"Evidence": 49.2, "Argumentation": 44.6, "Comparison": 41.8, "Civic Literacy": 44.7, "Context/Causation": 41.2}, "schema": {"LOW": 63.1, "LOW-MODERATE": 46.0, "MODERATE": 50.6, "HIGH": 39.2, "VERY HIGH": 35.6}, "voice_dif": {"Dominant/Institutional": 20.5, "Dominant/Colonial": 22.6, "Variable": 18.3, "Open": 11.5, "Institutional/State": 26.4}, "neutrality": [2.43, 2.75, 4.34]}, "irt": [{"item": "CRQ29", "subj": "USH", "a": 0.776, "b": -0.111, "c": 0.309, "rpbi": 0.415, "facility": 41.0, "type": "ExtCRQ"}, {"item": "CRQ30", "subj": "USH", "a": 1.049, "b": -0.208, "c": 0.242, "rpbi": 0.525, "facility": 37.5, "type": "ExtCRQ"}, {"item": "CR31", "subj": "USH", "a": 0.458, "b": 0.456, "c": 0.4, "rpbi": 0.26, "facility": 65.9, "type": "BinaryCR"}, {"item": "CR32", "subj": "USH", "a": 0.426, "b": 0.686, "c": 0.4, "rpbi": 0.243, "facility": 74.0, "type": "BinaryCR"}, {"item": "CR33", "subj": "USH", "a": 0.252, "b": 0.44, "c": 0.4, "rpbi": 0.146, "facility": 65.0, "type": "BinaryCR"}, {"item": "CR34", "subj": "USH", "a": 0.694, "b": 0.587, "c": 0.4, "rpbi": 0.378, "facility": 70.4, "type": "BinaryCR"}, {"item": "CR35", "subj": "USH", "a": 0.423, "b": 0.587, "c": 0.4, "rpbi": 0.241, "facility": 72.2, "type": "BinaryCR"}, {"item": "CR36", "subj": "USH", "a": 0.31, "b": 0.349, "c": 0.358, "rpbi": 0.179, "facility": 60.1, "type": "BinaryCR"}, {"item": "Essay", "subj": "USH", "a": 1.473, "b": 0.189, "c": 0.385, "rpbi": 0.654, "facility": 53.0, "type": "Essay"}, {"item": "CR29", "subj": "GHG", "a": 0.855, "b": 0.065, "c": 0.161, "rpbi": 0.449, "facility": 47.0, "type": "BinaryCR"}, {"item": "CR30", "subj": "GHG", "a": 0.766, "b": 0.065, "c": 0.212, "rpbi": 0.411, "facility": 46.5, "type": "BinaryCR"}, {"item": "CR31", "subj": "GHG", "a": 0.993, "b": 0.319, "c": 0.203, "rpbi": 0.504, "facility": 57.4, "type": "BinaryCR"}, {"item": "CR32", "subj": "GHG", "a": 0.805, "b": -0.105, "c": 0.161, "rpbi": 0.428, "facility": 41.7, "type": "BinaryCR"}, {"item": "CR33", "subj": "GHG", "a": 0.626, "b": 0.691, "c": 0.4, "rpbi": 0.345, "facility": 74.2, "type": "BinaryCR"}, {"item": "CivLit34A", "subj": "GHG", "a": 0.71, "b": 0.157, "c": 0.203, "rpbi": 0.385, "facility": 51.2, "type": "CivicLit"}, {"item": "CivLit34B", "subj": "GHG", "a": 0.828, "b": -0.424, "c": 0.068, "rpbi": 0.438, "facility": 32.7, "type": "CivicLit"}, {"item": "P3Essay", "subj": "GHG", "a": 1.112, "b": 0.082, "c": 0.383, "rpbi": 0.547, "facility": 49.9, "type": "Essay"}], "tif": {"theta": [-3.0, -2.9, -2.8, -2.7, -2.6, -2.5, -2.4, -2.3, -2.2, -2.1, -2.0, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0], "ush": [1.1807, 1.1838, 1.1871, 1.1906, 1.1944, 1.1983, 1.2024, 1.2067, 1.2112, 1.2158, 1.2206, 1.2254, 1.2303, 1.2351, 1.2398, 1.2443, 1.2484, 1.2521, 1.255, 1.2572, 1.2582, 1.258, 1.2561, 1.2523, 1.2462, 1.2376, 1.2261, 1.2115, 1.1934, 1.1719, 1.1467, 1.1179, 1.0857, 1.0504, 1.0123, 0.9718, 0.9296, 0.8862, 0.8421, 0.7979, 0.7541, 0.7112, 0.6696, 0.6294, 0.5911, 0.5546, 0.5202, 0.4877, 0.4573, 0.4289, 0.4024, 0.3778, 0.3548, 0.3335, 0.3137, 0.2954, 0.2783, 0.2625, 0.2477, 0.234, 0.2213], "ghg": [1.1264, 1.1381, 1.1505, 1.1634, 1.1769, 1.1909, 1.2054, 1.2204, 1.2358, 1.2514, 1.2674, 1.2834, 1.2995, 1.3154, 1.3311, 1.3463, 1.3609, 1.3746, 1.3872, 1.3984, 1.4081, 1.416, 1.4218, 1.4253, 1.4262, 1.4243, 1.4194, 1.4113, 1.4001, 1.3854, 1.3674, 1.3461, 1.3215, 1.2938, 1.2631, 1.2298, 1.194, 1.156, 1.1163, 1.075, 1.0327, 0.9895, 0.9459, 0.9022, 0.8586, 0.8154, 0.7729, 0.7312, 0.6906, 0.6512, 0.6131, 0.5764, 0.5412, 0.5076, 0.4755, 0.445, 0.416, 0.3886, 0.3627, 0.3383, 0.3153]}, "distractor": [{"title": "GHG Jun 2024 \u00b7 Item 13", "severity": "SEVERE", "entropy_gap": 0.832, "nm": [41.7, 25.0, 0, 33.3], "ps": [4.8, 9.5, 0, 85.7], "sev": "SEVERE", "epist": "Multi-perspectival / counter-narrative", "nm_ent": 1.55, "ps_ent": 0.72}, {"title": "GHG Jun 2024 \u00b7 Item 19", "severity": "SEVERE", "entropy_gap": 0.723, "nm": [40.0, 0, 20.0, 40.0], "ps": [24.2, 0, 0, 75.8], "sev": "SEVERE", "epist": "Resistant / counter-narrative", "nm_ent": 1.52, "ps_ent": 0.8}, {"title": "GHG Jun 2025 \u00b7 Item 13", "severity": "HIGH", "entropy_gap": 0.354, "nm": [33.3, 0, 33.3, 33.3], "ps": [14.3, 0, 67.5, 18.2], "sev": "HIGH", "epist": "Global South / decolonial", "nm_ent": 1.58, "ps_ent": 1.23}, {"title": "USH Jun 2025 \u00b7 Item 14", "severity": "HIGH", "entropy_gap": -0.413, "nm": [10.0, 20.0, 0, 70.0], "ps": [38.5, 26.9, 0, 34.6], "sev": "HIGH", "epist": "Counter-narrative / resistant", "nm_ent": 1.16, "ps_ent": 1.57}, {"title": "GHG Jun 2025 \u00b7 Item 15", "severity": "HIGH", "entropy_gap": 0.149, "nm": [52.4, 19.0, 28.6, 0], "ps": [21.1, 15.8, 63.2, 0], "sev": "HIGH", "epist": "Resistant / counter-narrative", "nm_ent": 1.46, "ps_ent": 1.31}, {"title": "USH Jun 2024 \u00b7 Item 3", "severity": "MODERATE", "entropy_gap": 0.007, "nm": [55.6, 0, 22.2, 22.2], "ps": [40.0, 0, 13.3, 46.7], "sev": "MODERATE", "epist": "Resistant / counter-narrative", "nm_ent": 1.43, "ps_ent": 1.43}], "civlit": {"labels": ["GHG Jun 24", "GHG Aug 24", "GHG Jun 25", "GHG Aug 25", "GHG Jan 26", "GHG Jun 24b"], "a": [52.3, 48.1, 44.7, 47.2, 50.8, 53.1], "b": [31.4, 14.7, 19.2, 22.8, 43.5, 85.7]}, "nearmiss": {"pct_within10": {"USH Jun 24": 78.3, "USH Aug 24": 89.1, "USH Jun 25": 80.6, "USH Aug 25": 75.0, "GHG Jun 24": 67.4, "GHG Aug 24": 82.5, "GHG Jun 25": 81.3, "GHG Aug 25": 83.7, "GHG Jan 26": 70.2}, "avg_pts_from65": {"USH Jun 24": 5.8, "USH Aug 24": 4.3, "USH Jun 25": 6.1, "USH Aug 25": 7.0, "GHG Jun 24": 6.4, "GHG Aug 24": 5.2, "GHG Jun 25": 5.5, "GHG Aug 25": 4.9, "GHG Jan 26": 6.8}}, "ext_ctx": {"ush": {"below55": {"ext": 44.7, "ctx": 25.5}, "nm": {"ext": 57.3, "ctx": 31.2}, "passing": {"ext": 73.0, "ctx": 42.6}, "mastery": {"ext": 86.7, "ctx": 74.5}}, "ghg": {"below55": {"ext": 47.1, "ctx": 39.2}, "nm": {"ext": 54.8, "ctx": 47.5}, "passing": {"ext": 66.3, "ctx": 60.1}, "mastery": {"ext": 78.4, "ctx": 72.9}}}, "equity": {"labels": ["USH Jun 24", "USH Aug 24", "USH Jun 25", "GHG Jun 24", "GHG Aug 24", "GHG Jun 25", "GHG Aug 25"], "cr": [68.5, 58.2, 71.3, 62.1, 44.7, 74.2, 49.8], "essay": [81.2, 74.3, 83.5, 75.4, 68.9, 82.1, 71.3]}, "schema": {"ush": {"LOW": 63.1, "LOW-MODERATE": 46.0, "MODERATE": 50.6, "HIGH": 39.2, "VERY HIGH": 35.6}, "ghg": {"LOW": 58.3, "LOW-MODERATE": 51.2, "MODERATE": 47.8, "HIGH": 42.4, "VERY HIGH": 38.9}}, "state": {"state_ush": 76, "state_ghg": 73, "bronx_ush": 58, "bronx_ghg": 61, "school_ush_june": 69.9, "school_ghg_june": 69.7}, "icc": {"theta": [-3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0], "Essay_USH": [0.05, 0.07, 0.1, 0.16, 0.26, 0.42, 0.62, 0.79, 0.9, 0.95, 0.98, 0.99, 0.99], "CRQ30_USH": [0.08, 0.1, 0.14, 0.2, 0.31, 0.45, 0.61, 0.75, 0.85, 0.92, 0.96, 0.98, 0.99], "CR33_USH": [0.2, 0.22, 0.25, 0.28, 0.32, 0.36, 0.41, 0.46, 0.51, 0.56, 0.6, 0.64, 0.68], "P3_GHG": [0.07, 0.09, 0.13, 0.18, 0.27, 0.4, 0.56, 0.71, 0.82, 0.9, 0.95, 0.97, 0.98], "CivLit34B": [0.12, 0.15, 0.18, 0.23, 0.29, 0.36, 0.44, 0.53, 0.62, 0.7, 0.77, 0.83, 0.88], "CR31_GHG": [0.06, 0.09, 0.13, 0.18, 0.26, 0.38, 0.53, 0.68, 0.8, 0.88, 0.93, 0.96, 0.98]}, "dif_summary": [{"exam": "GHG Jun 25", "avg_gap": 35.7, "max_gap": 55.5, "pct_flagged": 42.9}, {"exam": "GHG Aug 25", "avg_gap": 21.7, "max_gap": 66.7, "pct_flagged": 35.7}, {"exam": "GHG Jun 24", "avg_gap": 24.2, "max_gap": 43.4, "pct_flagged": 28.6}, {"exam": "GHG Aug 24", "avg_gap": 20.0, "max_gap": 80.0, "pct_flagged": 21.4}, {"exam": "USH Jun 24", "avg_gap": 19.0, "max_gap": 31.5, "pct_flagged": 25.0}, {"exam": "USH Aug 24", "avg_gap": 17.3, "max_gap": 75.0, "pct_flagged": 16.7}, {"exam": "USH Jun 25", "avg_gap": 15.0, "max_gap": 25.9, "pct_flagged": 16.7}, {"exam": "GHG Jan 26", "avg_gap": 13.2, "max_gap": 28.9, "pct_flagged": 14.3}]};
-var TC='rgba(0,0,0,0.45)',GC='rgba(0,0,0,0.06)';
-var C={b:'#2563eb',r:'#dc2626',a:'#d97706',g:'#16a34a',p:'#7c3aed',t:'#0d9488',gray:'#64748b'};
-var BO={responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:10}}}}};
-
-function mk(id,type,data,opts){
-  var el=document.getElementById(id);if(!el)return null;
-  return new Chart(el,{type:type,data:data,options:opts||JSON.parse(JSON.stringify(BO))});
-}
-
-var exL=D.results.map(function(r){return r.exam.replace('Global II ','GHG ').replace('USHistory ','USH ');});
-var isRet=D.results.map(function(r){return r.session!=='June';});
-
-// V1
-mk('an_v1','bar',{labels:exL,datasets:[
-  {label:'Pass',data:D.results.map(function(r){return r.pass;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?'#93c5fd55':'#2563eb99';}),borderColor:D.results.map(function(r,i){return isRet[i]?'#93c5fd':C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:'y'},
-  {label:'Below55',data:D.results.map(function(r){return r.b55;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?'#fca5a555':'#dc262699';}),borderColor:D.results.map(function(r,i){return isRet[i]?'#fca5a5':C.r;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:'y'},
-  {label:'Schema',data:D.results.map(function(r){return r.schema;}),type:'line',borderColor:C.a,backgroundColor:'transparent',pointBackgroundColor:C.a,pointRadius:3,borderWidth:2,borderDash:[5,4],yAxisID:'y2',tension:0.3}
-]},{responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100},y2:{position:'right',grid:{display:false},ticks:{color:C.a,font:{size:9}},min:0,max:110}}});
-
-// V2 box plot approximation
-mk('an_v2','bar',{labels:exL,datasets:[
-  {label:'IQR',data:D.results.map(function(r){return r.q3-r.q1;}),base:D.results.map(function(r){return r.q1;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?'#d97706AA':'#2563ebAA';}),borderColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;}),borderWidth:1.5,borderRadius:2},
-  {label:'Median',type:'scatter',data:D.results.map(function(r,i){return{x:i,y:r.median};}),pointRadius:5,backgroundColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;}),borderColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;})}
-]},{responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{title:function(c){return exL[c[0].dataIndex];},label:function(c){var r=D.results[c.dataIndex];return[' Q1: '+r.q1+'  Median: '+r.median+'  Q3: '+r.q3,' Pass 65+: '+r.pass+'%'];}}}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:20,max:100}}});
-
-// V3
-function mkCons(id,data){
-  var keys=Object.keys(data),vals=Object.values(data);
-  mk(id,'bar',{labels:keys,datasets:[{label:'Mean',data:vals.map(function(v){return v.mean;}),
-    backgroundColor:vals.map(function(v){return v.sd>15?C.r+'88':v.sd>8?C.a+'88':C.g+'88';}),
-    borderColor:vals.map(function(v){return v.sd>15?C.r:v.sd>8?C.a:C.g;}),borderWidth:1.5,borderRadius:3,borderSkipped:false}]},
-  {responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{label:function(c){var v=vals[c.dataIndex];return[' Mean: '+v.mean+'%',' SD: '+v.sd+(v.sd>15?' HIGH':v.sd>8?' moderate':' stable')];}}}},
-    scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-}
-mkCons('an_v3a',D.consistency.USH);mkCons('an_v3b',D.consistency.GHG);
-
-// V4
-mk('an_v4','line',{labels:D.civlit.labels,datasets:[
-  {label:'34A',data:D.civlit.a,borderColor:C.b,backgroundColor:'transparent',pointBackgroundColor:C.b,pointRadius:5,borderWidth:2.5,tension:0.3},
-  {label:'34B',data:D.civlit.b,borderColor:C.r,backgroundColor:'transparent',pointBackgroundColor:C.r,pointRadius:5,borderWidth:2.5,tension:0.3,borderDash:[5,4]}
-]},{responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-
-// V5
+var TC="rgba(0,0,0,0.45)",GC="rgba(0,0,0,0.06)";
+var C={b:"#2563eb",r:"#dc2626",a:"#d97706",g:"#16a34a",p:"#7c3aed",t:"#0d9488"};
+function mk(id,type,data,opts){var el=document.getElementById(id);if(!el)return null;var o=opts||{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:10}}}}};return new Chart(el,{type:type,data:data,options:o});}
+var exL=D.results.map(function(r){return r.exam.replace("Global II ","GHG ").replace("USHistory ","USH ");});
+var isRet=D.results.map(function(r){return r.session!=="June";});
+mk("an_v1","bar",{labels:exL,datasets:[{label:"Pass",data:D.results.map(function(r){return r.pass;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?"#93c5fd55":"#2563eb99";}),borderColor:D.results.map(function(r,i){return isRet[i]?"#93c5fd":C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:"y"},{label:"Below55",data:D.results.map(function(r){return r.b55;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?"#fca5a555":"#dc262699";}),borderColor:D.results.map(function(r,i){return isRet[i]?"#fca5a5":C.r;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:"y"},{label:"Schema",data:D.results.map(function(r){return r.schema;}),type:"line",borderColor:C.a,backgroundColor:"transparent",pointBackgroundColor:C.a,pointRadius:3,borderWidth:2,borderDash:[5,4],yAxisID:"y2",tension:0.3}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100},y2:{position:"right",grid:{display:false},ticks:{color:C.a,font:{size:9}},min:0,max:110}}});
+mk("an_v2","bar",{labels:exL,datasets:[{label:"IQR",data:D.results.map(function(r){return r.q3-r.q1;}),base:D.results.map(function(r){return r.q1;}),backgroundColor:D.results.map(function(r,i){return isRet[i]?"#d97706AA":"#2563ebAA";}),borderColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;}),borderWidth:1.5,borderRadius:2},{label:"Median",type:"scatter",data:D.results.map(function(r,i){return{x:i,y:r.median};}),pointRadius:5,backgroundColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;}),borderColor:D.results.map(function(r,i){return isRet[i]?C.a:C.b;})}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:20,max:100}}});
+function mkCons(id,data){var keys=Object.keys(data),vals=Object.values(data);mk(id,"bar",{labels:keys,datasets:[{label:"Mean",data:vals.map(function(v){return v.mean;}),backgroundColor:vals.map(function(v){return v.sd>15?C.r+"88":v.sd>8?C.a+"88":C.g+"88";}),borderColor:vals.map(function(v){return v.sd>15?C.r:v.sd>8?C.a:C.g;}),borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});}
+mkCons("an_v3a",D.consistency.USH);mkCons("an_v3b",D.consistency.GHG);
+mk("an_v4","line",{labels:D.civlit.labels,datasets:[{label:"34A",data:D.civlit.a,borderColor:C.b,backgroundColor:"transparent",pointBackgroundColor:C.b,pointRadius:5,borderWidth:2.5,tension:0.3},{label:"34B",data:D.civlit.b,borderColor:C.r,backgroundColor:"transparent",pointBackgroundColor:C.r,pointRadius:5,borderWidth:2.5,tension:0.3,borderDash:[5,4]}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
 var nmK=Object.keys(D.nearmiss.pct_within10),nmV=Object.values(D.nearmiss.pct_within10),ptsFail=Object.values(D.nearmiss.avg_pts_from65);
-mk('an_v5','bar',{labels:nmK,datasets:[
-  {label:'% within 10 pts',data:nmV,backgroundColor:nmV.map(function(v){return v>80?C.r+'99':v>60?C.a+'99':C.b+'99';}),borderColor:nmV.map(function(v){return v>80?C.r:v>60?C.a:C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:'y'},
-  {label:'Avg pts from 65',data:ptsFail,type:'scatter',pointRadius:6,pointStyle:'triangle',pointBackgroundColor:C.g,borderColor:C.g,yAxisID:'y2'}
-]},{responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100},y2:{position:'right',grid:{display:false},ticks:{color:C.g,font:{size:9}},min:0,max:12}}});
-
-// V6
+mk("an_v5","bar",{labels:nmK,datasets:[{label:"% within 10 pts",data:nmV,backgroundColor:nmV.map(function(v){return v>80?C.r+"99":v>60?C.a+"99":C.b+"99";}),borderColor:nmV.map(function(v){return v>80?C.r:v>60?C.a:C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false,yAxisID:"y"},{label:"Avg pts from 65",data:ptsFail,type:"scatter",pointRadius:6,pointStyle:"triangle",pointBackgroundColor:C.g,borderColor:C.g,yAxisID:"y2"}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:40}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100},y2:{position:"right",grid:{display:false},ticks:{color:C.g,font:{size:9}},min:0,max:12}}});
 var bc=D.state_comparison.bronx_context;
-mk('an_v6a','bar',{labels:['USH June','GHG June'],datasets:[
-  {label:'State',data:[bc.state_ush_pass_approx,bc.state_ghg_pass_approx],backgroundColor:C.g+'88',borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Bronx',data:[bc.bronx_ush_pass_approx,bc.bronx_ghg_pass_approx],backgroundColor:C.a+'88',borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'School',data:[bc.school_ush_june_avg,bc.school_ghg_june_avg],backgroundColor:C.r+'88',borderColor:C.r,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10},maxRotation:0}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:90}}});
-mk('an_v6b','bar',{labels:['Dominant','Institutional','Resistant'],datasets:[{label:'NC score',data:D.hts.neutrality,backgroundColor:[C.r+'88',C.a+'88',C.g+'88'],borderColor:[C.r,C.a,C.g],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:5}}});
-
-// V7
+mk("an_v6a","bar",{labels:["USH June","GHG June"],datasets:[{label:"State",data:[bc.state_ush_pass_approx,bc.state_ghg_pass_approx],backgroundColor:C.g+"88",borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Bronx",data:[bc.bronx_ush_pass_approx,bc.bronx_ghg_pass_approx],backgroundColor:C.a+"88",borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"School",data:[bc.school_ush_june_avg,bc.school_ghg_june_avg],backgroundColor:C.r+"88",borderColor:C.r,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10},maxRotation:0}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:90}}});
+mk("an_v6b","bar",{labels:["Dominant","Institutional","Resistant"],datasets:[{label:"NC",data:D.hts.neutrality,backgroundColor:[C.r+"88",C.a+"88",C.g+"88"],borderColor:[C.r,C.a,C.g],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:10}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:5}}});
 var vdK=Object.keys(D.hts.voice_dif),vdV=Object.values(D.hts.voice_dif);
-mk('an_v7a','bar',{labels:vdK,datasets:[{label:'DIF gap',data:vdV,backgroundColor:[C.r+'88',C.r+'88',C.b+'88',C.g+'88',C.p+'88'],borderColor:[C.r,C.r,C.b,C.g,C.p],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:30},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}}}}});
-mk('an_v7b','bar',{labels:['Political speech','Legal doc','Reform/Resist','Govt report','Visual','Data/Table'],datasets:[
-  {label:'Near miss',data:[48.3,38.2,52.1,41.5,55.2,58.7],backgroundColor:C.a+'88',borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Passing',data:[65.1,61.3,62.4,64.7,69.3,71.2],backgroundColor:C.b+'88',borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}}}}});
-
-// V8
-mk('an_v8a','bar',{labels:['Pre-1900','1900-1945','1945-1970','1970+'],datasets:[
-  {label:'Near miss',data:[42.7,49.9,44.6,52.8],backgroundColor:C.a+'88',borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Passing',data:[65.3,67.2,61.8,69.4],backgroundColor:C.b+'88',borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80}}});
-mk('an_v8b','bar',{labels:['White speaker','Black speaker','Female','Male','Mixed/Inst'],datasets:[
-  {label:'Near miss',data:[49.0,46.2,43.4,49.1,47.9],backgroundColor:C.a+'88',borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Passing',data:[65.8,60.4,61.1,65.2,63.7],backgroundColor:C.b+'88',borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80}}});
-
-// V9
+mk("an_v7a","bar",{labels:vdK,datasets:[{label:"DIF gap",data:vdV,backgroundColor:[C.r+"88",C.r+"88",C.b+"88",C.g+"88",C.p+"88"],borderColor:[C.r,C.r,C.b,C.g,C.p],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,indexAxis:"y",plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:30},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}}}}});
+mk("an_v7b","bar",{labels:["Political speech","Legal doc","Reform/Resist","Govt report","Visual","Data/Table"],datasets:[{label:"Near miss",data:[48.3,38.2,52.1,41.5,55.2,58.7],backgroundColor:C.a+"88",borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Passing",data:[65.1,61.3,62.4,64.7,69.3,71.2],backgroundColor:C.b+"88",borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,indexAxis:"y",plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}}}}});
+mk("an_v8a","bar",{labels:["Pre-1900","1900-1945","1945-1970","1970+"],datasets:[{label:"Near miss",data:[42.7,49.9,44.6,52.8],backgroundColor:C.a+"88",borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Passing",data:[65.3,67.2,61.8,69.4],backgroundColor:C.b+"88",borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80}}});
+mk("an_v8b","bar",{labels:["White speaker","Black speaker","Female","Male","Mixed/Inst"],datasets:[{label:"Near miss",data:[49.0,46.2,43.4,49.1,47.9],backgroundColor:C.a+"88",borderColor:C.a,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Passing",data:[65.8,60.4,61.1,65.2,63.7],backgroundColor:C.b+"88",borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:80}}});
 var sdK=Object.keys(D.schema.ush),sdU=Object.values(D.schema.ush),sdG=Object.values(D.schema.ghg);
 var sdCols=[C.g,C.t,C.b,C.a,C.r];
-mk('an_v9a','bar',{labels:sdK,datasets:[{label:'USH',data:sdU,backgroundColor:sdCols.map(function(c){return c+'88';}),borderColor:sdCols,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});
-mk('an_v9b','bar',{labels:sdK,datasets:[{label:'GHG',data:sdG,backgroundColor:sdCols.map(function(c){return c+'88';}),borderColor:sdCols,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});
-
-// V10
-var bL=['Below 55','Near miss','Passing','Mastery'];
-mk('an_v10a','bar',{labels:bL,datasets:[
-  {label:'Extraction',data:[D.ext_ctx.ush.below55.ext,D.ext_ctx.ush.nm.ext,D.ext_ctx.ush.passing.ext,D.ext_ctx.ush.mastery.ext],backgroundColor:C.b+'88',borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Context',data:[D.ext_ctx.ush.below55.ctx,D.ext_ctx.ush.nm.ctx,D.ext_ctx.ush.passing.ctx,D.ext_ctx.ush.mastery.ctx],backgroundColor:C.p+'88',borderColor:C.p,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{afterBody:function(c){if(c.length===2)return[' Gap: '+(c[0].parsed.y-c[1].parsed.y).toFixed(1)+' pts'];return[];}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-mk('an_v10b','bar',{labels:bL,datasets:[
-  {label:'Extraction',data:[D.ext_ctx.ghg.below55.ext,D.ext_ctx.ghg.nm.ext,D.ext_ctx.ghg.passing.ext,D.ext_ctx.ghg.mastery.ext],backgroundColor:C.g+'88',borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Context',data:[D.ext_ctx.ghg.below55.ctx,D.ext_ctx.ghg.nm.ctx,D.ext_ctx.ghg.passing.ctx,D.ext_ctx.ghg.mastery.ctx],backgroundColor:C.t+'88',borderColor:C.t,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{afterBody:function(c){if(c.length===2)return[' Gap: '+(c[0].parsed.y-c[1].parsed.y).toFixed(1)+' pts'];return[];}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-
-// V11
-mk('an_v11','bar',{labels:D.equity.labels,datasets:[
-  {label:'Binary CR equity',data:D.equity.cr,backgroundColor:C.r+'88',borderColor:C.r,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Essay equity',data:D.equity.essay,backgroundColor:C.g+'88',borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:35}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-
-// V12
-var htsCols={'Evidence':C.b,'Argumentation':C.g,'Comparison':C.a,'Chronology':C.t,'Context/Causation':C.p,'Civic Literacy':C.a};
-function mkHTS(id,data){
-  var ks=Object.keys(data),vs=Object.values(data);
-  mk(id,'bar',{labels:ks,datasets:[{label:'',data:vs,backgroundColor:ks.map(function(k){return (htsCols[k]||'#888')+'88';}),borderColor:ks.map(function(k){return htsCols[k]||'#888';}),borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:25}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});
-}
-mkHTS('an_v12a',D.hts.ush);mkHTS('an_v12b',D.hts.ghg);
-
-// V13
-mk('an_v13','bar',{
-  labels:D.dif_summary.map(function(d){return d.exam;}),
-  datasets:[
-    {label:'Avg DIF gap',data:D.dif_summary.map(function(d){return d.avg_gap;}),backgroundColor:D.dif_summary.map(function(d){return d.avg_gap>30?C.r+'88':d.avg_gap>20?C.a+'88':C.b+'88';}),borderColor:D.dif_summary.map(function(d){return d.avg_gap>30?C.r:d.avg_gap>20?C.a:C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false},
-    {label:'Max DIF gap',data:D.dif_summary.map(function(d){return d.max_gap;}),type:'scatter',pointRadius:6,pointStyle:'triangle',pointBackgroundColor:'#94a3b8',borderColor:'#94a3b8'}
-  ]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:30}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:90,title:{display:true,text:'DIF gap (pts)',color:TC,font:{size:9}}}}});
-
-// DONUT GRID
-var dC4=['#2563eb','#16a34a','#d97706','#7c3aed'];
-var dg=document.getElementById('an_donut_grid');
-if(dg) D.distractor.forEach(function(item){
-  var sev=item.severity||item.sev||'';
-  var sc=sev==='SEVERE'?'bsev':sev==='HIGH'?'bhi':'bmod';
-  var w=document.createElement('div');
-  w.style.cssText='background:#fff;border:.5px solid #e2e8f0;border-radius:9px;padding:12px;';
-  w.innerHTML='<div style="font-size:11px;font-weight:700;color:#0f172a;margin-bottom:2px;">'+item.title+' <span class="an-badge '+sc+'">'+sev+'</span></div><div class="an-epist">'+(item.epist||'')+'</div>';
-  var pair=document.createElement('div');pair.className='dp-pair';pair.style.marginTop='8px';
-  ['Near miss 55-64','Passing 65-84'].forEach(function(lbl,s){
-    var vals=s===0?item.nm:item.ps;
-    var dom=vals.indexOf(Math.max.apply(null,vals));
-    var entVal=s===0?(item.nm_ent||0):(item.ps_ent||0);
-    var box=document.createElement('div');box.style.cssText='text-align:center;';
-    var h=document.createElement('div');h.style.cssText='font-size:9px;color:#64748b;margin-bottom:2px;font-weight:600;';h.textContent=lbl;
-    var cd=document.createElement('div');cd.style.cssText='position:relative;height:75px;';
-    var cv=document.createElement('canvas');cd.appendChild(cv);
-    var dl=document.createElement('div');dl.style.cssText='font-size:9px;font-weight:700;color:'+dC4[dom]+';margin-top:2px;';
-    dl.textContent='C'+(dom+1)+': '+vals[dom].toFixed(0)+'% (H='+entVal.toFixed(2)+')';
-    box.appendChild(h);box.appendChild(cd);box.appendChild(dl);pair.appendChild(box);
-    new Chart(cv,{type:'doughnut',data:{labels:['C1','C2','C3','C4'],datasets:[{data:vals,backgroundColor:dC4.map(function(c,ci){return ci===dom?c:c+'33';}),borderColor:dC4.map(function(c,ci){return ci===dom?c:c+'55';}),borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:4,callbacks:{label:function(ctx){return ctx.label+': '+ctx.parsed.toFixed(0)+'%';}}}}}});
-  });
-  w.appendChild(pair);dg.appendChild(w);
-});
-
-// V15
-mk('an_v15','radar',{
-  labels:['Counter-narrative','Liberation/resist','Community solidarity','Anti-colonial','Reform/progressive','Canonical/dominant'],
-  datasets:[
-    {label:'Near-miss dominant',data:[45,38,31,42,28,20],backgroundColor:C.a+'33',borderColor:C.a,borderWidth:2,pointBackgroundColor:C.a,pointRadius:4},
-    {label:'Passing dominant',data:[15,12,18,14,19,55],backgroundColor:C.b+'33',borderColor:C.b,borderWidth:2,pointBackgroundColor:C.b,pointRadius:4}
-  ]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{r:{grid:{color:'rgba(0,0,0,0.06)'},ticks:{display:false},pointLabels:{font:{size:9},color:'#64748b'}}}});
-
-// V16
+mk("an_v9a","bar",{labels:sdK,datasets:[{label:"USH",data:sdU,backgroundColor:sdCols.map(function(c){return c+"88";}),borderColor:sdCols,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});
+mk("an_v9b","bar",{labels:sdK,datasets:[{label:"GHG",data:sdG,backgroundColor:sdCols.map(function(c){return c+"88";}),borderColor:sdCols,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});
+var bL=["Below 55","Near miss","Passing","Mastery"];
+mk("an_v10a","bar",{labels:bL,datasets:[{label:"Extraction",data:[D.ext_ctx.ush.below55.ext,D.ext_ctx.ush.nm.ext,D.ext_ctx.ush.passing.ext,D.ext_ctx.ush.mastery.ext],backgroundColor:C.b+"88",borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Context",data:[D.ext_ctx.ush.below55.ctx,D.ext_ctx.ush.nm.ctx,D.ext_ctx.ush.passing.ctx,D.ext_ctx.ush.mastery.ctx],backgroundColor:C.p+"88",borderColor:C.p,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
+mk("an_v10b","bar",{labels:bL,datasets:[{label:"Extraction",data:[D.ext_ctx.ghg.below55.ext,D.ext_ctx.ghg.nm.ext,D.ext_ctx.ghg.passing.ext,D.ext_ctx.ghg.mastery.ext],backgroundColor:C.g+"88",borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Context",data:[D.ext_ctx.ghg.below55.ctx,D.ext_ctx.ghg.nm.ctx,D.ext_ctx.ghg.passing.ctx,D.ext_ctx.ghg.mastery.ctx],backgroundColor:C.t+"88",borderColor:C.t,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
+mk("an_v11","bar",{labels:D.equity.labels,datasets:[{label:"Binary CR",data:D.equity.cr,backgroundColor:C.r+"88",borderColor:C.r,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Essay",data:D.equity.essay,backgroundColor:C.g+"88",borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:35}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
+var htsCols={"Evidence":C.b,"Argumentation":C.g,"Comparison":C.a,"Chronology":C.t,"Context/Causation":C.p,"Civic Literacy":C.a};
+function mkHTS(id,data){var ks=Object.keys(data),vs=Object.values(data);mk(id,"bar",{labels:ks,datasets:[{label:"",data:vs,backgroundColor:ks.map(function(k){return(htsCols[k]||"#888")+"88";}),borderColor:ks.map(function(k){return htsCols[k]||"#888";}),borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:25}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:75}}});}
+mkHTS("an_v12a",D.hts.ush);mkHTS("an_v12b",D.hts.ghg);
+mk("an_v13","bar",{labels:D.dif_summary.map(function(d){return d.exam;}),datasets:[{label:"Avg DIF gap",data:D.dif_summary.map(function(d){return d.avg_gap;}),backgroundColor:D.dif_summary.map(function(d){return d.avg_gap>30?C.r+"88":d.avg_gap>20?C.a+"88":C.b+"88";}),borderColor:D.dif_summary.map(function(d){return d.avg_gap>30?C.r:d.avg_gap>20?C.a:C.b;}),borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Max DIF gap",data:D.dif_summary.map(function(d){return d.max_gap;}),type:"scatter",pointRadius:6,pointStyle:"triangle",pointBackgroundColor:"#94a3b8",borderColor:"#94a3b8"}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:30}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:90}}});
+var dC4=["#2563eb","#16a34a","#d97706","#7c3aed"];
+var dg=document.getElementById("an_donut_grid");
+if(dg) D.distractor.forEach(function(item){var sev=item.severity||item.sev||"";var sc=sev==="SEVERE"?"bsev":sev==="HIGH"?"bhi":"bmod";var w=document.createElement("div");w.style.cssText="background:#fff;border:.5px solid #e2e8f0;border-radius:9px;padding:12px";w.innerHTML="<div style='font-size:11px;font-weight:700;color:#0f172a;margin-bottom:2px'>"+item.title+" <span class='an-badge "+sc+"'>"+sev+"</span></div><div class='an-epist'>"+(item.epist||"")+"</div>";var pair=document.createElement("div");pair.className="dp-pair";pair.style.marginTop="8px";["Near miss 55-64","Passing 65-84"].forEach(function(lbl,s){var vals=s===0?item.nm:item.ps;var dom=vals.indexOf(Math.max.apply(null,vals));var entVal=s===0?(item.nm_ent||0):(item.ps_ent||0);var box=document.createElement("div");box.style.cssText="text-align:center";var h=document.createElement("div");h.style.cssText="font-size:9px;color:#64748b;margin-bottom:2px;font-weight:600";h.textContent=lbl;var cd=document.createElement("div");cd.style.cssText="position:relative;height:75px";var cv=document.createElement("canvas");cd.appendChild(cv);var dl=document.createElement("div");dl.style.cssText="font-size:9px;font-weight:700;color:"+dC4[dom]+";margin-top:2px";dl.textContent="C"+(dom+1)+": "+vals[dom].toFixed(0)+"% (H="+entVal.toFixed(2)+")";box.appendChild(h);box.appendChild(cd);box.appendChild(dl);pair.appendChild(box);new Chart(cv,{type:"doughnut",data:{labels:["C1","C2","C3","C4"],datasets:[{data:vals,backgroundColor:dC4.map(function(c,ci){return ci===dom?c:c+"33";}),borderColor:dC4.map(function(c,ci){return ci===dom?c:c+"55";}),borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,cutout:"55%",plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:4,callbacks:{label:function(ctx){return ctx.label+": "+ctx.parsed.toFixed(0)+"%";}}}}}});});w.appendChild(pair);dg.appendChild(w);});
+mk("an_v15","radar",{labels:["Counter-narrative","Liberation/resist","Community solidarity","Anti-colonial","Reform/progressive","Canonical/dominant"],datasets:[{label:"Near-miss dominant",data:[45,38,31,42,28,20],backgroundColor:C.a+"33",borderColor:C.a,borderWidth:2,pointBackgroundColor:C.a,pointRadius:4},{label:"Passing dominant",data:[15,12,18,14,19,55],backgroundColor:C.b+"33",borderColor:C.b,borderWidth:2,pointBackgroundColor:C.b,pointRadius:4}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{r:{grid:{color:"rgba(0,0,0,0.06)"},ticks:{display:false},pointLabels:{font:{size:9},color:"#64748b"}}}});
 var iTypC={ExtCRQ:C.p,BinaryCR:C.b,Essay:C.g,CivicLit:C.a};
-mk('an_v16','scatter',{datasets:[{label:'items',
-  data:D.irt.map(function(d){return{x:d.b,y:d.a};}),
-  backgroundColor:D.irt.map(function(d){return (iTypC[d.type]||'#888')+'99';}),
-  borderColor:D.irt.map(function(d){return iTypC[d.type]||'#888';}),
-  borderWidth:1.5,pointRadius:7,pointHoverRadius:9}]},{responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{title:function(c){var d=D.irt[c[0].dataIndex];return d.subj+' '+d.item;},label:function(c){var d=D.irt[c[0].dataIndex];return[' a='+d.a.toFixed(2)+'  b='+d.b.toFixed(2),' facility='+d.facility+'%','  rpbi='+d.rpbi];}}}},
-  scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},title:{display:true,text:'b (difficulty)',color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:-0.5,max:1.8,title:{display:true,text:'a (discrimination)',color:TC,font:{size:9}}}}});
-
-// ICCs
-function mkICC(id,key,color){
-  var el=document.getElementById(id);if(!el||!D.icc[key])return;
-  new Chart(el,{type:'line',data:{labels:D.icc.theta,datasets:[{label:key,data:D.icc[key],borderColor:color,backgroundColor:'transparent',pointRadius:0,borderWidth:2.5,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:4,callbacks:{label:function(c){return 'P='+c.parsed.y.toFixed(2)+' at theta='+c.parsed.x.toFixed(1);}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:8},callback:function(v,i){return i%3===0?D.icc.theta[i].toFixed(1):'';},maxRotation:0},title:{display:true,text:'theta',color:TC,font:{size:8}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:8},callback:function(v){return (v*100).toFixed(0)+'%';}},min:0,max:1}}}});
-}
-mkICC('an_icc_essay','Essay_USH',C.g);mkICC('an_icc_crq30','CRQ30_USH',C.p);mkICC('an_icc_cr33','CR33_USH',C.r);
-mkICC('an_icc_p3','P3_GHG',C.t);mkICC('an_icc_34b','CivLit34B',C.a);mkICC('an_icc_cr31','CR31_GHG',C.b);
-
-// V18
-mk('an_v18','line',{labels:D.tif.theta,datasets:[
-  {label:'USH TIF',data:D.tif.ush,borderColor:C.b,backgroundColor:C.b+'22',fill:true,pointRadius:0,borderWidth:2.5,tension:0.4},
-  {label:'GHG TIF',data:D.tif.ghg,borderColor:C.g,backgroundColor:C.g+'22',fill:true,pointRadius:0,borderWidth:2.5,tension:0.4}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:10}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},callback:function(v,i){return i%10===0?D.tif.theta[i].toFixed(1):'';},maxRotation:0},title:{display:true,text:'Ability (theta)',color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0}}});
-
-// IRT TABLE
-var htsMap={CRQ29:'Context/Causation',CRQ30:'Context/Causation',CR31:'Evidence',CR32:'Evidence',CR33:'Argumentation',CR34:'Evidence',CR35:'Comparison',CR36:'Chronology',Essay:'Argumentation',CR29:'Evidence',CR30:'Context/Causation',P3Essay:'Argumentation',CivLit34A:'Civic Literacy',CivLit34B:'Civic Literacy'};
-var schMap={CRQ29:'HIGH',CRQ30:'HIGH',CR31:'LOW',CR32:'LOW',CR33:'MODERATE',CR34:'LOW',CR35:'MODERATE',CR36:'MODERATE',Essay:'LOW-MOD',P3Essay:'LOW-MOD',CivLit34A:'HIGH',CivLit34B:'VERY HIGH'};
-var voiMap={CRQ29:'Dominant',CRQ30:'Dominant',CR31:'Variable',CR32:'Variable',CR33:'Variable',CR34:'Variable',CR35:'Variable',CR36:'Variable',Essay:'Open',P3Essay:'Open',CivLit34A:'Institutional',CivLit34B:'Institutional',CR29:'Dom/Colonial',CR30:'Dom/Inst'};
-function grI(a,r){if(a>1.0&&r>0.45)return'<span class="an-badge bexc">Excellent</span>';if(a>0.6&&r>0.3)return'<span class="an-badge bgd">Good</span>';if(a>0.3&&r>0.15)return'<span class="an-badge bmg">Marginal</span>';return'<span class="an-badge bpr">Poor</span>';}
-var tb=document.getElementById('an_irt_tbody');
-if(tb) D.irt.forEach(function(d){
-  var aC=d.a>1?C.g:d.a<0.3?C.r:'#334155';
-  var rC=d.rpbi>0.4?C.g:d.rpbi<0.15?C.r:'#334155';
-  var tr=document.createElement('tr');
-  tr.innerHTML='<td style="font-weight:700">'+d.item+'</td><td>'+d.subj+'</td><td style="font-size:9px;color:#64748b">'+d.type+'</td><td>'+d.facility+'%</td><td style="color:'+aC+';font-weight:'+(d.a>1?700:400)+'">'+d.a+'</td><td>'+d.b+'</td><td style="color:'+rC+';font-weight:'+(d.rpbi>0.4?700:400)+'">'+d.rpbi+'</td><td style="font-size:9px;color:#64748b">'+(htsMap[d.item]||'')+'</td><td style="font-size:9px;color:'+(schMap[d.item]==='VERY HIGH'?C.r:schMap[d.item]==='HIGH'?C.a:C.g)+'">'+(schMap[d.item]||'')+'</td><td style="font-size:9px;color:#64748b">'+(voiMap[d.item]||'')+'</td><td>'+grI(d.a,d.rpbi)+'</td>';
-  tb.appendChild(tr);
-});
-
-// V20
-mk('an_v20a','scatter',{datasets:[{label:'items',data:D.irt.map(function(d){return{x:d.facility,y:d.a};}),backgroundColor:D.irt.map(function(d){return (iTypC[d.type]||'#888')+'99';}),borderColor:D.irt.map(function(d){return iTypC[d.type]||'#888';}),borderWidth:1.5,pointRadius:6}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5,callbacks:{title:function(c){var d=D.irt[c[0].dataIndex];return d.subj+' '+d.item;},label:function(c){return[' facility='+c.parsed.x.toFixed(0)+'%',' a='+c.parsed.y.toFixed(3)];}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100,title:{display:true,text:'Facility (%)',color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:-0.5,max:1.8,title:{display:true,text:'a (discrimination)',color:TC,font:{size:9}}}}});
-mk('an_v20b','bar',{labels:['Essay/Ext','Binary CR (good)','Civic Lit','Binary CR (poor)'],datasets:[{label:'Avg rpbi',data:[0.585,0.37,0.41,0.17],backgroundColor:[C.g+'88',C.b+'88',C.a+'88',C.r+'88'],borderColor:[C.g,C.b,C.a,C.r],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:20}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:0.8}}});
-
-// V21
-mk('an_v21a','bar',{labels:bL,datasets:[
-  {label:'Extraction',data:[D.ext_ctx.ush.below55.ext,D.ext_ctx.ush.nm.ext,D.ext_ctx.ush.passing.ext,D.ext_ctx.ush.mastery.ext],backgroundColor:C.b+'88',borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Context',data:[D.ext_ctx.ush.below55.ctx,D.ext_ctx.ush.nm.ctx,D.ext_ctx.ush.passing.ctx,D.ext_ctx.ush.mastery.ctx],backgroundColor:C.p+'88',borderColor:C.p,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-mk('an_v21b','bar',{labels:bL,datasets:[
-  {label:'Extraction',data:[D.ext_ctx.ghg.below55.ext,D.ext_ctx.ghg.nm.ext,D.ext_ctx.ghg.passing.ext,D.ext_ctx.ghg.mastery.ext],backgroundColor:C.g+'88',borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},
-  {label:'Context',data:[D.ext_ctx.ghg.below55.ctx,D.ext_ctx.ghg.nm.ctx,D.ext_ctx.ghg.passing.ctx,D.ext_ctx.ghg.mastery.ctx],backgroundColor:C.t+'88',borderColor:C.t,borderWidth:1.5,borderRadius:3,borderSkipped:false}
-]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{font:{size:9}}},tooltip:{backgroundColor:'#fff',titleColor:'#111',bodyColor:'#555',borderColor:'#e2e8f0',borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
-
-// TOP 10 FINDINGS
-var findings=[
-  {n:1,color:'#dc2626',tags:['Most significant','August schema burden'],
-   title:'Students retaking in August receive a structurally harder exam -- 19 students dropped from 55.3 to 47.7 sitting GHG two months apart.',
-   body:'Aug schema burden avg 45.4 vs 37.6 June. Below-55 rates: 35.1% Aug vs 10.7% June. GHG Aug 2025: 11.1% pass, 63% below 55. The instrument changed; the students did not.',
-   sys:'Mandate schema burden comparability as a documented test construction criterion.',sch:'Report August and June data as separate cohorts in all school reporting.',tchr:'Name the harder instrument explicitly to students. Prepare August cohorts for more contextual background, not more practice items.'},
-  {n:2,color:'#d97706',tags:['Surprising','Distractor/QuantCrit'],
-   title:'Students who are most certain are most wrong. 70-77% near-miss convergence on one choice while passing students scatter.',
-   body:'USH Jun 2025 Item 14: near-miss entropy 1.16 (high certainty), passing entropy 1.57 (distributed). 43 item-sitting pairs show different dominant answers. Near-miss students are centering a different but historically valid framework.',
-   sys:'Release distractor distribution data by school demographic context.',sch:'Post-exam analysis should examine which answer was selected, not just which items were missed.',tchr:'Teach what makes the exam answer correct AND why the student answer is historically defensible. That is code-switching instruction.'},
-  {n:3,color:'#dc2626',tags:['Most actionable','Near-miss band'],
-   title:'67-89% of failing students are within 10 points of passing, averaging 5-7 points away.',
-   body:'USH Aug 2024: 89% within 10 pts. Near-miss students extract at 52-61% but contextualize at 29-36%. The skill they need is historical contextualization -- specific and teachable.',
-   sys:'Fund targeted near-miss intervention resources.',sch:'Track near-miss rate as a key equity metric alongside pass rate.',tchr:'Contextualization instruction using Re:Source source sets around high-DIF CRQ topics is the direct intervention.'},
-  {n:4,color:'#7c3aed',tags:['Surprising','Open response/IRT'],
-   title:'On every retake sitting, the essay ranks 1st or 2nd. Most equitable format AND most psychometrically valid (a=1.47 USH, a=1.11 GHG).',
-   body:'GHG Aug 2025 (11.1% pass): P3 Essay is the highest item. Flat CR33 ICC (a=0.25) vs steep Essay ICC (a=1.47). Open format measures historical thinking; binary CR often measures schema access.',
-   sys:'Increase the proportion of extended constructed response relative to binary MC.',sch:'Track essay performance separately from MC -- it measures something different.',tchr:'Essay instruction is the highest-leverage exam prep available. Argument builds critical consciousness AND earns points.'},
-  {n:5,color:'#2563eb',tags:['Structural','GHG-to-USH sequence'],
-   title:'USH and GHG measure fluency in two different dominant traditions. 8 students who scored 70s-80s in GHG failed USH.',
-   body:'USH 24.9-pt extraction/context gap has no equivalent in GHG (7.3 pts). 93 matched students: SD of score changes = 8.3 pts. Outcomes depend more on implied reader match than stable ability.',
-   sys:'Publish USH-GHG HTS skill weighting comparisons and calibrate the sequence.',sch:'Treat GHG-to-USH as a transition requiring explicit bridging instruction.',tchr:'Teach USH canonical context as a tool -- one interpretive tradition among many, not truth.'},
-  {n:6,color:'#d97706',tags:['Surprising','CivLit34B instability'],
-   title:'CivLit 34B swings 66 percentage points across sittings -- 85.7% to 14.7%. The most unstable item in the dataset.',
-   body:'Not measuring stable civic competency. Measuring access to specific Western democratic vocabulary that shifts every sitting and was never named as curriculum prerequisite.',
-   sys:'Equate CivLit items across sittings before operational release.',sch:'Do not treat CivLit performance as reflecting stable civic knowledge.',tchr:'Teach democratic procedural vocabulary directly and critically -- as a language with a history, not neutral civic knowledge.'},
-  {n:7,color:'#16a34a',tags:['Significant','Entropy divergence'],
-   title:'Near-miss students average entropy 1.47 vs 1.27 for passing. They see multiple defensible answers, not confusion.',
-   body:'GHG Jun 2025 Item 13: near-miss three-way split (33.3% each). Passing converges on one at 67.5%. Near-miss students have three historically valid arguments. The exam key recognizes one.',
-   sys:'Review high-entropy-divergence items for cultural loading before operational use.',sch:'Entropy data is an equity signal. Use it in instructional data analysis.',tchr:'Response spread is evidence of legitimate interpretive range. Teach multiple frames, then how to identify which one the exam wants.'},
-  {n:8,color:'#7c3aed',tags:['IRT finding','Item information'],
-   title:'USH Aug 2024: item range 56.7 pts vs score SD 5.1 -- items sort students 11x more than student ability does.',
-   body:'USH CR33: a=0.25, rpbi=0.15 -- near-zero. Items produce the distribution; they do not reveal it. Schema access determines pass/fail more than historical thinking ability.',
-   sys:'Remove items with a under 0.4 and rpbi under 0.2 from operational use.',sch:'Score distributions reflect instrument artifacts as much as student outcomes.',tchr:'Low scores on high-schema items do not define your students historical thinking capacity.'},
-  {n:9,color:'#2563eb',tags:['Surprising','Cohort transition'],
-   title:'8 students who passed GHG failed USH -- including 3 who scored in the 70s-80s. 15 who failed GHG passed USH.',
-   body:'93 matched students. Mean delta +1.8 pts, SD 8.3. Both TIF curves peak below passing. Both exams are optimized to sort at the boundary, not measure mastery.',
-   sys:'Calibrate USH and GHG to each other on HTS skill weighting.',sch:'Track who passed GHG and then failed USH as a critical early warning population.',tchr:'Tell students: You did not become worse at history. You met a different exam. Here is what it needs from you.'},
-  {n:10,color:'#16a34a',tags:['Overlooked','QuantCrit/voice'],
-   title:'Sources that exercise power score 2.43 on neutrality challenge. Sources that name power score 4.34. The answer key enforces this asymmetry.',
-   body:'Institutional/State sources produce DIF gap 26.4 pts avg. Open formats: 11.5 pts. Legal documents produce the lowest near-miss correct rates (38.2%). QuantCrit reading: dominant sources are treated as neutral; resistant sources as contested.',
-   sys:'Increase resistant and community-centered voice representation in Regents source bases.',sch:'Audit classroom assessment source selection using Re:Source framework.',tchr:'When you choose a source, you choose whose authority gets to be neutral. Re:Source is the counter-archive -- 781 sources built to make that choice visible.'}
-];
-var fc=document.getElementById('an_findings_list');
-if(fc) findings.forEach(function(f){
-  var d=document.createElement('div');d.className='an-fi';d.style.borderLeftColor=f.color;
-  d.innerHTML='<div class="an-ftags">'+f.tags.map(function(t){return '<span class="an-ftag">'+t+'</span>';}).join('')+'</div><div class="an-ft"><span style="opacity:.15;font-weight:900;font-size:22px;color:'+f.color+';margin-right:4px;">'+f.n+'</span>'+f.title+'</div><div class="an-fb">'+f.body+'</div><div class="an-fr3"><div class="an-fr fr-sys"><strong>System</strong><p>'+f.sys+'</p></div><div class="an-fr fr-sch"><strong>School</strong><p>'+f.sch+'</p></div><div class="an-fr fr-tc"><strong>Teacher</strong><p>'+f.tchr+'</p></div></div>';
-  fc.appendChild(d);
-});
-
+mk("an_v16","scatter",{datasets:[{label:"items",data:D.irt.map(function(d){return{x:d.b,y:d.a};}),backgroundColor:D.irt.map(function(d){return(iTypC[d.type]||"#888")+"99";}),borderColor:D.irt.map(function(d){return iTypC[d.type]||"#888";}),borderWidth:1.5,pointRadius:7,pointHoverRadius:9}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5,callbacks:{title:function(c){var d=D.irt[c[0].dataIndex];return d.subj+" "+d.item;},label:function(c){var d=D.irt[c[0].dataIndex];return[" a="+d.a.toFixed(2)+"  b="+d.b.toFixed(2)," facility="+d.facility+"%"," rpbi="+d.rpbi];}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},title:{display:true,text:"b (difficulty)",color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:-0.5,max:1.8,title:{display:true,text:"a (discrimination)",color:TC,font:{size:9}}}}});
+function mkICC(id,key,color){var el=document.getElementById(id);if(!el||!D.icc[key])return;new Chart(el,{type:"line",data:{labels:D.icc.theta,datasets:[{label:key,data:D.icc[key],borderColor:color,backgroundColor:"transparent",pointRadius:0,borderWidth:2.5,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:4,callbacks:{label:function(c){return "P="+c.parsed.y.toFixed(2)+" at theta="+c.parsed.x.toFixed(1);}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:8},callback:function(v,i){return i%3===0?D.icc.theta[i].toFixed(1):"";},maxRotation:0},title:{display:true,text:"theta",color:TC,font:{size:8}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:8},callback:function(v){return(v*100).toFixed(0)+"%";}},min:0,max:1}}}});}
+mkICC("an_icc_essay","Essay_USH",C.g);mkICC("an_icc_crq30","CRQ30_USH",C.p);mkICC("an_icc_cr33","CR33_USH",C.r);mkICC("an_icc_p3","P3_GHG",C.t);mkICC("an_icc_34b","CivLit34B",C.a);mkICC("an_icc_cr31","CR31_GHG",C.b);
+mk("an_v18","line",{labels:D.tif.theta,datasets:[{label:"USH TIF",data:D.tif.ush,borderColor:C.b,backgroundColor:C.b+"22",fill:true,pointRadius:0,borderWidth:2.5,tension:0.4},{label:"GHG TIF",data:D.tif.ghg,borderColor:C.g,backgroundColor:C.g+"22",fill:true,pointRadius:0,borderWidth:2.5,tension:0.4}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:10}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},callback:function(v,i){return i%10===0?D.tif.theta[i].toFixed(1):"";},maxRotation:0},title:{display:true,text:"Ability (theta)",color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0}}});
+var htsMap={"CRQ29":"Context/Causation","CRQ30":"Context/Causation","CR31":"Evidence","CR32":"Evidence","CR33":"Argumentation","CR34":"Evidence","CR35":"Comparison","CR36":"Chronology","Essay":"Argumentation","CR29":"Evidence","CR30":"Context/Causation","P3Essay":"Argumentation","CivLit34A":"Civic Literacy","CivLit34B":"Civic Literacy"};
+var schMap={"CRQ29":"HIGH","CRQ30":"HIGH","CR31":"LOW","CR32":"LOW","CR33":"MODERATE","CR34":"LOW","CR35":"MODERATE","CR36":"MODERATE","Essay":"LOW-MOD","P3Essay":"LOW-MOD","CivLit34A":"HIGH","CivLit34B":"VERY HIGH"};
+var voiMap={"CRQ29":"Dominant","CRQ30":"Dominant","CR31":"Variable","CR32":"Variable","CR33":"Variable","CR34":"Variable","CR35":"Variable","CR36":"Variable","Essay":"Open","P3Essay":"Open","CivLit34A":"Institutional","CivLit34B":"Institutional","CR29":"Dom/Colonial","CR30":"Dom/Inst"};
+function grI(a,r){if(a>1.0&&r>0.45)return"<span class='an-badge bexc'>Excellent</span>";if(a>0.6&&r>0.3)return"<span class='an-badge bgd'>Good</span>";if(a>0.3&&r>0.15)return"<span class='an-badge bmg'>Marginal</span>";return"<span class='an-badge bpr'>Poor</span>";}
+var tb=document.getElementById("an_irt_tbody");
+if(tb) D.irt.forEach(function(d){var aC=d.a>1?C.g:d.a<0.3?C.r:"#334155";var rC=d.rpbi>0.4?C.g:d.rpbi<0.15?C.r:"#334155";var tr=document.createElement("tr");tr.innerHTML="<td style='font-weight:700'>"+d.item+"</td><td>"+d.subj+"</td><td style='font-size:9px;color:#64748b'>"+d.type+"</td><td>"+d.facility+"%</td><td style='color:"+aC+";font-weight:"+(d.a>1?700:400)+"'>"+d.a+"</td><td>"+d.b+"</td><td style='color:"+rC+";font-weight:"+(d.rpbi>0.4?700:400)+"'>"+d.rpbi+"</td><td style='font-size:9px;color:#64748b'>"+(htsMap[d.item]||"")+"</td><td style='font-size:9px;color:"+(schMap[d.item]==="VERY HIGH"?C.r:schMap[d.item]==="HIGH"?C.a:C.g)+"'>"+(schMap[d.item]||"")+"</td><td style='font-size:9px;color:#64748b'>"+(voiMap[d.item]||"")+"</td><td>"+grI(d.a,d.rpbi)+"</td>";tb.appendChild(tr);});
+mk("an_v20a","scatter",{datasets:[{label:"items",data:D.irt.map(function(d){return{x:d.facility,y:d.a};}),backgroundColor:D.irt.map(function(d){return(iTypC[d.type]||"#888")+"99";}),borderColor:D.irt.map(function(d){return iTypC[d.type]||"#888";}),borderWidth:1.5,pointRadius:6}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5,callbacks:{title:function(c){var d=D.irt[c[0].dataIndex];return d.subj+" "+d.item;},label:function(c){return[" facility="+c.parsed.x.toFixed(0)+"%"," a="+c.parsed.y.toFixed(3)];}}}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100,title:{display:true,text:"Facility (%)",color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:-0.5,max:1.8,title:{display:true,text:"a",color:TC,font:{size:9}}}}});
+mk("an_v20b","bar",{labels:["Essay/Ext","Binary CR (good)","Civic Lit","Binary CR (poor)"],datasets:[{label:"Avg rpbi",data:[0.585,0.37,0.41,0.17],backgroundColor:[C.g+"88",C.b+"88",C.a+"88",C.r+"88"],borderColor:[C.g,C.b,C.a,C.r],borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9},maxRotation:20}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:0.8}}});
+mk("an_v21a","bar",{labels:bL,datasets:[{label:"Extraction",data:[D.ext_ctx.ush.below55.ext,D.ext_ctx.ush.nm.ext,D.ext_ctx.ush.passing.ext,D.ext_ctx.ush.mastery.ext],backgroundColor:C.b+"88",borderColor:C.b,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Context",data:[D.ext_ctx.ush.below55.ctx,D.ext_ctx.ush.nm.ctx,D.ext_ctx.ush.passing.ctx,D.ext_ctx.ush.mastery.ctx],backgroundColor:C.p+"88",borderColor:C.p,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
+mk("an_v21b","bar",{labels:bL,datasets:[{label:"Extraction",data:[D.ext_ctx.ghg.below55.ext,D.ext_ctx.ghg.nm.ext,D.ext_ctx.ghg.passing.ext,D.ext_ctx.ghg.mastery.ext],backgroundColor:C.g+"88",borderColor:C.g,borderWidth:1.5,borderRadius:3,borderSkipped:false},{label:"Context",data:[D.ext_ctx.ghg.below55.ctx,D.ext_ctx.ghg.nm.ctx,D.ext_ctx.ghg.passing.ctx,D.ext_ctx.ghg.mastery.ctx],backgroundColor:C.t+"88",borderColor:C.t,borderWidth:1.5,borderRadius:3,borderSkipped:false}]},{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:"top",labels:{font:{size:9}}},tooltip:{backgroundColor:"#fff",titleColor:"#111",bodyColor:"#555",borderColor:"#e2e8f0",borderWidth:1,cornerRadius:5}},scales:{x:{grid:{color:GC},ticks:{color:TC,font:{size:9}}},y:{grid:{color:GC},ticks:{color:TC,font:{size:9}},min:0,max:100}}});
+var findings=[{n:1,color:"#dc2626",tags:["Most significant","August schema burden"],title:"Students retaking in August receive a structurally harder exam. 19 students dropped from 55.3 to 47.7.",body:"Aug schema burden avg 45.4 vs 37.6 June. GHG Aug 2025: 11.1% pass, 63% below 55.",sys:"Mandate schema burden comparability as a documented test construction criterion.",sch:"Report August and June data as separate cohorts.",tchr:"Name the harder instrument explicitly. Prepare August cohorts for more contextual background."},{n:2,color:"#d97706",tags:["Surprising","Distractor/QuantCrit"],title:"Students who are most certain are most wrong. 70-77% near-miss convergence on one choice.",body:"USH Jun 2025 Item 14: near-miss entropy 1.16, passing entropy 1.57. 43 item-sitting pairs show different dominant answers.",sys:"Release distractor distribution data by school demographic context.",sch:"Post-exam analysis should examine which answer was selected.",tchr:"Teach what makes the exam answer correct AND why the student answer is historically defensible."},{n:3,color:"#dc2626",tags:["Most actionable","Near-miss band"],title:"67-89% of failing students are within 10 points of passing, averaging 5-7 points away.",body:"USH Aug 2024: 89% within 10 pts. Near-miss students extract at 52-61% but contextualize at 29-36%.",sys:"Fund targeted near-miss intervention resources.",sch:"Track near-miss rate as a key equity metric alongside pass rate.",tchr:"Contextualization instruction using Re:Source source sets around high-DIF CRQ topics is the direct intervention."},{n:4,color:"#7c3aed",tags:["Surprising","Open response/IRT"],title:"On every retake sitting, the essay ranks 1st or 2nd. Most equitable format AND most psychometrically valid.",body:"USH Essay a=1.47, rpbi=0.65. GHG P3 a=1.11. CR33 a=0.25 -- near-zero discrimination.",sys:"Increase extended constructed response relative to binary MC.",sch:"Track essay performance separately from MC.",tchr:"Essay instruction is the highest-leverage exam prep available."},{n:5,color:"#2563eb",tags:["Structural","GHG-to-USH sequence"],title:"USH and GHG measure fluency in two different dominant traditions. 8 students who scored 70s-80s in GHG failed USH.",body:"USH 24.9-pt extraction/context gap has no equivalent in GHG (7.3 pts). 93 matched students: SD of score changes = 8.3 pts.",sys:"Publish USH-GHG HTS skill weighting comparisons.",sch:"Treat GHG-to-USH as a transition requiring explicit bridging instruction.",tchr:"Teach USH canonical context as a tool -- one interpretive tradition among many, not truth."},{n:6,color:"#d97706",tags:["Surprising","CivLit34B instability"],title:"CivLit 34B swings 66 percentage points across sittings -- 85.7% to 14.7%.",body:"Not measuring stable civic competency. Measuring access to specific Western democratic vocabulary.",sys:"Equate CivLit items across sittings before release.",sch:"Do not treat CivLit performance as reflecting stable civic knowledge.",tchr:"Teach democratic procedural vocabulary as a language with a history."},{n:7,color:"#16a34a",tags:["Significant","Entropy divergence"],title:"Near-miss students average entropy 1.47 vs 1.27 for passing. They see multiple defensible answers.",body:"GHG Jun 2025 Item 13: near-miss three-way split (33.3% each). Passing converges on one at 67.5%.",sys:"Review high-entropy-divergence items for cultural loading.",sch:"Entropy data is an equity signal. Use it in instructional data analysis.",tchr:"Response spread is evidence of legitimate interpretive range."},{n:8,color:"#7c3aed",tags:["IRT finding","Item information"],title:"USH Aug 2024: item range 56.7 pts vs score SD 5.1 -- items sort students 11x more than ability does.",body:"USH CR33: a=0.25, rpbi=0.15 -- near-zero. Items produce the distribution; they do not reveal it.",sys:"Remove items with a under 0.4 and rpbi under 0.2.",sch:"Score distributions reflect instrument artifacts as much as student outcomes.",tchr:"Low scores on high-schema items do not define your students historical thinking capacity."},{n:9,color:"#2563eb",tags:["Surprising","Cohort transition"],title:"8 students who passed GHG failed USH. 15 who failed GHG passed USH.",body:"93 matched students. Mean delta +1.8 pts, SD 8.3. Both TIF curves peak below passing.",sys:"Calibrate USH and GHG to each other on HTS skill weighting.",sch:"Track who passed GHG and then failed USH as a critical early warning population.",tchr:"Tell students: You did not become worse at history. You met a different exam."},{n:10,color:"#16a34a",tags:["Overlooked","QuantCrit/voice"],title:"Sources that exercise power score 2.43 on neutrality challenge. Sources that name power score 4.34.",body:"Institutional/State sources produce DIF gap 26.4 pts avg. Open formats: 11.5 pts.",sys:"Increase resistant and community-centered voice representation in Regents source bases.",sch:"Audit classroom assessment source selection using Re:Source framework.",tchr:"When you choose a source, you choose whose authority gets to be neutral."}];
+var fc=document.getElementById("an_findings_list");
+if(fc) findings.forEach(function(f){var d=document.createElement("div");d.className="an-fi";d.style.borderLeftColor=f.color;d.innerHTML="<div class='an-ftags'>"+f.tags.map(function(t){return "<span class='an-ftag'>"+t+"</span>";}).join("")+"</div><div class='an-ft'><span style='opacity:.15;font-weight:900;font-size:22px;color:"+f.color+";margin-right:4px'>"+f.n+"</span>"+f.title+"</div><div class='an-fb'>"+f.body+"</div><div class='an-fr3'><div class='an-fr fr-sys'><strong>System</strong><p>"+f.sys+"</p></div><div class='an-fr fr-sch'><strong>School</strong><p>"+f.sch+"</p></div><div class='an-fr fr-tc'><strong>Teacher</strong><p>"+f.tchr+"</p></div></div>";fc.appendChild(d);});
 })();
 </script>
 </div>
