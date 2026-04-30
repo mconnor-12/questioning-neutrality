@@ -93,14 +93,14 @@ textarea{resize:vertical;min-height:80px;}
 .ff{display:flex;flex-direction:column;min-width:140px;}
 .ff label{font-size:12px;margin-bottom:4px;}
 .ff input,.ff select{padding:7px 10px;font-size:13px;}
-.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;}
-.sc{background:#fff;border-radius:10px;padding:16px;cursor:pointer;border:2px solid transparent;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;align-items:start;}
+.sc{background:#fff;border-radius:10px;padding:16px;cursor:pointer;border:2px solid transparent;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.07);display:flex;flex-direction:column;min-height:180px;overflow:hidden;position:relative;}
 .sc:hover{border-color:#2563eb;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12);}
 .sc.selected{border-color:#2563eb;background:#eff6ff;}
-.sc-title{font-size:14px;font-weight:700;color:#1a2332;margin-bottom:4px;line-height:1.3;}
-.sc-meta{font-size:12px;color:#64748b;margin-bottom:8px;}
-.sc-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;}
-.chip{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;}
+.sc-title{font-size:14px;font-weight:700;color:#1a2332;margin-bottom:4px;line-height:1.3;display:block;word-wrap:break-word;}
+.sc-meta{font-size:12px;color:#64748b;margin-bottom:8px;display:block;}
+.sc-chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;align-items:center;}
+.chip{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;display:inline-flex;align-items:center;line-height:1.4;white-space:nowrap;}
 .chip-dom{background:#fee2e2;color:#991b1b;}
 .chip-res{background:#d1fae5;color:#065f46;}
 .chip-amb{background:#fef3c7;color:#92400e;}
@@ -5025,7 +5025,7 @@ We demand the immediate cessation of the war against liberty, begun by Spain and
   mediumFunction:`testimonial`,
 },
 {
-  id:`e001`,
+  id:`e017`,
   title:`Al-Muqaddimah — On Group Solidarity and the Rise of Dynasties`,
   author:`Ibn Khaldun`,
   date:`c.1377`,
@@ -5051,7 +5051,7 @@ The desert people are closer to goodness than sedentary people, because they are
   equityNote:`Ibn Khaldun wrote perhaps the first theory of historical sociology — analyzing why civilizations rise and fall in terms of social dynamics (asabiyah) rather than divine will or individual leaders. His cyclical model anticipated modern sociological thinking by 600 years. Used directly in your AP World Week 34 Quiz CRQ Set 1. Excellent for HTS-5 (compare to Montesquieu's separation of powers and to the Ottoman decline document as complementary explanations of political collapse).`,
 },
 {
-  id:`e002`,
+  id:`e018`,
   title:`Ain-i-Akbari — Mughal Administration and Just Taxation`,
   author:`Abu'l-Fazl, court historian of Emperor Akbar`,
   date:`c.1595`,
@@ -5077,7 +5077,7 @@ His Majesty has established regulations so that oppression may be prevented and 
   equityNote:`Abu'l-Fazl was Akbar's court historian — this is a source of self-praise for Mughal administration, not an independent assessment. Excellent for HTS-2 (purpose: what is Abu'l-Fazl trying to demonstrate about Akbar's rule?). Pairs with the Jahangir letter to James I for a complete picture of Mughal governance and diplomacy. Used in your AP World Week 34 Quiz CRQ Set 2. The explicit claim that 'justice is the foundation of government' invites comparison to Ibn Khaldun's analysis of what actually sustains or destroys dynasties.`,
 },
 {
-  id:`e003`,
+  id:`e019`,
   title:`A Vindication of the Rights of Woman — On Education and Equality`,
   author:`Mary Wollstonecraft`,
   date:`1792`,
@@ -5103,7 +5103,7 @@ Let women share the advantages of education and rational instruction, and they w
   equityNote:`Wollstonecraft wrote in 1792 — the same year as the Declaration of the Rights of Man and Citizen — deliberately drawing on the Revolution's logic to demand its extension to women. She was ridiculed in her lifetime. Her argument that women 'appear' inferior because they lack education (not because they are inferior) is a sophisticated structural argument that anticipates modern thinking about systemic disadvantage. Used in your AP World Week 34 Quiz Q5-6. Pairs with de Gouges for dual-track analysis of women's Enlightenment claims.`,
 },
 {
-  id:`e004`,
+  id:`e020`,
   title:`Survival in Auschwitz — On Arrival at the Camp`,
   author:`Primo Levi`,
   date:`1947`,
@@ -5129,7 +5129,7 @@ Imagine now a man who is deprived of everyone he loves, and at the same time of 
   equityNote:`Levi's account is one of the most philosophically precise analyses of dehumanization ever written. The methodical stripping of name, clothing, hair, and objects is not incidental cruelty but the structural logic of genocide — to create 'hollow men' incapable of resistance. Used in your AP World Week 34 Quiz Q7-8. Excellent for HTS-6: evaluate Levi's claim that dehumanization is the precondition for mass killing — and connect to the UN Declaration of Human Rights as a direct institutional response.`,
 },
 {
-  id:`e005`,
+  id:`e021`,
   title:`The Iron Curtain Speech — The Sinews of Peace`,
   author:`Winston Churchill`,
   date:`1946`,
@@ -5155,7 +5155,7 @@ It is not that Soviet Russia wants war, but rather they seek the benefits of war
   equityNote:`Churchill gave this speech as a private citizen — not as a government official — which is significant for HTS-2 (purpose: who speaks, from what position of authority?). He coined 'Iron Curtain' here. The speech is both a description and a prescription — it helped create the Cold War logic it claimed to merely observe. Pairs directly with the Truman Doctrine (Docs 2 in your AP World Week 34 Quiz CRQ Set 1) as cause and effect: Churchill names the threat, Truman responds with policy. Used in your AP World Week 34 Quiz.`,
 },
 {
-  id:`e006`,
+  id:`e022`,
   title:`Maryland Toleration Act`,
   author:`Maryland Colonial Assembly`,
   date:`1649`,
@@ -5177,7 +5177,7 @@ It is not that Soviet Russia wants war, but rather they seek the benefits of war
   equityNote:`The Maryland Toleration Act is one of the earliest colonial laws protecting religious freedom — but it only applied to Christians. Jews, atheists, and non-Christians were explicitly excluded, and blasphemy remained a capital offense. The exhaustive list of denominations it protected reveals the religious diversity of colonial Maryland and the real tensions that made this law necessary. Used in your US.04 End of Unit Assessment Q1-2. Excellent for HTS-3 (evaluate the claim that this was 'religious tolerance').`,
 },
 {
-  id:`e007`,
+  id:`e023`,
   title:`Common Sense — On the Absurdity of Island Rule Over a Continent`,
   author:`Thomas Paine`,
   date:`1776`,
@@ -5201,7 +5201,7 @@ Europe, and not England, is the parent country of America. This new world hath b
   equityNote:`Paine was a recent immigrant and working-class pamphleteer — his voice is distinct from wealthy landowner Founders. Common Sense sold an estimated 500,000 copies in six months. Used in your US.04 End of Unit Assessment Q3-5. The 'satellite/planet' metaphor translates political arguments into natural law — HTS-2: what does using nature as an argument accomplish for Paine's audience? Pairs with the Declaration of Independence as complementary founding arguments.`,
 },
 {
-  id:`e008`,
+  id:`e024`,
   title:`George Washington's Farewell Address — On Foreign Entanglements`,
   author:`President George Washington`,
   date:`1796`,
@@ -5227,7 +5227,7 @@ Our detached and distant situation invites and enables us to pursue a different 
   equityNote:`Washington's Farewell Address established the precedent of American isolationism that shaped foreign policy for over a century — until Wilson's WWI entry broke it. Excellent for HTS-5 (connections across time: trace how this doctrine was invoked and contested through WWI, WWII, and Cold War). Used in your US.04 End of Unit Assessment Q8-9. The phrase 'artificial ties' reveals Washington's Enlightenment belief that political alliances are constructed (artificial) rather than natural — an important philosophical frame.`,
 },
 {
-  id:`e009`,
+  id:`e025`,
   title:`Harriet Hanson Robinson — Early Factory Labor in New England`,
   author:`Harriet Hanson Robinson`,
   date:`1883`,
@@ -5253,7 +5253,7 @@ With their wages they were for the first time in their lives possessed of money,
   equityNote:`Robinson worked in the Lowell mills from age 10 and later became an author and suffragist. Her account captures the genuine liberation that factory wages represented for women who had previously had no independent income — while other sources (the labor petition, the factory regulations) show the exploitation that accompanied that liberation. This tension is the core of your US.04 Q12-13. The phrase 'money they had earned and could spend as they chose' is remarkable for its specificity — this is financial autonomy as experienced, not theorized.`,
 },
 {
-  id:`e010`,
+  id:`e026`,
   title:`Letter from Sally Rice — Mill Girl to Her Parents`,
   author:`Sally Rice, mill worker`,
   date:`1839`,
@@ -5279,7 +5279,7 @@ I am going to work in the mill and I think I shall like it well enough. I expect
   equityNote:`Sally Rice's letter is one of the most direct expressions of young women's desire for economic independence in the historical record. Her phrase 'I have but one life to live and I want to enjoy myself' is startlingly modern. She is 19, homesick, but determined. Accessible to all grade levels. Used in your US.04 End of Unit Assessment Q12-13. Pairs with Robinson's retrospective account — one is written in the moment, the other 40 years later, creating an excellent HTS-2 comparison of sources at different temporal distances.`,
 },
 {
-  id:`e011`,
+  id:`e027`,
   title:`Declaration of Sentiments — Seneca Falls Convention`,
   author:`Elizabeth Cady Stanton and the Seneca Falls Convention`,
   date:`1848`,
@@ -5307,7 +5307,7 @@ After depriving her of all rights as a married woman, if single, and the owner o
   equityNote:`Stanton deliberately modeled the Declaration of Sentiments on the Declaration of Independence — 'the history of mankind' echoes 'the history of the present King.' This parallel structure forces readers to apply the logic of 1776 to the situation of women in 1848. Used in your US.04 End of Unit Assessment Q14-16. Note: Stanton later used racist arguments against Black male suffrage before women's suffrage — this complexity is itself a teaching opportunity about the limits of any political coalition.`,
 },
 {
-  id:`e012`,
+  id:`e028`,
   title:`Louisiana Purchase Treaty — Article I`,
   author:`Napoleon Bonaparte (First Consul) and U.S. Minister Robert Livingston`,
   date:`1803`,
@@ -5331,7 +5331,7 @@ The Government of the United States engages to pay to the French government in t
   equityNote:`The Louisiana Purchase doubled the size of the United States for approximately $15 million — and created the territorial context for the Missouri Compromise. Napoleon sold it because he needed money for European wars and because the Haitian Revolution had just destroyed his plans for a French empire in the Americas. Pairs directly with the Missouri Compromise in your US.04 End of Unit Assessment Short Essay Set 1 as a cause-and-effect relationship. The treaty makes no mention of the approximately 100,000 Indigenous and enslaved people whose futures it decided.`,
 },
 {
-  id:`e013`,
+  id:`e029`,
   title:`Missouri Compromise — Section 8 on Slavery in the Territories`,
   author:`U.S. Congress`,
   date:`1820`,
@@ -5355,7 +5355,7 @@ Provided always, That any person escaping into the same, from whom labour or ser
   equityNote:`The Missouri Compromise drew a line at 36°30' — a geographic compromise over a moral issue. The fugitive slave provision embedded in the 'free' territory clause is often overlooked: even in nominally free territories, enslaved people could be 'reclaimed.' John Quincy Adams's diary (already in the library as d008) called this 'a title-page to a great, tragic volume.' The Missouri Compromise and that diary entry are your Grade 7 CRQ document pair. Pairs here with the Louisiana Purchase (cause) and the Dred Scott decision (effect) across your US.04 Assessment.`,
 },
 {
-  id:`e014`,
+  id:`e030`,
   title:`Indian Removal Act`,
   author:`U.S. Congress`,
   date:`1830`,
@@ -5377,7 +5377,7 @@ Provided always, That any person escaping into the same, from whom labour or ser
   equityNote:`The Indian Removal Act's language of 'choice' ('as may choose to exchange') is a legal fiction — the removal was coerced by state encroachment, militia threats, and the elimination of legal protection. Used in your US.04 End of Unit Assessment Short Essay Set 2. The phrase 'to which the Indian title has been extinguished' buries the genocide in a passive construction. Pairs with Major Ridge's speech below as cause (the Act) and effect (the internal Cherokee debate it created).`,
 },
 {
-  id:`e015`,
+  id:`e031`,
   title:`Major Ridge — Speech Supporting the Treaty of New Echota`,
   author:`Major Ridge, Cherokee leader`,
   date:`1835`,
