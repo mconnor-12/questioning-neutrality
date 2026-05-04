@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questioning Neutrality | Marie Connor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --berry: #6D2E46;
+  --berry-deep: #4F1E32;
+  --rose: #A26769;
+  --cream: #F5EDDF;
+  --cream-deep: #ECE2D0;
+  --cream-light: #FAF5EC;
+  --gold: #C8964A;
+  --gold-soft: #D4A85F;
+  --sage: #84B59F;
+  --slate: #50808E;
+  --slate-deep: #3A5F6A;
+  --plum: #5D2E5F;
+  --sienna: #8B5A2B;
+  --ink: #1F1B16;
+  --ink-soft: #3A332A;
+  --muted: #8A8A8A;
+  --paper: #FAF5EC;
+  --shadow-warm: rgba(109, 46, 70, 0.12);
+  --shadow-soft: rgba(31, 27, 22, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+}
+
+/* ============ PAPER TEXTURE BACKGROUND ============ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(200, 150, 74, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(109, 46, 70, 0.04) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 2px,
+      rgba(31, 27, 22, 0.012) 2px,
+      rgba(31, 27, 22, 0.012) 4px
+    );
+}
+
+/* ============ HEADER ============ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 245, 236, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(109, 46, 70, 0.1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.site-header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.site-mark {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--berry);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.site-mark .ornament {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  position: relative;
+  top: -6px;
+}
+
+.site-mark .author {
+  font-family: "Crimson Pro", serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--slate);
+  letter-spacing: 0.3px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 36px;
+  font-family: "Crimson Pro", serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--berry);
+  transition: width 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.site-nav a:hover { color: var(--berry); }
+.site-nav a:hover::after { width: 100%; }
+
+/* ============ MAIN VIEW (front page) ============ */
+.view {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+.view.fading-out { opacity: 0; pointer-events: none; }
+.view.hidden { display: none; }
+
+/* ============ HERO ============ */
+.hero {
+  padding: 200px 48px 120px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: "Crimson Pro", serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fade-up 1.2s 0.2s ease forwards;
+}
+
+.hero-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 16px;
+  margin-bottom: 3px;
+}
+
+.hero-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 500;
+  line-height: 0.95;
+  color: var(--berry);
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fade-up 1.4s 0.4s ease forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.hero-deck {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 920px;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fade-up 1.4s 0.7s ease forwards;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  font-family: "Crimson Pro", serif;
+  font-size: 15px;
+  color: var(--slate);
+  margin-bottom: 80px;
+  opacity: 0;
+  animation: fade-up 1.4s 1.0s ease forwards;
+}
+
+.hero-meta-item {
+  border-left: 1px solid rgba(109, 46, 70, 0.2);
+  padding-left: 16px;
+}
+
+.hero-meta-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.hero-meta-value {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* Decorative cartographic flourish */
+.hero-flourish {
+  position: absolute;
+  top: 220px;
+  right: -60px;
+  width: 540px;
+  height: 540px;
+  opacity: 0;
+  animation: fade-in 2.5s 1.0s ease forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-flourish svg {
+  width: 100%; height: 100%;
+}
+
+.hero > * { position: relative; z-index: 1; }
+
+/* ============ NARRATIVE SECTION ============ */
+.narrative {
+  padding: 80px 48px 100px;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 32px;
+}
+
+.section-eyebrow {
+  font-family: "Crimson Pro", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.section-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--berry);
+  letter-spacing: -0.5px;
+  margin-bottom: 36px;
+}
+
+.section-heading em {
+  font-style: italic;
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.narrative-prose p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.narrative-prose p:first-of-type::first-letter {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 76px;
+  font-weight: 500;
+  float: left;
+  line-height: 0.85;
+  margin: 8px 14px 0 0;
+  color: var(--berry);
+}
+
+.pullquote {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--berry);
+  border-left: 2px solid var(--gold);
+  padding: 12px 0 12px 32px;
+  margin: 48px 0;
+}
+
+/* ============ STATS BAR ============ */
+.stats-bar {
+  background: linear-gradient(135deg, var(--berry) 0%, var(--berry-deep) 100%);
+  color: var(--cream);
+  padding: 80px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 18px,
+      rgba(245, 237, 223, 0.025) 18px,
+      rgba(245, 237, 223, 0.025) 19px
+    );
+  pointer-events: none;
+}
+
+.stats-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat {
+  border-top: 1px solid rgba(245, 237, 223, 0.25);
+  padding-top: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fallback: if JS doesn't run or observer doesn't fire, animate in on page load */
+@media (scripting: none) {
+  .stat {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-figure {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--cream);
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+}
+
+.stat-figure .unit {
+  font-size: 24px;
+  color: var(--gold-soft);
+  margin-left: 4px;
+  font-style: italic;
+}
+
+.stat-label {
+  font-family: "Crimson Pro", serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(245, 237, 223, 0.85);
+}
+
+.stat-source {
+  font-family: "Crimson Pro", serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-top: 14px;
+  font-style: italic;
+}
+
+/* ============ FOUR FINDINGS GRID ============ */
+.findings-section {
+  padding: 120px 48px 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.findings-intro {
+  max-width: 720px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.findings-intro .section-rule { margin: 0 auto 32px; }
+.findings-intro .section-eyebrow { display: block; margin-bottom: 16px; }
+
+.findings-intro p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.finding-card {
+  background: var(--cream);
+  border: 1px solid rgba(109, 46, 70, 0.15);
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.7s ease, transform 0.6s cubic-bezier(0.7, 0, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  width: 100%;
+  opacity: 0;
+}
+
+.finding-card.visible {
+  opacity: 1;
+}
+
+.finding-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px var(--shadow-warm), 0 8px 16px var(--shadow-soft);
+  border-color: var(--berry);
+}
+
+.finding-card:hover .finding-card-image {
+  transform: scale(1.04);
+}
+
+.finding-card:hover .finding-card-arrow {
+  transform: translateX(8px);
+  color: var(--berry);
+}
+
+.finding-card-image-wrap {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: var(--cream-deep);
+  position: relative;
+  border-bottom: 1px solid rgba(109, 46, 70, 0.1);
+}
+
+.finding-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.4s cubic-bezier(0.7, 0, 0.3, 1);
+  display: block;
+}
+
+.finding-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(31, 27, 22, 0.4) 100%);
+  pointer-events: none;
+}
+
+.finding-card-roman {
+  position: absolute;
+  top: 14px;
+  left: 22px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 56px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  z-index: 2;
+  letter-spacing: 0px;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(31, 27, 22, 0.6), 0 1px 3px rgba(31, 27, 22, 0.4);
+}
+
+.finding-card-tag {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-family: "Crimson Pro", serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(109, 46, 70, 0.85);
+  padding: 6px 12px;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+}
+
+.finding-card-body {
+  padding: 32px 32px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.finding-card-question {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--berry);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.finding-card-question em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.finding-card-conclusion {
+  font-family: "Crimson Pro", serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.finding-card-conclusion strong {
+  color: var(--berry);
+  font-weight: 600;
+}
+
+.finding-card-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(109, 46, 70, 0.15);
+  font-family: "Crimson Pro", serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.finding-card-arrow {
+  color: var(--gold);
+  font-size: 22px;
+  transition: transform 0.5s ease, color 0.5s ease;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+/* ============ CLOSING SECTION ============ */
+.closing {
+  padding: 120px 48px 80px;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.closing .section-rule { margin: 0 auto 32px; }
+.closing .section-eyebrow { display: block; margin-bottom: 24px; }
+
+.closing-statement {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--berry);
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
+}
+
+.closing-statement em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.closing-byline {
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  color: var(--slate);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.closing-divider {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 0 32px;
+}
+
+/* ============ FOOTER ============ */
+.site-footer {
+  background: var(--berry-deep);
+  color: var(--cream);
+  padding: 64px 48px 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 48px;
+}
+
+.footer-mark {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: var(--cream);
+}
+
+.footer-blurb {
+  font-family: "Crimson Pro", serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(245, 237, 223, 0.8);
+  font-style: italic;
+  max-width: 460px;
+}
+
+.footer-col-heading {
+  font-family: "Crimson Pro", serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 18px;
+}
+
+.footer-list {
+  list-style: none;
+  font-family: "Crimson Pro", serif;
+  font-size: 14px;
+  line-height: 2;
+  color: rgba(245, 237, 223, 0.85);
+}
+
+.footer-list a {
+  color: rgba(245, 237, 223, 0.85);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-list a:hover { color: var(--gold-soft); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid rgba(245, 237, 223, 0.2);
+  display: flex;
+  justify-content: space-between;
+  font-family: "Crimson Pro", serif;
+  font-size: 12px;
+  color: rgba(245, 237, 223, 0.6);
+  letter-spacing: 0.5px;
+}
+
+/* ============ DETAIL VIEW (when conclusion is clicked) ============ */
+#detail-view {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--paper);
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+#detail-view.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#detail-view::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(109, 46, 70, 0.04) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, transparent 0, transparent 2px,
+      rgba(31, 27, 22, 0.012) 2px, rgba(31, 27, 22, 0.012) 4px);
+}
+
+.detail-back-bar {
+  position: sticky;
+  top: 0;
+  background: rgba(250, 245, 236, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 22px 48px;
+  border-bottom: 1px solid rgba(109, 46, 70, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: "Crimson Pro", serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--berry);
+  cursor: pointer;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s ease;
+}
+
+.back-btn:hover { color: var(--rose); }
+
+.back-btn .arrow {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+  transition: transform 0.4s ease;
+}
+
+.back-btn:hover .arrow { transform: translateX(-6px); }
+
+.detail-roman {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--rose);
+  letter-spacing: 1px;
+}
+
+.detail-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.detail-eyebrow {
+  font-family: "Crimson Pro", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s 0.1s ease, transform 0.6s 0.1s ease;
+}
+
+.detail-question {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--berry);
+  letter-spacing: -1px;
+  margin-bottom: 36px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s 0.2s ease, transform 0.7s 0.2s ease;
+}
+
+.detail-question em {
+  font-style: italic;
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.detail-tldr {
+  background: var(--cream);
+  border-left: 4px solid var(--gold);
+  padding: 28px 36px;
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s 0.3s ease, transform 0.7s 0.3s ease;
+}
+
+.detail-tldr-label {
+  font-family: "Crimson Pro", serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.detail-tldr-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--berry);
+}
+
+#detail-view.active .detail-eyebrow,
+#detail-view.active .detail-question,
+#detail-view.active .detail-tldr,
+#detail-view.active .detail-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-section {
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.detail-section:nth-child(4) { transition-delay: 0.4s; }
+.detail-section:nth-child(5) { transition-delay: 0.5s; }
+.detail-section:nth-child(6) { transition-delay: 0.6s; }
+.detail-section:nth-child(7) { transition-delay: 0.7s; }
+
+.detail-section-heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--berry);
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.detail-section-heading::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.detail-prose {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+
+.detail-prose p { margin-bottom: 18px; }
+
+.detail-prose strong {
+  color: var(--berry);
+  font-weight: 600;
+}
+
+.detail-figure {
+  margin: 40px 0;
+  background: var(--cream);
+  border: 1px solid rgba(109, 46, 70, 0.15);
+  padding: 24px;
+  border-radius: 2px;
+}
+
+.detail-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detail-figure-caption {
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--slate);
+  margin-top: 16px;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold);
+}
+
+.detail-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.detail-stat {
+  border-top: 1px solid var(--berry);
+  padding-top: 16px;
+}
+
+.detail-stat-figure {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--berry);
+  margin-bottom: 8px;
+}
+
+.detail-stat-label {
+  font-family: "Crimson Pro", serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.method-list {
+  list-style: none;
+  margin: 24px 0;
+}
+
+.method-list li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 14px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.method-list li::before {
+  content: counter(method-counter);
+  counter-increment: method-counter;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.method-list { counter-reset: method-counter; }
+
+.detail-implication {
+  background: linear-gradient(135deg, var(--berry) 0%, var(--berry-deep) 100%);
+  color: var(--cream);
+  padding: 48px 48px;
+  margin: 56px -24px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-implication::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg,
+    transparent 0, transparent 18px,
+    rgba(245, 237, 223, 0.025) 18px, rgba(245, 237, 223, 0.025) 19px);
+  pointer-events: none;
+}
+
+.detail-implication-label {
+  font-family: "Crimson Pro", serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.detail-implication-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--cream);
+  position: relative;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .site-header { padding: 16px 24px; }
+  .site-nav { display: none; }
+  .hero { padding: 140px 24px 80px; }
+  .hero-flourish { display: none; }
+  .narrative { padding: 60px 24px 80px; }
+  .stats-bar { padding: 60px 24px; }
+  .stats-grid { gap: 36px; }
+  .stat-figure { font-size: 48px; }
+  .findings-section { padding: 80px 24px; }
+  .findings-grid { grid-template-columns: 1fr; gap: 24px; }
+  .closing { padding: 80px 24px 60px; }
+  .footer-content { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .detail-back-bar { padding: 16px 24px; }
+  .detail-content { padding: 48px 24px 80px; }
+  .detail-implication { margin: 56px -24px 0; padding: 36px 24px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="site-header">
+  <div class="site-mark">
+    Questioning Neutrality
+    <span class="ornament"></span>
+    <span class="author">Marie Connor</span>
+  </div>
+  <nav class="site-nav">
+    <a href="#findings">Findings</a>
+    <a href="#argument">Argument</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<!-- ============ MAIN VIEW ============ -->
+<main id="main-view" class="view">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">A QuantCrit reading of the New York State Regents</div>
+    <h1 class="hero-title">Questioning<br><em>Neutrality</em></h1>
+    <p class="hero-deck">
+      What kind of historical learning program does the Regents in U.S. and Global History actually deliver to New York State students, and does it live up to its promise of coherence and consistency?
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Author</span>
+        <span class="hero-meta-value">Marie Connor</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Institution</span>
+        <span class="hero-meta-value">Teachers College, Columbia</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Site</span>
+        <span class="hero-meta-value">Dream Charter High School, Bronx</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Corpus</span>
+        <span class="hero-meta-value">17 sittings, 49,345 student-by-item responses</span>
+      </div>
+    </div>
+
+    <!-- Decorative cartographic flourish -->
+    <div class="hero-flourish" aria-hidden="true">
+      <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="flourish-fade" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(109, 46, 70, 0.0)"/>
+            <stop offset="60%" stop-color="rgba(109, 46, 70, 0.0)"/>
+            <stop offset="100%" stop-color="rgba(250, 245, 236, 0.95)"/>
+          </radialGradient>
+        </defs>
+        <!-- Compass rose -->
+        <g transform="translate(270, 270)">
+          <!-- Outer rings -->
+          <circle r="240" fill="none" stroke="rgba(109, 46, 70, 0.18)" stroke-width="1"/>
+          <circle r="200" fill="none" stroke="rgba(109, 46, 70, 0.14)" stroke-width="1"/>
+          <circle r="160" fill="none" stroke="rgba(109, 46, 70, 0.10)" stroke-width="1" stroke-dasharray="3,5"/>
+          <circle r="110" fill="none" stroke="rgba(109, 46, 70, 0.16)" stroke-width="1"/>
+          <!-- Cardinal lines -->
+          <g stroke="rgba(109, 46, 70, 0.22)" stroke-width="1" fill="none">
+            <line x1="0" y1="-240" x2="0" y2="240"/>
+            <line x1="-240" y1="0" x2="240" y2="0"/>
+          </g>
+          <g stroke="rgba(109, 46, 70, 0.14)" stroke-width="1" fill="none">
+            <line x1="-170" y1="-170" x2="170" y2="170"/>
+            <line x1="170" y1="-170" x2="-170" y2="170"/>
+          </g>
+          <!-- Inner compass star -->
+          <g fill="rgba(200, 150, 74, 0.32)" stroke="rgba(200, 150, 74, 0.5)" stroke-width="0.8">
+            <polygon points="0,-110 12,0 0,110 -12,0"/>
+            <polygon points="-110,0 0,12 110,0 0,-12"/>
+          </g>
+          <g fill="rgba(109, 46, 70, 0.25)" stroke="rgba(109, 46, 70, 0.45)" stroke-width="0.6">
+            <polygon points="-78,-78 6,-6 78,78 -6,6"/>
+            <polygon points="78,-78 6,6 -78,78 -6,-6"/>
+          </g>
+          <!-- N marker -->
+          <g transform="translate(0, -260)" fill="rgba(109, 46, 70, 0.55)">
+            <text font-family="Cormorant Garamond, serif" font-size="22" font-style="italic" text-anchor="middle" dy="6">N</text>
+          </g>
+          <!-- Center dot -->
+          <circle r="5" fill="rgba(109, 46, 70, 0.6)"/>
+          <circle r="2" fill="rgba(200, 150, 74, 0.9)"/>
+        </g>
+        <!-- Edge fade -->
+        <rect x="0" y="0" width="540" height="540" fill="url(#flourish-fade)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- NARRATIVE -->
+  <section class="narrative">
+    <div class="section-rule"></div>
+    <div class="section-eyebrow">The argument, in opening</div>
+    <h2 class="section-heading">The Regents is a <em>map</em> the state issues of its own historical territory.</h2>
+
+    <div class="narrative-prose">
+      <p>Borges wrote of an empire whose cartographers drew a map at the scale of the empire itself, until the map became the territory. The New York State Regents in U.S. and Global History is that kind of map. Students read it. They are tested on it. The map says it is the territory.</p>
+
+      <p>This project began in a Bronx classroom where, sitting at students' shoulders for years, the seam between what the exam claimed to measure and what my students actually knew began to pull. What the Regents calls historical knowledge is in part a measurement of fluency with one particular map, drawn at one particular scale, by one particular set of cartographers. The library teachers build alongside it is the territory the map cannot show.</p>
+
+      <div class="pullquote">
+        Comparability is asserted, not delivered. Consistency is claimed at the institutional level and contradicted at the structural level. Inside that bounded reality, teachers have specific, durable space to draw the territory the map cannot show.
+      </div>
+
+      <p>This site presents the four sub-questions that ground the argument, the empirical findings each one surfaces, and the implications for both research and teaching practice. The deeper analysis behind each finding is one click away.</p>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat" data-delay="0">
+        <div class="stat-figure">9<span class="unit">/15</span></div>
+        <div class="stat-label">most-cited authors in the source corpus are U.S. presidents</div>
+        <div class="stat-source">Sub-question I</div>
+      </div>
+      <div class="stat" data-delay="100">
+        <div class="stat-figure">19<span class="unit">pt</span></div>
+        <div class="stat-label">gap between Hispanic-F-IEP and Hispanic-F-noIEP students on identical items</div>
+        <div class="stat-source">Sub-question III</div>
+      </div>
+      <div class="stat" data-delay="200">
+        <div class="stat-figure">+12<span class="unit">pt</span></div>
+        <div class="stat-label">average ELA score difference between June and August administrations, same students</div>
+        <div class="stat-source">Sub-question II</div>
+      </div>
+      <div class="stat" data-delay="300">
+        <div class="stat-figure">88<span class="unit">th %ile</span></div>
+        <div class="stat-label">where DCHS sits among ~178 demographically similar New York State schools</div>
+        <div class="stat-source">Counter-evidence cohort</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR FINDINGS -->
+  <section class="findings-section" id="findings">
+    <div class="findings-intro">
+      <div class="section-rule"></div>
+      <div class="section-eyebrow">Four sub-questions, four parts</div>
+      <p>Each card below carries one sub-question's answer. Click any card to read the methodology, see the data, and follow the analytic chain that produced the finding.</p>
+    </div>
+
+    <div class="findings-grid">
+
+      <!-- Finding I -->
+      <button class="finding-card" data-finding="i">
+        <div class="finding-card-image-wrap">
+          <img class="finding-card-image" src="assets/slide014.jpg" alt="Presidentialist archive bar chart from Master Deck v5">
+          <div class="finding-card-image-overlay"></div>
+          <span class="finding-card-roman">I.</span>
+          <span class="finding-card-tag">Sub-question</span>
+        </div>
+        <div class="finding-card-body">
+          <h3 class="finding-card-question">What counts as <em>historical knowledge</em>?</h3>
+          <p class="finding-card-conclusion">
+            The corpus is presidentialist and institutional. <strong>Nine of the top fifteen</strong> most-cited authors are U.S. presidents. The exam centers state speech and dominant institutional voice over the historical actors whose lives the curriculum claims to also include.
+          </p>
+          <div class="finding-card-cta">
+            <span>Read the analysis</span>
+            <span class="finding-card-arrow">→</span>
+          </div>
+        </div>
+      </button>
+
+      <!-- Finding II -->
+      <button class="finding-card" data-finding="ii">
+        <div class="finding-card-image-wrap">
+          <img class="finding-card-image" src="assets/slide029.jpg" alt="ELA pass-line pile-up chart">
+          <div class="finding-card-image-overlay"></div>
+          <span class="finding-card-roman">II.</span>
+          <span class="finding-card-tag">Sub-question</span>
+        </div>
+        <div class="finding-card-body">
+          <h3 class="finding-card-question">Is the Regents <em>experienced consistently</em>?</h3>
+          <p class="finding-card-conclusion">
+            Architecture is fixed; content drifts. Sourcing skill emphasis swings <strong>0% to 22%</strong> across 17 sittings (CV = 0.71). The <strong>August ELA recalibration adds 12 points</strong> to the same students' scores. Comparability is asserted, not delivered.
+          </p>
+          <div class="finding-card-cta">
+            <span>Read the analysis</span>
+            <span class="finding-card-arrow">→</span>
+          </div>
+        </div>
+      </button>
+
+      <!-- Finding III -->
+      <button class="finding-card" data-finding="iii">
+        <div class="finding-card-image-wrap">
+          <img class="finding-card-image" src="assets/slide036.jpg" alt="Intersectional differential heatmap">
+          <div class="finding-card-image-overlay"></div>
+          <span class="finding-card-roman">III.</span>
+          <span class="finding-card-tag">Sub-question</span>
+        </div>
+        <div class="finding-card-body">
+          <h3 class="finding-card-question">What are the <em>implications for students</em>?</h3>
+          <p class="finding-card-conclusion">
+            On identical items with identical scoring rules, Hispanic-F-IEP students score <strong>44%</strong> while Hispanic-F-noIEP peers score <strong>63%</strong>. A <strong>19-point gap</strong> on the same content. The Resistant-source paradox is real: the very items meant to give voice to non-dominant historical actors are where students struggle most.
+          </p>
+          <div class="finding-card-cta">
+            <span>Read the analysis</span>
+            <span class="finding-card-arrow">→</span>
+          </div>
+        </div>
+      </button>
+
+      <!-- Finding IV -->
+      <button class="finding-card" data-finding="iv">
+        <div class="finding-card-image-wrap">
+          <img class="finding-card-image" src="assets/slide086.jpg" alt="Three claims about civic life">
+          <div class="finding-card-image-overlay"></div>
+          <span class="finding-card-roman">IV.</span>
+          <span class="finding-card-tag">Sub-question</span>
+        </div>
+        <div class="finding-card-body">
+          <h3 class="finding-card-question">What is the <em>role of history</em> in civic life?</h3>
+          <p class="finding-card-conclusion">
+            The apparatus implies a narrow civic vision: history as <strong>institutional inheritance</strong>, history as <strong>legible knowledge</strong>, history as <strong>differentially distributed</strong>. The gap between what the apparatus measures and what civic life requires is the curriculum's opportunity.
+          </p>
+          <div class="finding-card-cta">
+            <span>Read the analysis</span>
+            <span class="finding-card-arrow">→</span>
+          </div>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing" id="argument">
+    <div class="section-rule"></div>
+    <div class="section-eyebrow">The argument, in a sentence</div>
+    <p class="closing-statement">
+      The Regents asserts a coherent program experienced consistently across New York State, and the structural evidence shows that promise is partial at best. <em>Inside that bounded reality, teachers have specific, durable space to draw the territory the map cannot show.</em>
+    </p>
+    <span class="closing-divider"></span>
+    <p class="closing-byline">Marie Connor &middot; Doctoral researcher, Teachers College, Columbia</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="about">
+    <div class="footer-content">
+      <div>
+        <div class="footer-mark">Questioning Neutrality</div>
+        <p class="footer-blurb">
+          A QuantCrit reading of the New York State Regents in U.S. and Global History as a structured apparatus calibrated to a statewide reference population, rather than a neutral measurement instrument. Research site: Dream Charter High School, Mott Haven, Bronx.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Project</div>
+        <ul class="footer-list">
+          <li><a href="#findings">Four findings</a></li>
+          <li><a href="#argument">The argument</a></li>
+          <li>Re:Source audit tool</li>
+          <li>Master deck</li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-heading">Contact</div>
+        <ul class="footer-list">
+          <li>mconnor@wearedream.org</li>
+          <li>Teachers College, Columbia</li>
+          <li>C&amp;T Department</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Marie Connor</span>
+      <span><em>The library teachers build is the territory the map cannot show</em></span>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============ DETAIL VIEW ============ -->
+<div id="detail-view" aria-hidden="true">
+  <div class="detail-back-bar">
+    <button class="back-btn" id="back-btn">
+      <span class="arrow">&larr;</span>
+      <span>Return to findings</span>
+    </button>
+    <span class="detail-roman" id="detail-roman">I.</span>
+  </div>
+  <div class="detail-content" id="detail-content">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<script>
+// ============ DETAIL CONTENT ============
+const FINDINGS = {
+  i: {
+    roman: "I.",
+    eyebrow: "Sub-question I",
+    question: "What counts as <em>historical knowledge</em>?",
+    tldr: "The Regents corpus is presidentialist and institutional. The exam centers state speech and dominant institutional voice over the historical actors whose lives the curriculum claims to also include. What gets called historical knowledge is in part a measurement of fluency with one particular archive.",
+    sections: [
+      {
+        heading: "The question",
+        prose: `<p>If a state assessment is going to claim that it measures historical thinking, then it has to be making decisions about what counts as a historical voice worth knowing, what counts as a historical event worth contextualizing, and what counts as a historical artifact worth interpreting. Those decisions are not announced. They are folded into the source corpus.</p>
+                <p>Sub-question I asks the corpus to declare itself. Whose voice anchors the items students read? Whose gaze do those sources enact? What relation to power do those sources represent? What does the apparatus tell New York high schoolers to recognize as historical knowledge?</p>`
+      },
+      {
+        heading: "How the corpus was read",
+        prose: `<p>I built a four-dimension interpretive coding rubric and applied it to every released source on every Regents administration in U.S. History and Global History II from 2022 through January 2026. Each source was coded for:</p>`,
+        method: [
+          "<strong>Power relation.</strong> Whether the source resists, navigates, constructs, maintains, or obscures dominant power.",
+          "<strong>Voice authenticity.</strong> Whether the historical actor's words come through as direct, mediated, or composite.",
+          "<strong>Gaze direction.</strong> Whether the source looks outward, upward, downward, or inward at the subjects of history.",
+          "<strong>Source attributes.</strong> Author identity, perspective, audience assumed, neutrality challenge, and rigor of contextualization."
+        ]
+      },
+      {
+        heading: "What the data shows",
+        figure: { src: "assets/slide014.jpg", caption: "The presidentialist archive: nine of the fifteen most-cited authors across 17 Regents sittings are sitting U.S. presidents. The remaining six include other heads of state and senior government officials." },
+        stats: [
+          { fig: "9 / 15", label: "Most-cited authors who are U.S. presidents" },
+          { fig: "65%", label: "Source voices coded as direct, first-person institutional speech" },
+          { fig: "6%", label: "Gazes that look downward, from powerful actors toward those with less power" },
+          { fig: "3x", label: "Rate at which U.S. History centers power-construction sources vs Global History II" }
+        ],
+        prose: `<p>The corpus does not represent a balanced archive of American or global historical voice. It centers institutional speech, presidential authorship, and views from above. When non-dominant voices appear, they appear unevenly across exams: U.S. History centers power-construction sources more than three times as often as Global History II.</p>
+                <p>This is not a research finding about <strong>bias in test items</strong>. It is a finding about what New York State has decided counts as the historical record students should learn to read.</p>`
+      },
+      {
+        heading: "Theoretical anchor",
+        prose: `<p>Read through Horkheimer and Adorno on instrumental reason, the corpus represents the conversion of a complex, contested historical record into a manageable archive that can move cleanly across classrooms, transcripts, and state reports. Read through QuantCrit (Gillborn et al., García et al.) and Dixon-Román on quantification and social reproduction, the corpus is not just describing history; it is constructing the historical subject the apparatus prepares students to become legible against.</p>`
+      }
+    ],
+    implication: "If the source corpus is the curriculum's archive, then the curriculum has the agency to expand the archive. Source selection is the most concrete location of teacher counter-mapping."
+  },
+
+  ii: {
+    roman: "II.",
+    eyebrow: "Sub-question II",
+    question: "Is the Regents <em>experienced consistently</em>?",
+    tldr: "The exam's architecture is structurally stable, but its content is pedagogically unstable. Sourcing skill emphasis oscillates dramatically across administrations. Interpretive richness is declining. The August ELA recalibration adds twelve points to the same students' scores. Comparability is asserted, not delivered.",
+    sections: [
+      {
+        heading: "The question",
+        prose: `<p>The Regents claims to deliver a single program experienced consistently across New York State. Same name, same scale, same cut score, same graduation consequence. Sub-question II asks whether that consistency is actually delivered when you pull the exam apart sitting by sitting and put the pieces back together.</p>
+                <p>The answer turns on a distinction the exam's framing collapses: structural stability is not the same as pedagogical stability. The architecture of the test (item count, percent multiple choice, scoring rubric structure) can be rock-solid even as the content (which historical thinking skills are weighted, which sources appear, how the scaling curve translates raw to scaled) drifts year over year.</p>`
+      },
+      {
+        heading: "How structural drift was measured",
+        prose: `<p>Across 17 administrations, every released exam was coded for skill family, item type, source form, content domain, and rubric dimension. Then the variability of each dimension was tested across administrations using:</p>`,
+        method: [
+          "<strong>Coefficient of variation</strong> on item count, percent multiple choice, and skill emphasis (sourcing, contextualization, causation, argumentation).",
+          "<strong>Spearman rank correlation</strong> on interpretive richness (depth of historical interpretation required) over time.",
+          "<strong>Chi-square pile-up testing</strong> on score distributions around the 65 cut score, looking for evidence of scaling curve manipulation.",
+          "<strong>Paired t-tests</strong> on students who took both June and August ELA, to test whether the same student gets the same score reading the same skill on different administrations."
+        ]
+      },
+      {
+        heading: "What the data shows",
+        figure: { src: "assets/slide024.jpg", caption: "Sourcing skill demand across 17 sittings. Percent of items requiring a sourcing move oscillates from 0% to 22%; CV = 0.71. Curricular preparation cannot reliably anticipate which skill will be weighted on any given administration." },
+        stats: [
+          { fig: "CV 0.013", label: "Coefficient of variation on item count and percent multiple choice (architecture is stable)" },
+          { fig: "CV 0.71", label: "Coefficient of variation on sourcing skill emphasis (content is unstable)" },
+          { fig: "ρ = -0.96", label: "Spearman correlation, interpretive richness over time, Global II (declining significantly)" },
+          { fig: "+12 pt", label: "Average ELA score increase August vs June, same students (n = 79, t = -4.87, p < .0001)" }
+        ],
+        figure2: { src: "assets/slide029.jpg", caption: "ELA pass-line pile-up. 64% more student-sittings score in the 65–69 band than in the 60–64 band. χ² = 8.26, p = .004. The pass line is producing a calibration artifact, not measuring a natural distribution of student ability." },
+        prose: `<p>The architecture of the exam is steady to four decimal places. The pedagogical experience of the exam is not. Two students reading the same skill on the same content can receive twelve scaled-score points of difference based on which administration they happen to sit. A teacher building curriculum cannot reliably anticipate which skills will carry weight on the next administration. Comparability across administrations is asserted in the score report, not delivered in the data.</p>`
+      },
+      {
+        heading: "What this means structurally",
+        prose: `<p>The exam is structurally stable and pedagogically unstable. Both readings are true at the same time, and that is what makes the exam experience uneven for the students taking it. The institution sees one program; the students sit through different programs. The score report cannot tell which student took which version.</p>`
+      }
+    ],
+    implication: "Comparability is not justice. The system delivers what looks like a single comparable measurement and produces a fundamentally uneven experience for the students it claims to assess uniformly."
+  },
+
+  iii: {
+    roman: "III.",
+    eyebrow: "Sub-question III",
+    question: "What are the <em>implications for students</em>?",
+    tldr: "On identical items, with identical scoring rules, Hispanic-F-IEP students at DCHS score 44% while Hispanic-F-noIEP peers score 63%. A 19-point gap on the same content. The Resistant-source paradox: the very sources designed to give voice to non-dominant historical actors are the items where my students struggle most. The map's omissions become measurements.",
+    sections: [
+      {
+        heading: "The question",
+        prose: `<p>If the corpus centers a particular archive, and if the experience of taking the exam is uneven across administrations, then the question for students is: how does the apparatus land on different bodies, on different intersectional positions, on different academic histories? Where does the apparatus measure my students well, where does it misread them, and what does it produce in their educational lives?</p>
+                <p>Sub-question III takes the analysis from the corpus level to the cell level. It is the question that turns a methodological reading into a structural finding about whose histories the apparatus rewards.</p>`
+      },
+      {
+        heading: "How the differential was constructed",
+        prose: `<p>I joined 49,345 student-by-item responses to demographic context (ethnicity, gender, IEP status, ELL status, attendance, housing) for 468 DCHS students with both layers present. Cells were formed by crossing ethnicity, gender, and IEP status (eight primary cells covering 96.8% of students). Additional cuts added ELL, attendance, and housing as stacked vulnerabilities.</p>`,
+        method: [
+          "<strong>Cell-level percent correct on identical items.</strong> Same content, same rubric, same administration, scored across demographic cells.",
+          "<strong>Resistant-source contestation testing.</strong> Items coded Resistant in the four-dimension rubric were tested for whether they were among the 30 most-contested items per administration.",
+          "<strong>Schema-burden analysis.</strong> Items requiring outside historical knowledge beyond what the source supplies were tested for differential performance by cell.",
+          "<strong>Cross-residual analysis.</strong> ELA-history cross-residual on 183 students with paired scores tested whether history performance is reducible to literacy."
+        ]
+      },
+      {
+        heading: "What the data shows",
+        figure: { src: "assets/slide036.jpg", caption: "Intersectional cell performance on identical items. Every IEP cell scores below 53%; every non-IEP cell scores above 57%. The 19-point gap between Hispanic-F-IEP (44%) and Hispanic-F-noIEP (63%) on the same content is the apparatus measuring something other than the historical thinking the rubric names." },
+        stats: [
+          { fig: "44%", label: "Hispanic-F-IEP percent correct on identical items" },
+          { fig: "63%", label: "Hispanic-F-noIEP percent correct on the same items" },
+          { fig: "19 pt", label: "Gap on identical content with identical scoring" },
+          { fig: "33%", label: "Triple-vulnerable Hispanic-M-IEP-ELL cell percent correct (n=2 students, 344 responses)" }
+        ],
+        figure2: { src: "assets/slide038.jpg", caption: "The Resistant-source paradox. 50% of the 30 most-contested items per administration carry Resistant perspective. The very sources designed to give voice to non-dominant historical actors are structurally inaccessible to students in non-dominant positions, when the curriculum has not first prepared them to read against the dominant frame." },
+        prose: `<p>Vulnerabilities multiply, they do not add. ELL combined with IEP combined with high absence produces 33% percent correct on items the apparatus reports as measuring historical thinking. The harm is not additive; it is structural and intersectional.</p>
+                <p>The Resistant-source paradox is the most pedagogically consequential finding of the analysis. The sources the curriculum is most likely to celebrate as inclusive (Frederick Douglass on slavery, Phillis Wheatley on freedom, an enslaved person's testimony, an organized labor petition) are the items where students in non-dominant positions are most likely to lose points. Inclusion in the corpus without curricular preparation to read those sources is not equity. It is the apparatus extracting performance from the very vulnerability the inclusion was meant to address.</p>`
+      },
+      {
+        heading: "Eight individual portraits",
+        prose: `<p>Aggregate statistics name the pattern. Eight student trajectories voice it. Persistence the apparatus does not register. Pedagogical lift it cannot anticipate. Divergent histories within the same student. The same map, eight different terrains.</p>
+                <p>Each portrait is a real DCHS student, pseudonymized as Student A through Student H, walked across multiple Regents administrations to show what the population-level statistics cannot.</p>`,
+        figure: { src: "assets/slide083.jpg", caption: "Eight students plotted against six dimensions of the apparatus: ELA best score, Global II best, U.S. History best, attendance, cohort percentile, persistence in attempts. When the apparatus measures consistently, the eight polygons would show similar shape. They do not. Each shape names a verdict the apparatus produces on a particular student." }
+      }
+    ],
+    implication: "Aggregate pass rates obscure structural harm. What looks like a single test is functionally eight or more different tests at once, calibrated differently for different intersectional positions on identical items. The same content produces different verdicts."
+  },
+
+  iv: {
+    roman: "IV.",
+    eyebrow: "Sub-question IV",
+    question: "What is the <em>role of history</em> in civic life?",
+    tldr: "The apparatus implies a narrow civic vision. History as institutional inheritance. History as legible knowledge. History as differentially distributed. The gap between what the apparatus prepares students to do and what civic life actually requires is the structural opportunity for curriculum and teaching to widen what the apparatus narrows.",
+    sections: [
+      {
+        heading: "The question",
+        prose: `<p>If the corpus centers institutional voice, and if the exam experience is uneven across students, and if the apparatus's measurements diverge from what they claim to measure, then the question for civic life is: what kind of historical thinker is the Regents preparing young New Yorkers to be? What vision of civic engagement does the apparatus quietly imply by what it rewards?</p>
+                <p>Sub-question IV is the synthesis question. It is not a separate empirical study; it is the civic argument the first three sub-questions land together.</p>`
+      },
+      {
+        heading: "Three claims the apparatus implies",
+        prose: `<p>Drawn from the empirical findings of sub-questions I, II, and III combined, three claims the apparatus structurally embeds in its definition of historical thinking become visible:</p>`,
+        method: [
+          "<strong>History as institutional inheritance.</strong> When the corpus centers state speech and presidential authorship, the apparatus positions history as a record of institutional decisions citizens are to know. The graduate it certifies is one who can recognize state speech, produce legible answers under timed conditions, and accept the curriculum's account of which voices count.",
+          "<strong>History as legible knowledge.</strong> When measurements distort (pass-line pile-ups, August recalibration, item-level disagreement) but scaled scores are presented as comparable judgments, the apparatus teaches that historical knowledge is a thing that can be summarized in a single number. Civic life becomes a practice of producing legibility for institutions, not forming complex judgment.",
+          "<strong>History as differentially distributed.</strong> When the same items produce 19-point gaps across intersectional positions, the apparatus teaches some students that history is for them and others that it is not. Certification follows lines of race, gender, ability, and language. The civic implication is that some young people leave high school certified as historical thinkers and others leave certified as failing at history."
+        ]
+      },
+      {
+        heading: "What civic life actually requires",
+        figure: { src: "assets/slide086.jpg", caption: "Three claims about civic vision the apparatus implies, drawn from the empirical findings of the first three sub-questions. Each claim is a structural reading of what the data shows." },
+        prose: `<p>What the apparatus rewards is the opposite of what civic life requires. Adults preparing for civic participation need to read sources skeptically, weigh competing historical claims, recognize whose voice is absent from the record, and form judgment under uncertainty. The apparatus rewards recognizing state speech and producing legible answers under timed conditions. The gap between those two is the curriculum's opportunity.</p>
+                <p>This is not a critique that says the exam should be abolished. The exam is the load-bearing wall of New York's graduation requirements. It is a critique that says: the wall is structurally narrowing, and students need additional rooms built around it to prepare for civic life that the wall structurally cannot prepare them for.</p>`
+      },
+      {
+        heading: "Where teaching can hold open",
+        figure: { src: "assets/slide089.jpg", caption: "Four moves teachers can make across four skill domains, regardless of district or curriculum mandate, to build the room around the load-bearing wall. Sourcing & source selection, contextualization & perspective, argumentation & causation, literacy paired with historical thinking." },
+        prose: `<p>Teacher agency lives in source selection, contextualization, argumentation, and the work of pairing literacy practice with historical thinking. Inside the bounded reality of the exam, teachers can make non-dominant historical perspectives primary content rather than supplementary; can teach the structural difference between what Global II asks and what U.S. History asks; can register persistence as evidence of competence; can name the schema burden the apparatus loads onto students whose curriculum has not pre-loaded the assumed historical knowledge.</p>
+                <p>Re:Source, the teacher-facing audit tool that grew out of this analysis, is the practitioner-facing answer to the apparatus reading. It does not pretend to unmake the regime it inhabits. It makes the apparatus's structural moves visible enough at the classroom level to be interrupted at the classroom level.</p>`
+      }
+    ],
+    implication: "Critical analysis is not opposition. The same evidence that makes the apparatus's narrowing visible also makes specific, actionable teacher agency visible. Inside the bounded reality, teachers have specific, durable space to draw the territory the map cannot show."
+  }
+};
+
+// ============ DETAIL VIEW LOGIC ============
+const mainView = document.getElementById("main-view");
+const detailView = document.getElementById("detail-view");
+const detailContent = document.getElementById("detail-content");
+const detailRoman = document.getElementById("detail-roman");
+const backBtn = document.getElementById("back-btn");
+const siteHeader = document.getElementById("site-header");
+const findingCards = document.querySelectorAll(".finding-card");
+
+function renderDetail(key) {
+  const f = FINDINGS[key];
+  if (!f) return;
+
+  let html = `
+    <div class="detail-eyebrow">${f.eyebrow}</div>
+    <h1 class="detail-question">${f.question}</h1>
+    <div class="detail-tldr">
+      <div class="detail-tldr-label">In brief</div>
+      <div class="detail-tldr-text">${f.tldr}</div>
+    </div>
+  `;
+
+  f.sections.forEach((s) => {
+    html += `<div class="detail-section">`;
+    html += `<h2 class="detail-section-heading">${s.heading}</h2>`;
+    if (s.prose) html += `<div class="detail-prose">${s.prose}</div>`;
+    if (s.method) {
+      html += `<ol class="method-list">`;
+      s.method.forEach(m => { html += `<li>${m}</li>`; });
+      html += `</ol>`;
+    }
+    if (s.stats) {
+      html += `<div class="detail-stat-grid">`;
+      s.stats.forEach(st => {
+        html += `<div class="detail-stat"><div class="detail-stat-figure">${st.fig}</div><div class="detail-stat-label">${st.label}</div></div>`;
+      });
+      html += `</div>`;
+    }
+    if (s.figure) {
+      html += `<figure class="detail-figure"><img src="${s.figure.src}" alt="${s.figure.caption}"><figcaption class="detail-figure-caption">${s.figure.caption}</figcaption></figure>`;
+    }
+    if (s.figure2) {
+      html += `<figure class="detail-figure"><img src="${s.figure2.src}" alt="${s.figure2.caption}"><figcaption class="detail-figure-caption">${s.figure2.caption}</figcaption></figure>`;
+    }
+    html += `</div>`;
+  });
+
+  if (f.implication) {
+    html += `
+      <div class="detail-implication">
+        <div class="detail-implication-label">What this lands</div>
+        <div class="detail-implication-text">${f.implication}</div>
+      </div>`;
+  }
+
+  detailContent.innerHTML = html;
+  detailRoman.innerHTML = f.roman;
+}
+
+function openDetail(key) {
+  renderDetail(key);
+  // Sequence: fade out main, slide in detail
+  mainView.classList.add("fading-out");
+  siteHeader.classList.add("hidden");
+
+  setTimeout(() => {
+    mainView.classList.add("hidden");
+    detailView.classList.add("active");
+    detailView.setAttribute("aria-hidden", "false");
+    detailView.scrollTop = 0;
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, 700);
+}
+
+function closeDetail() {
+  detailView.classList.remove("active");
+  detailView.setAttribute("aria-hidden", "true");
+
+  setTimeout(() => {
+    mainView.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      mainView.classList.remove("fading-out");
+      siteHeader.classList.remove("hidden");
+    });
+    // Scroll back to findings section
+    const findings = document.getElementById("findings");
+    if (findings) {
+      setTimeout(() => findings.scrollIntoView({ behavior: "smooth", block: "start" }), 200);
+    }
+  }, 700);
+}
+
+findingCards.forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.getAttribute("data-finding");
+    openDetail(key);
+  });
+});
+
+backBtn.addEventListener("click", closeDetail);
+
+// Esc key closes detail view
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && detailView.classList.contains("active")) {
+    closeDetail();
+  }
+});
+
+// ============ STATS BAR REVEAL ON SCROLL (with fallback) ============
+const statsBar = document.querySelector(".stats-bar");
+if (statsBar) {
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const stats = entry.target.querySelectorAll(".stat");
+        stats.forEach((stat, i) => {
+          setTimeout(() => stat.classList.add("visible"), i * 150);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  statsObserver.observe(statsBar);
+
+  // Fallback: ensure stats are visible after 4 seconds regardless
+  // (handles cases like full-page screenshots, edge-case browser states)
+  setTimeout(() => {
+    statsBar.querySelectorAll(".stat").forEach(s => s.classList.add("visible"));
+  }, 4000);
+}
+
+// Also reveal on scroll for findings cards (subtle)
+const findingsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll(".finding-card");
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add("visible"), i * 120);
+      });
+      findingsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+const findingsGrid = document.querySelector(".findings-grid");
+if (findingsGrid) {
+  findingsObserver.observe(findingsGrid);
+  setTimeout(() => {
+    findingsGrid.querySelectorAll(".finding-card").forEach(c => c.classList.add("visible"));
+  }, 4000);
+}
+
+// ============ HEADER HIDE ON SCROLL DOWN, SHOW ON SCROLL UP ============
+let lastScrollY = window.scrollY;
+let scrollTicking = false;
+
+window.addEventListener("scroll", () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const currentY = window.scrollY;
+      // Don't hide header in detail view
+      if (!detailView.classList.contains("active")) {
+        if (currentY > lastScrollY && currentY > 200) {
+          siteHeader.style.transform = "translateY(-100%)";
+        } else {
+          siteHeader.style.transform = "translateY(0)";
+        }
+      }
+      lastScrollY = currentY;
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+});
+</script>
+</body>
+</html>
