@@ -1319,6 +1319,109 @@ body::before {
   margin:24px 0;
 }
 
+/* ── LIGHTBOX ──────────────────────────────────── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-inner {
+  position: relative;
+  max-width: min(92vw, 1100px);
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.lightbox-inner img {
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  display: block;
+}
+.lightbox-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #374151;
+  background: #f9fafb;
+  padding: 10px 14px;
+  border-top: 1px solid #e5e7eb;
+  line-height: 1.5;
+}
+.lightbox-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 1;
+}
+.lightbox-close:hover { background: rgba(0,0,0,0.8); }
+
+/* ── CLICKABLE FIGURE THUMBNAILS ────────────────── */
+.fig-thumb {
+  cursor: zoom-in;
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--navy-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.fig-thumb:hover { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+.fig-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Show full image — no cropping */
+  object-fit: contain;
+  background: #fff;
+}
+.fig-thumb-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+  padding: 7px 10px;
+  background: var(--navy-card);
+  border-top: 1px solid var(--navy-border);
+  line-height: 1.5;
+}
+.fig-thumb-hint {
+  position: absolute;
+  bottom: 36px;
+  right: 8px;
+  background: rgba(15,23,42,0.75);
+  color: rgba(255,255,255,0.7);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  padding: 3px 7px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.fig-thumb:hover .fig-thumb-hint { opacity: 1; }
+
 /* Home page figure section */
 .home-figures-section {
   padding: 48px 0 32px;
@@ -1333,17 +1436,7 @@ body::before {
 @media (max-width: 900px) {
   .home-fig-grid { grid-template-columns: 1fr; }
 }
-.home-fig-card {
-  border-radius: 4px;
-  overflow: hidden;
-}
-/* Scale home figures down ~40% via max-height */
-.home-fig-card .research-fig img {
-  max-height: 220px;
-  object-fit: cover;
-  object-position: top;
-  width: 100%;
-}
+.home-fig-card { border-radius: 4px; overflow: visible; }
 
 /* Student counter-narrative section */
 .student-section {
@@ -1363,7 +1456,9 @@ body::before {
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--navy-border);
+  cursor: zoom-in;
 }
+.student-photo-wrap:hover { border-color: var(--blue); }
 .student-photo-wrap img {
   width: 100%;
   height: auto;
@@ -1413,7 +1508,7 @@ body::before {
   line-height: 1.5;
 }
 
-/* Research page figures grid — 2 columns, ~40% smaller */
+/* Research page figures grid — 2 columns, click to expand */
 .research-figures-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1422,13 +1517,6 @@ body::before {
 }
 @media (max-width: 780px) {
   .research-figures-grid { grid-template-columns: 1fr; }
-}
-/* Cap research figure image height */
-.research-figures-grid .research-fig img {
-  max-height: 260px;
-  object-fit: contain;
-  background: #fff;
-  width: 100%;
 }
   margin: 28px 0;
   border-radius: 6px;
@@ -2558,26 +2646,29 @@ body::before {
     <div class="section-label">The evidence</div>
     <h2 class="section-h2">What the data shows</h2>
     <p style="color:var(--text-dim);max-width:620px;margin-bottom:32px;line-height:1.7;">
-      These figures are drawn directly from the dissertation research. Each chart represents a structural finding about the Regents apparatus — and what it costs the students in your classroom.
+      These figures are drawn directly from the dissertation research. Click any figure to expand it.
     </p>
 
     <div class="home-fig-grid">
       <div class="home-fig-card">
-        <div class="research-fig" style="background:#fff;">
-          <img src="assets/fig4_top_authors.png" alt="9 of the top 15 most-cited Regents authors are U.S. presidents — a presidentialist archive" loading="lazy">
-          <div class="research-fig-caption"><strong>Fig 4.</strong> Whose voice the corpus amplifies. 9 of the top 15 most-cited authors are U.S. presidents. This is the historical record the apparatus asks students to know.</div>
+        <div class="fig-thumb" onclick="openLightbox('assets/fig4_top_authors.png','<strong>Fig 4.</strong> Whose voice the corpus amplifies. 9 of the top 15 most-cited authors are U.S. presidents. This is the historical record the apparatus asks students to know.')">
+          <img src="assets/fig4_top_authors.png" alt="9 of the top 15 most-cited Regents authors are U.S. presidents" loading="lazy">
+          <div class="fig-thumb-hint">click to expand</div>
+          <div class="fig-thumb-caption"><strong>Fig 4.</strong> Whose voice the corpus amplifies — 9 of the top 15 authors are U.S. presidents.</div>
         </div>
       </div>
       <div class="home-fig-card">
-        <div class="research-fig" style="background:#fff;">
-          <img src="assets/fig1_ela_pile_up.png" alt="ELA Regents pass-line pile-up: 87 students score just above 65, only 53 score just below — chi-square p=0.004" loading="lazy">
-          <div class="research-fig-caption"><strong>Fig 1.</strong> The ELA pass-line pile-up. 87 student-sittings score in [65–69] vs only 53 in [60–64]. Under uniform calibration these adjacent bands should hold equal counts. chi² = 8.26, p = 0.004.</div>
+        <div class="fig-thumb" onclick="openLightbox('assets/fig1_ela_pile_up.png','<strong>Fig 1.</strong> The ELA pass-line pile-up. 87 student-sittings score in [65–69] vs only 53 in [60–64]. Under uniform calibration these adjacent bands should hold equal counts. chi² = 8.26, p = 0.004.')">
+          <img src="assets/fig1_ela_pile_up.png" alt="ELA Regents pass-line pile-up" loading="lazy">
+          <div class="fig-thumb-hint">click to expand</div>
+          <div class="fig-thumb-caption"><strong>Fig 1.</strong> The ELA pass-line pile-up. chi² = 8.26, p = 0.004.</div>
         </div>
       </div>
       <div class="home-fig-card">
-        <div class="research-fig" style="background:#fff;">
-          <img src="assets/fig5_voice_and_gaze.png" alt="Voice authenticity and gaze direction across the full source corpus" loading="lazy">
-          <div class="research-fig-caption"><strong>Fig 5.</strong> Whose voice and whose gaze. Direct voices dominate (65%); 22% are mediated. Down gaze — sources looking toward those with less power — appears in only 6.2% of the corpus.</div>
+        <div class="fig-thumb" onclick="openLightbox('assets/fig5_voice_and_gaze.png','<strong>Fig 5.</strong> Whose voice and whose gaze. Direct voices dominate (65%); 22% are mediated. Down gaze — sources looking toward those with less power — appears in only 6.2% of the corpus.')">
+          <img src="assets/fig5_voice_and_gaze.png" alt="Voice authenticity and gaze direction" loading="lazy">
+          <div class="fig-thumb-hint">click to expand</div>
+          <div class="fig-thumb-caption"><strong>Fig 5.</strong> Voice authenticity and gaze direction across the full corpus.</div>
         </div>
       </div>
     </div>
@@ -2620,7 +2711,7 @@ body::before {
       </div>
 
       <!-- Right: student photo -->
-      <div class="student-photo-wrap">
+      <div class="student-photo-wrap" onclick="openLightbox('assets/students_dream.jpg','DCHS students — Dream Charter High School, South Bronx. These are the students the apparatus says should score at the median. They sit in the 88th percentile.')">
         <img src="assets/students_dream.jpg" alt="DCHS students on a field trip — Dream Charter High School, Bronx, New York" loading="lazy">
         <div class="student-photo-caption">
           DCHS students — Dream Charter High School, South Bronx.<br>
@@ -2888,7 +2979,7 @@ body::before {
 
           <p>This site presents the four sub-questions that ground the argument, the empirical findings each one surfaces, and the implications for both research and teaching practice. The research behind Re:Source is not advocacy disguised as evidence. It is evidence that, when read clearly, produces an argument about what should change.</p>
         </div>
-        <div class="research-intro-photo">
+        <div class="research-intro-photo" onclick="openLightbox('assets/students_dream.jpg','DCHS students — Dream Charter High School, South Bronx. The school whose outcomes the structural model underpredicted by 38 percentile points.')" style="cursor:zoom-in;">
           <img src="assets/students_dream.jpg" alt="DCHS students — Dream Charter High School, Bronx" loading="lazy">
           <div class="student-photo-caption">
             DCHS students — Dream Charter High School, South Bronx. The school whose outcomes the structural model underpredicted by 38 percentile points.
@@ -2925,29 +3016,35 @@ body::before {
 
     <!-- RESEARCH PAGE FIGURES -->
     <div class="research-figures-grid">
-      <div class="research-fig">
-        <img src="assets/fig3_power_relation.png" alt="Power relation coding: USH centers power-constructing sources 3x more than Global II" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 3.</strong> Power relation by exam. USH centers power-constructing/maintaining sources 3x more than Global II. The two exams operationalize "history" differently — a student taking one exam encounters a structurally different archive than a student taking the other.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig3_power_relation.png','<strong>Fig 3.</strong> Power relation by exam. USH centers power-constructing/maintaining sources 3x more than Global II. The two exams operationalize &ldquo;history&rdquo; differently — a student taking one exam encounters a structurally different archive than a student taking the other.')">
+        <img src="assets/fig3_power_relation.png" alt="Power relation coding: USH vs Global II" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 3.</strong> Power relation by exam — USH vs Global II.</div>
       </div>
-      <div class="research-fig">
-        <img src="assets/fig9_source_types.png" alt="Source type composition: secondary/scholarly 21.5%, speeches 10.3%, personal/testimonial only 5%" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 9.</strong> What counts as historical evidence. Secondary/scholarly (21.5%) and speeches (10.3%) dominate. Personal/testimonial (5%), Letters (1.8%), and Poems/songs (1.1%) — the forms where non-state voices most likely appear — are the rarest categories.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig9_source_types.png','<strong>Fig 9.</strong> What counts as historical evidence. Secondary/scholarly (21.5%) and speeches (10.3%) dominate. Personal/testimonial (5%), Letters (1.8%), and Poems/songs (1.1%) — the forms where non-state voices most likely appear — are the rarest categories.')">
+        <img src="assets/fig9_source_types.png" alt="Source type composition" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 9.</strong> What counts as historical evidence in the corpus.</div>
       </div>
-      <div class="research-fig">
-        <img src="assets/fig2_distribution_shapes.png" alt="Three Regents exams, three score distribution shapes — the ELA pile-up appears only on ELA" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 2.</strong> Three Regents, three score-distribution shapes. The pass-line pile-up appears only on ELA. If the exams are comparable measurements, their distributions should look equivalent. They do not.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig2_distribution_shapes.png','<strong>Fig 2.</strong> Three Regents, three score-distribution shapes. The pass-line pile-up appears only on ELA. If the exams are comparable measurements, their distributions should look equivalent. They do not.')">
+        <img src="assets/fig2_distribution_shapes.png" alt="Three Regents score distributions" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 2.</strong> Three Regents exams, three score-distribution shapes.</div>
       </div>
-      <div class="research-fig">
-        <img src="assets/fig7_contested_perspectives.png" alt="Resistant-perspective items are 50% of the most-contested set, only 30% of highest-consensus" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 7.</strong> Which perspective categories make items most contested. Resistant-perspective items are 50% of the most-contested set — only 30% of the highest-consensus set. The sources meant to give voice to non-dominant actors are the hardest for all students to agree on.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig7_contested_perspectives.png','<strong>Fig 7.</strong> Resistant-perspective items are 50% of the most-contested set — only 30% of the highest-consensus set. The sources meant to give voice to non-dominant actors are the hardest for all students to agree on.')">
+        <img src="assets/fig7_contested_perspectives.png" alt="Contested vs consensus items by perspective" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 7.</strong> Which perspective categories make items most contested.</div>
       </div>
-      <div class="research-fig">
-        <img src="assets/fig8_jun_aug_paired.png" alt="Same student, June ELA mean 38.6, August ELA mean 50.7 — plus 12.2 points, paired t=-4.87, p<0.0001" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 8.</strong> Same student, two ELA Regents, two months apart. n=79 students. Mean change: +12.2 pts, paired t = -4.87, p &lt; 0.0001. If the two administrations are measuring the same skill in the same way, the same student should not gain 12 points in eight weeks.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig8_jun_aug_paired.png','<strong>Fig 8.</strong> Same student, two ELA Regents, two months apart. n=79. Mean change: +12.2 pts, paired t = -4.87, p &lt; 0.0001. If the two administrations are measuring the same skill the same way, the same student should not gain 12 points in eight weeks.')">
+        <img src="assets/fig8_jun_aug_paired.png" alt="June vs August ELA paired student scores" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 8.</strong> Same student, June → August ELA. +12.2 pts mean change, p &lt; 0.0001.</div>
       </div>
-      <div class="research-fig">
-        <img src="assets/fig6_dominance_distribution.png" alt="Distribution of answer dominance: median item only 52% of students agree — not a clear-answer test" loading="lazy">
-        <div class="research-fig-caption"><strong>Fig 6.</strong> How much do students agree on the answer? On the median MC item, just 52% of students choose the same answer. Only 8.4% of items reach 70%+ consensus. The apparatus is not a bank of clear answers.</div>
+      <div class="fig-thumb" onclick="openLightbox('assets/fig6_dominance_distribution.png','<strong>Fig 6.</strong> How much do students agree on the answer? On the median MC item, just 52% of students choose the same answer. Only 8.4% of items reach 70%+ consensus. The apparatus is not a bank of clear answers.')">
+        <img src="assets/fig6_dominance_distribution.png" alt="Answer dominance distribution" loading="lazy">
+        <div class="fig-thumb-hint">click to expand</div>
+        <div class="fig-thumb-caption"><strong>Fig 6.</strong> Answer dominance — median item: only 52% agreement.</div>
       </div>
     </div>
 
@@ -5189,6 +5286,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+</script>
+
+<!-- ── LIGHTBOX OVERLAY ────────────────────── -->
+<div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox(event)">
+  <div class="lightbox-inner" id="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox(null)">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<script>
+function openLightbox(src, caption) {
+  const img = document.getElementById('lightbox-img');
+  const cap = document.getElementById('lightbox-caption');
+  const ov  = document.getElementById('lightbox-overlay');
+  img.src = src;
+  img.alt = caption;
+  cap.innerHTML = caption;
+  ov.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox-overlay')) return;
+  document.getElementById('lightbox-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox(null);
+});
 </script>
 </body>
 </html>
